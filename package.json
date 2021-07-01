@@ -1,0 +1,32 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main. Название pull request может быть любое.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "./node_modules/.bin/parcel static/index.html",
+    "clean": "rm -rf dist/",
+    "build": "npm run clean &&  ./node_modules/.bin/parcel build static/index.html --target=web"
+  },
+  "targets": {
+    "web": {
+      "context": "browser",
+      "publicUrl": "./",
+      "distDir": "dist"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex/issues"
+  },
+  "homepage": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "parcel": "^2.0.0-beta.2"
+  }
+}

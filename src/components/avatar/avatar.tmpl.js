@@ -4,7 +4,7 @@ import "./avatar.scss";
 class Template extends BaseTemplate {
   template({ cn }) {
     return `
-  <img src="" class="avatar ${cn.g()}"/>`;
+  <img src="/public/avatar.svg" class="avatar ${cn.g()}"/>`;
   }
 }
 

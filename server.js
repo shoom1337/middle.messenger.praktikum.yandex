@@ -1,10 +1,10 @@
 const express = require("express");
 
-const PORT = 3000;
+const PORT = 8000;
 
 const app = express();
 
-app.use(express.static("./dist"));
+app.use(express.static("./public"));
 
 app.listen(PORT, function () {
   console.log(`app listening on http://localhost:${PORT}`);

@@ -8,9 +8,11 @@
   },
   "scripts": {
     "dev": "./node_modules/.bin/parcel serve static/index.html --open",
-    "start": "./node_modules/.bin/parcel serve static/index.html --port 3000",
+    "copy:public": "mkdir -p ./dist/public && cp -R ./public ./dist/",
+    "public": "node ./server.js",
+    "start": "./node_modules/.bin/parcel serve static/index.html --port 3000 --target=web",
     "clean": "rm -rf dist/",
-    "build": "npm run clean &&  ./node_modules/.bin/parcel build static/*.html --target=web"
+    "build": "npm run clean && npm run copy:public &&  ./node_modules/.bin/parcel build static/*.html --target=web"
   },
   "targets": {
     "web": {

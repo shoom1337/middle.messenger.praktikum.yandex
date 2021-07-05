@@ -1,0 +1,44 @@
+@import '../../colors.scss';
+
+.input {
+    &-label {
+        color: $labelColor;
+        font-size: 14px;
+        line-height: 14px;
+        display: flex;
+        flex-direction: column;
+    }
+    &-input {
+        margin-top: 8px;
+        color: $inputColor;
+        border: none;
+        background-color: transparent;
+        font-size: 20px;
+        line-height: 20px;
+        &__error {
+            color: $errorColor;
+        }
+        &:focus {
+            outline: none;
+        }
+    }
+    &-error-message {
+        color: $errorColor;
+    }
+    &-wrapper {
+        margin-bottom: 23px;
+    }
+    &-row {
+        &__label {
+            flex-direction: row;
+            justify-content: space-between;
+            color: $textColor;
+            font-size: 20px;
+            line-height: 20px;
+            align-items: baseline;
+        }
+        &__input {
+            text-align: right;
+        }
+    }
+}

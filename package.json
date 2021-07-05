@@ -3,8 +3,12 @@
   "version": "1.0.0",
   "description": "### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main. Название pull request может быть любое.",
   "main": "index.js",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
-    "dev": "./node_modules/.bin/parcel static/index.html",
+    "dev": "./node_modules/.bin/parcel serve static/index.html --open",
+    "start": "./node_modules/.bin/parcel static/index.html --port 3000 && node ./server.js",
     "clean": "rm -rf dist/",
     "build": "npm run clean &&  ./node_modules/.bin/parcel build static/index.html --target=web"
   },
@@ -25,8 +29,15 @@
   "bugs": {
     "url": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex/issues"
   },
+  "browserslist": "> 0.2%",
   "homepage": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "parcel": "^2.0.0-beta.2"
-  }
+    "@parcel/babel-plugin-transform-runtime": "=2.0.0-nightly.1823",
+    "@parcel/transformer-sass": "=2.0.0-beta.2",
+    "express": "^4.17.1",
+    "nodemon": "=2.0.9",
+    "parcel": "=2.0.0-beta.2",
+    "sass": "=1.35.1"
+  },
+  "dependencies": {}
 }

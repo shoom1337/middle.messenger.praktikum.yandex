@@ -1,12 +1,11 @@
 const express = require("express");
-const path = require("path");
 
 const PORT = 3000;
 
 const app = express();
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("./dist"));
 
 app.listen(PORT, function () {
-  console.log(`Server has been started on http://localhost:${PORT}`);
+  console.log(`app listening on http://localhost:${PORT}`);
 });

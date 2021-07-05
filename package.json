@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "./node_modules/.bin/parcel serve static/index.html --open",
-    "start": "./node_modules/.bin/parcel static/index.html --port 3000 && node ./server.js",
+    "start": "./node_modules/.bin/parcel serve static/index.html --port 3000 && node ./server.js",
     "clean": "rm -rf dist/",
     "build": "npm run clean &&  ./node_modules/.bin/parcel build static/index.html --target=web"
   },

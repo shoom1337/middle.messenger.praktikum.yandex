@@ -8,6 +8,8 @@ import "./global.scss";
 
 let page;
 
+console.log(window.location.pathname);
+
 switch (window.location.pathname) {
   case "/":
   case "/login":

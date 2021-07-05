@@ -10,7 +10,7 @@
     "dev": "./node_modules/.bin/parcel serve static/index.html --open",
     "start": "./node_modules/.bin/parcel serve static/index.html --port 3000 && node ./server.js",
     "clean": "rm -rf dist/",
-    "build": "npm run clean &&  ./node_modules/.bin/parcel build static/index.html --target=web"
+    "build": "npm run clean &&  ./node_modules/.bin/parcel build static/*.html --target=web"
   },
   "targets": {
     "web": {
@@ -37,6 +37,7 @@
     "express": "^4.17.1",
     "nodemon": "=2.0.9",
     "parcel": "=2.0.0-beta.2",
+    "parcel-plugin-svg-sprite": "^1.4.1",
     "sass": "=1.35.1"
   },
   "dependencies": {}

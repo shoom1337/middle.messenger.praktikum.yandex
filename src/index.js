@@ -28,11 +28,11 @@ switch (window.location.pathname) {
     page = serverErrorPage;
     break;
 
-  case "/profile/edit":
+  case "/edit":
     page = profileEditPage;
     break;
 
-  case "/profile/password":
+  case "/password":
     page = passwordEditPage;
     break;
 

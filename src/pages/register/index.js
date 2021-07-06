@@ -3,8 +3,6 @@ import Card from "../../components/card";
 import RegisterForm from "../../modules/register";
 import Link from "../../components/link";
 
-import "./register.scss";
-
 const linkToLoginData = {
   data: {
     href: "/login",
@@ -15,7 +13,7 @@ const linkToLoginData = {
 
 const cardData = {
   data: {
-    content: RegisterForm + new Link(linkToLoginData).render(),
+    content: RegisterForm + new Link(linkToLoginData).content,
     title: "Регистрация",
   },
 };

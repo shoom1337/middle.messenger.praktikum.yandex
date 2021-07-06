@@ -31,7 +31,7 @@ const layoutData = {
       new Avatar().content +
       new Card(cardData).content +
       new Button(buttonData).content +
-      new PanelLink(panelLinkData).render(),
+      new PanelLink(panelLinkData).content,
   },
   className: "layout",
   title: "Логин",

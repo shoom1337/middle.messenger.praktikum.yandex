@@ -21,7 +21,7 @@ const linkData = {
 
 const layoutData = {
   data: {
-    content: new Error(errorData).content + new Link(linkData).render(),
+    content: new Error(errorData).content + new Link(linkData).content,
   },
   title: "500",
   className: "page-500",

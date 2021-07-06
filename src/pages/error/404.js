@@ -9,7 +9,6 @@ const errorData = {
     message: "Я что-то нажал и все исчезло",
     status: 404,
   },
-  className: "error-404",
 };
 
 const linkData = {
@@ -17,15 +16,12 @@ const linkData = {
     href: "/",
     text: "Назад к чатам",
   },
-  className: "back-link",
 };
 
 const layoutData = {
   data: {
-    content: new Error(errorData).render() + new Link(linkData).render(),
+    content: new Error(errorData).content + new Link(linkData).content,
   },
-  title: "404",
-  className: "page-404",
 };
 
 const page = new Layout(layoutData);

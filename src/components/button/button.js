@@ -1,13 +1,11 @@
 import BaseComponent from "../baseComponent";
-import Renderer from "../../utils/renderer";
 import tmpl from "./button.tmpl";
 import "./button.scss";
 
-class Input extends BaseComponent {
-  render() {
-    const template = new tmpl(this.className).generate();
-    return new Renderer(template, this.data).render();
+class Button extends BaseComponent {
+  constructor({ data }) {
+    super({ data, tmpl });
   }
 }
 
-export default Input;
+export default Button;

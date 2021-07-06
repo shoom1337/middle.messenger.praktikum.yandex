@@ -9,7 +9,6 @@ const loginInputData = {
     type: "text",
     name: "login",
   },
-  className: "input-login",
 };
 
 const passwordInputData = {
@@ -19,24 +18,21 @@ const passwordInputData = {
     type: "password",
     name: "password",
   },
-  className: "input-password",
 };
 
 const buttonData = {
   data: {
     text: "Авторизоваться",
   },
-  className: "login-btn",
 };
 
 const loginFormData = {
   data: {
     content:
-      new Input(loginInputData).render() +
-      new Input(passwordInputData).render() +
-      new Button(buttonData).render(),
+      new Input(loginInputData).content +
+      new Input(passwordInputData).content +
+      new Button(buttonData).content,
   },
-  className: "login-form",
 };
 
-export default new Form(loginFormData).render();
+export default new Form(loginFormData).content;

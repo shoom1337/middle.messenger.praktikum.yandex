@@ -1,12 +1,14 @@
 @import '../../colors.scss';
 
-.input {
+.input-row {
     &__label {
-        color: $labelColor;
+        color: $textColor;
         display: flex;
-        flex-direction: column;
-        font-size: 14px;
-        line-height: 14px;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 20px;
+        line-height: 20px;
+        align-items: baseline;
     }
 
     &__input {
@@ -16,12 +18,13 @@
         background-color: transparent;
         font-size: 20px;
         line-height: 20px;
-
+        text-align: right;
+        
         &:focus {
             outline: none;
         }
     }
-    
+
     &__wrapper {
         margin-bottom: 23px;
     }

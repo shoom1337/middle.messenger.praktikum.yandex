@@ -1,50 +1,37 @@
 import Layout from "../../../layout/gradient";
 import Avatar from "../../../components/avatar";
-import Card from "../../../components/card";
+import Card from "../../../components/card-no-header";
 import EditAvatarForm from "../../../modules/profile/avatarForm";
 import Button from "../../../components/button";
 import PanelLink from "../../../components/panel-link/panel-link";
-
-import "./avatar.scss";
-
-const avatarData = {
-  data: {},
-  className: "profile-avatar",
-};
 
 const cardData = {
   data: {
     content: EditAvatarForm,
   },
-  className: "profile-card",
-  type: "no-header",
 };
 
 const buttonData = {
   data: {
     text: "Сохранить",
   },
-  className: "profile-edit-btn",
 };
 
 const panelLinkData = {
   data: {
     href: "/",
   },
-  className: "profile-back-link",
 };
 
 const layoutData = {
   data: {
     title: "test",
     content:
-      new Avatar(avatarData).render() +
-      new Card(cardData).render() +
-      new Button(buttonData).render() +
-      new PanelLink(panelLinkData).render(),
+      new Avatar().content +
+      new Card(cardData).content +
+      new Button(buttonData).content +
+      new PanelLink(panelLinkData).content,
   },
-  className: "layout",
-  title: "Логин",
 };
 
 const page = new Layout(layoutData);

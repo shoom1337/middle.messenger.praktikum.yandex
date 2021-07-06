@@ -9,7 +9,6 @@ const errorData = {
     message: "Кто-то что-то нажал, а мы чиним",
     status: 500,
   },
-  className: "error-500",
 };
 
 const linkData = {
@@ -17,15 +16,12 @@ const linkData = {
     href: "/",
     text: "Назад к чатам",
   },
-  className: "back-link",
 };
 
 const layoutData = {
   data: {
-    content: new Error(errorData).render() + new Link(linkData).render(),
+    content: new Error(errorData).content + new Link(linkData).content,
   },
-  title: "500",
-  className: "page-500",
 };
 
 const page = new Layout(layoutData);

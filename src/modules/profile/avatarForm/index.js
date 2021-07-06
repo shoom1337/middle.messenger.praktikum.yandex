@@ -1,5 +1,5 @@
 import Form from "../../../components/form";
-import Input from "../../../components/input";
+import Input from "../../../components/input-row-variant";
 
 const avatarFormData = {
   data: {
@@ -9,11 +9,8 @@ const avatarFormData = {
         name: "avatar",
         type: "file",
       },
-      className: "input-avatar",
-      variant: "row",
-    }).render(),
+    }).content,
   },
-  className: "login-form",
 };
 
-export default new Form(avatarFormData).render();
+export default new Form(avatarFormData).content;

@@ -81,7 +81,6 @@ const registerFormData = {
         );
       }, "") + new Button(buttonData).content,
   },
-  className: "register-form",
 };
 
-export default new Form(registerFormData).render();
+export default new Form(registerFormData).content;

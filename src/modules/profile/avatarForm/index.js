@@ -13,7 +13,6 @@ const avatarFormData = {
       variant: "row",
     }).render(),
   },
-  className: "login-form",
 };
 
-export default new Form(avatarFormData).render();
+export default new Form(avatarFormData).content;

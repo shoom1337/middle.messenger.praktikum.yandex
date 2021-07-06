@@ -45,7 +45,6 @@ const registerFormData = {
       );
     }, ""),
   },
-  className: "login-form",
 };
 
-export default new Form(registerFormData).render();
+export default new Form(registerFormData).content;

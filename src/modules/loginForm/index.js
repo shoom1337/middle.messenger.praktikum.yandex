@@ -35,7 +35,6 @@ const loginFormData = {
       new Input(passwordInputData).render() +
       new Button(buttonData).content,
   },
-  className: "login-form",
 };
 
-export default new Form(loginFormData).render();
+export default new Form(loginFormData).content;

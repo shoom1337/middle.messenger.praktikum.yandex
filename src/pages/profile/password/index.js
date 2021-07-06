@@ -1,5 +1,5 @@
 import Layout from "../../../layout/gradient";
-import Avatar from "../../../components/avatar";
+// import Avatar from "../../../components/avatar";
 import Card from "../../../components/card";
 import EditPasswordFrom from "../../../modules/profile/passwordForm";
 import Button from "../../../components/button";
@@ -38,7 +38,7 @@ const layoutData = {
   data: {
     title: "test",
     content:
-      new Avatar(avatarData).render() +
+      // new Avatar(avatarData).render() +
       new Card(cardData).render() +
       new Button(buttonData).render() +
       new PanelLink(panelLinkData).render(),

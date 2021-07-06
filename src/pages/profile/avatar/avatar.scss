@@ -1,14 +1,18 @@
 .layout {
     position: relative;
 }
+
+.avatar {
+    margin-bottom: 40px;
+}
+
 .profile {
-    &-avatar {
-        margin-bottom: 40px;
-    }
+
     &-card {
         width: 578px;
         margin-bottom: 27px;
     }
+
     &-edit-btn {
         max-width: 280px;
     }

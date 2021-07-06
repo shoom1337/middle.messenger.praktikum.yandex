@@ -7,11 +7,6 @@ import PanelLink from "../../../components/panel-link/panel-link";
 
 import "./avatar.scss";
 
-const avatarData = {
-  data: {},
-  className: "profile-avatar",
-};
-
 const cardData = {
   data: {
     content: EditAvatarForm,
@@ -38,7 +33,7 @@ const layoutData = {
   data: {
     title: "test",
     content:
-      new Avatar(avatarData).render() +
+      new Avatar().content +
       new Card(cardData).render() +
       new Button(buttonData).render() +
       new PanelLink(panelLinkData).render(),

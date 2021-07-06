@@ -53,7 +53,6 @@ const layoutData = {
       return acc + new Link(item).content;
     }, ""),
   },
-  className: "chat-page",
 };
 
 const page = new Layout(layoutData);

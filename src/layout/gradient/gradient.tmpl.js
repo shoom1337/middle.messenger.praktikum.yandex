@@ -1,21 +1,3 @@
-import ClassNames from "../../utils/classnames";
-
-class Template {
-  constructor(className) {
-    this.className = className;
-    this.cn = new ClassNames(className);
-  }
-
-  generate() {
-    return this.template(this.cn);
-  }
-
-  template(cn) {
-    return `
-  <main class="gradient-layout ${cn.g("layout")}">
-    {{ content }}
-  </main>`;
-  }
-}
-
-export default Template;
+export default `<main class="gradient-layout">
+                  {{ content }}
+                </main>`;

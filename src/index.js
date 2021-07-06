@@ -49,4 +49,4 @@ switch (window.location.pathname) {
 }
 
 const wrapper = document.getElementById("root");
-wrapper.innerHTML = page.render();
+wrapper.innerHTML = page.content;

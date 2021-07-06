@@ -23,16 +23,6 @@ class Templator {
 
         const data = get(ctx, tmplValue);
 
-        if (typeof data === "function") {
-          window[tmplValue] = data;
-
-          tmpl = tmpl.replace(
-            new RegExp(key[0], "gi"),
-            `window.${key[1].trim()}()`
-          );
-          continue;
-        }
-
         tmpl = tmpl.replace(new RegExp(key[0], "gi"), data);
       }
     }

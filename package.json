@@ -8,16 +8,14 @@
   },
   "scripts": {
     "dev": "./node_modules/.bin/parcel serve static/index.html --open",
-    "copy:public": "mkdir -p ./dist/public && cp -R ./public ./dist/",
-    "public": "node ./server.js",
-    "start": "./node_modules/.bin/parcel serve static/index.html --port 3000 --target=web",
+    "start": "node ./server.js",
     "clean": "rm -rf dist/",
-    "build": "npm run clean && npm run copy:public &&  ./node_modules/.bin/parcel build static/*.html --target=web"
+    "build": "npm run clean &&  ./node_modules/.bin/parcel build static/*.html --target=web"
   },
   "targets": {
     "web": {
       "context": "browser",
-      "publicUrl": "./",
+      "publicUrl": "/",
       "distDir": "dist"
     }
   },
@@ -34,12 +32,9 @@
   "browserslist": "> 0.2%",
   "homepage": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
-    "@parcel/babel-plugin-transform-runtime": "=2.0.0-nightly.1823",
     "@parcel/transformer-sass": "=2.0.0-beta.2",
-    "express": "^4.17.1",
-    "nodemon": "=2.0.9",
-    "parcel": "=2.0.0-beta.2",
-    "parcel-plugin-svg-sprite": "^1.4.1",
+    "express": "=4.17.1",
+    "parcel-bundler": "=1.12.5",
     "sass": "=1.35.1"
   },
   "dependencies": {}

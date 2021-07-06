@@ -9,7 +9,6 @@ const loginInputData = {
     type: "text",
     name: "login",
   },
-  className: "input-login",
 };
 
 const passwordInputData = {
@@ -19,7 +18,6 @@ const passwordInputData = {
     type: "password",
     name: "password",
   },
-  className: "input-password",
 };
 
 const buttonData = {
@@ -31,8 +29,8 @@ const buttonData = {
 const loginFormData = {
   data: {
     content:
-      new Input(loginInputData).render() +
-      new Input(passwordInputData).render() +
+      new Input(loginInputData).content +
+      new Input(passwordInputData).content +
       new Button(buttonData).content,
   },
 };

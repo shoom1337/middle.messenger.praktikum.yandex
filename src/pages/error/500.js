@@ -9,7 +9,6 @@ const errorData = {
     message: "Кто-то что-то нажал, а мы чиним",
     status: 500,
   },
-  className: "error-500",
 };
 
 const linkData = {
@@ -22,7 +21,7 @@ const linkData = {
 
 const layoutData = {
   data: {
-    content: new Error(errorData).render() + new Link(linkData).render(),
+    content: new Error(errorData).content + new Link(linkData).render(),
   },
   title: "500",
   className: "page-500",

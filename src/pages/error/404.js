@@ -9,7 +9,6 @@ const errorData = {
     message: "Я что-то нажал и все исчезло",
     status: 404,
   },
-  className: "error-404",
 };
 
 const linkData = {
@@ -22,7 +21,7 @@ const linkData = {
 
 const layoutData = {
   data: {
-    content: new Error(errorData).render() + new Link(linkData).render(),
+    content: new Error(errorData).content + new Link(linkData).render(),
   },
   title: "404",
   className: "page-404",

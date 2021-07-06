@@ -5,17 +5,17 @@ import Link from "../../components/link";
 
 import "./login.scss";
 
-const registerLinkData = {
+const linkToRegisterData = {
   data: {
     href: "/register",
     text: "Нет аккаунта?",
   },
-  className: "register-link",
+  className: "login-page",
 };
 
 const cardData = {
   data: {
-    content: LoginForm + new Link(registerLinkData).render(),
+    content: LoginForm + new Link(linkToRegisterData).render(),
     title: "Вход",
   },
   className: "login-card",
@@ -26,7 +26,7 @@ const layoutData = {
     title: "test",
     content: new Card(cardData).render(),
   },
-  className: "layout",
+  className: "login-page",
   title: "Логин",
 };
 

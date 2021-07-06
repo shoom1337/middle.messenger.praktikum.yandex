@@ -14,7 +14,7 @@ const errorData = {
 
 const linkData = {
   data: {
-    href: "/login",
+    href: "/",
     text: "Назад к чатам",
   },
   className: "back-link",

@@ -12,7 +12,7 @@ class Template {
 
   template(cn) {
     return `
-  <main class="gradient-layout ${cn.g("layout")}">
+  <main class="blank-layout ${cn.g("layout")}">
     {{ content }}
   </main>`;
   }

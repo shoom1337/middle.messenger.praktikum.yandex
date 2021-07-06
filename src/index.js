@@ -4,28 +4,24 @@ import loginPage from "./pages/login";
 import registerPage from "./pages/register";
 import profileEditPage from "./pages/profile/edit";
 import passwordEditPage from "./pages/profile/password";
+import avatarEditPage from "./pages/profile/avatar";
+import chatPage from "./pages/chat";
+
 import "./global.scss";
 
 let page;
 
-console.log(window.location.pathname);
-
 switch (window.location.pathname) {
   case "/":
+    page = chatPage;
+    break;
+
   case "/login":
     page = loginPage;
     break;
 
   case "/register":
     page = registerPage;
-    break;
-
-  case "/404":
-    page = notFoundPage;
-    break;
-
-  case "/500":
-    page = serverErrorPage;
     break;
 
   case "/edit":
@@ -36,7 +32,18 @@ switch (window.location.pathname) {
     page = passwordEditPage;
     break;
 
+  case "/avatar":
+    page = avatarEditPage;
+    break;
+
+  case "/500":
+    page = serverErrorPage;
+    break;
+
+  case "/404":
+
   default:
+    page = notFoundPage;
     break;
 }
 

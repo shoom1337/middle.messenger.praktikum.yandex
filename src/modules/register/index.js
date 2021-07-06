@@ -59,7 +59,7 @@ const buttonData = {
   data: {
     text: "Зарегистрироваться",
   },
-  className: "login-btn",
+  className: "register-btn",
 };
 
 const registerFormData = {
@@ -82,7 +82,7 @@ const registerFormData = {
         );
       }, "") + new Button(buttonData).render(),
   },
-  className: "login-form",
+  className: "register-form",
 };
 
 export default new Form(registerFormData).render();

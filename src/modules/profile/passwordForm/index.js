@@ -5,15 +5,15 @@ const fieldsData = [
   {
     value: "123456",
     label: "Старый пароль",
-    className: "input-password",
-    name: "password",
+    className: "input-old-password",
+    name: "oldPassword",
     type: "password",
   },
   {
     value: "12345678",
     label: "Новый пароль",
-    className: "input-password",
-    name: "password",
+    className: "input-new-password",
+    name: "newPassword",
     type: "password",
   },
   {

@@ -3,8 +3,10 @@
         margin-bottom: 14px;
         min-width: 333px;
     }
-    &-link {
-        display: block;
-        text-align: center;
+    &-page {
+        &__link {
+            display: block;
+            text-align: center;
+        }
     }
 }

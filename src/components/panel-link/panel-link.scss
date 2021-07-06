@@ -1,0 +1,15 @@
+@import '../../colors.scss';
+
+.panel-link {
+    text-decoration: none;
+    position: absolute;
+    background-color: $panelLinkBackgroundColor;
+    left: 0;
+    top: 0;
+    width: 64px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+

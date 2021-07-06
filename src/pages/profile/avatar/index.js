@@ -1,22 +1,22 @@
 import Layout from "../../../layout/gradient";
 import Avatar from "../../../components/avatar";
 import Card from "../../../components/card";
-import EditPasswordFrom from "../../../modules/profile/passwordForm";
+import EditAvatarForm from "../../../modules/profile/avatarForm";
 import Button from "../../../components/button";
 import PanelLink from "../../../components/panel-link/panel-link";
 
-import "./password.scss";
+import "./avatar.scss";
 
 const avatarData = {
   data: {},
-  className: "password-avatar",
+  className: "profile-avatar",
 };
 
 const cardData = {
   data: {
-    content: EditPasswordFrom,
+    content: EditAvatarForm,
   },
-  className: "password-card",
+  className: "profile-card",
   type: "no-header",
 };
 
@@ -24,7 +24,7 @@ const buttonData = {
   data: {
     text: "Сохранить",
   },
-  className: "password-edit-btn",
+  className: "profile-edit-btn",
 };
 
 const panelLinkData = {

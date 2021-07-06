@@ -3,5 +3,11 @@
         margin-bottom: 14px;
         min-width: 333px;
     }
+    &-page {
+        &__link {
+            display: block;
+            text-align: center;
+        }
+    }
 }
 

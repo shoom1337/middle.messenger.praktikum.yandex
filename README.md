@@ -23,8 +23,7 @@
 - `cd middle.messenger.praktikum.yandex` — перейти в директорию с проектом,
 - `git checkout sprint_1` — переключить репозиторий на ветку разработки,
 - `npm install` — установить зависимости,
-- `npm run public` — запустить express с локальной раздачей статики (из папки ./public),
-- `npm run start` — запустить сервера разработки,
+- `npm run start` — запустить express со сборщиком в middleware и сервингом static/index.html,
 - [http://localhost:3000](http://localhost:3000) — сервер запустится на порту 3000.
 
 Для сборки production:

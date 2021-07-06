@@ -15,7 +15,7 @@
   "targets": {
     "web": {
       "context": "browser",
-      "publicUrl": "/",
+      "publicUrl": "./",
       "distDir": "dist"
     }
   },

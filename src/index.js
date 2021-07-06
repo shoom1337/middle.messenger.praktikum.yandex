@@ -13,6 +13,7 @@ let page;
 
 switch (window.location.pathname) {
   case "/":
+  case "/chat":
     page = chatPage;
     break;
 

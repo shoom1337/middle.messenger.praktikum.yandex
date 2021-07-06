@@ -18,13 +18,12 @@ const cardData = {
     content: RegisterForm + new Link(linkToLoginData).render(),
     title: "Регистрация",
   },
-  className: "register-card",
 };
 
 const layoutData = {
   data: {
     title: "test",
-    content: new Card(cardData).render(),
+    content: new Card(cardData).content,
   },
   className: "register-page",
   title: "Регистрация",

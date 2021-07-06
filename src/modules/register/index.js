@@ -59,7 +59,6 @@ const buttonData = {
   data: {
     text: "Зарегистрироваться",
   },
-  className: "register-btn",
 };
 
 const registerFormData = {
@@ -80,7 +79,7 @@ const registerFormData = {
             className,
           }).render()
         );
-      }, "") + new Button(buttonData).render(),
+      }, "") + new Button(buttonData).content,
   },
   className: "register-form",
 };

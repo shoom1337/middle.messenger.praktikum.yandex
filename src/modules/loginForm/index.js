@@ -26,7 +26,6 @@ const buttonData = {
   data: {
     text: "Авторизоваться",
   },
-  className: "login-btn",
 };
 
 const loginFormData = {
@@ -34,7 +33,7 @@ const loginFormData = {
     content:
       new Input(loginInputData).render() +
       new Input(passwordInputData).render() +
-      new Button(buttonData).render(),
+      new Button(buttonData).content,
   },
   className: "login-form",
 };

@@ -1,25 +1,20 @@
 import Layout from "../../../layout/gradient";
 import Avatar from "../../../components/avatar";
-import Card from "../../../components/card";
+import Card from "../../../components/card-no-header";
 import EditAvatarForm from "../../../modules/profile/avatarForm";
 import Button from "../../../components/button";
 import PanelLink from "../../../components/panel-link/panel-link";
-
-import "./avatar.scss";
 
 const cardData = {
   data: {
     content: EditAvatarForm,
   },
-  className: "profile-card",
-  type: "no-header",
 };
 
 const buttonData = {
   data: {
     text: "Сохранить",
   },
-  className: "profile-edit-btn",
 };
 
 const panelLinkData = {
@@ -34,8 +29,8 @@ const layoutData = {
     title: "test",
     content:
       new Avatar().content +
-      new Card(cardData).render() +
-      new Button(buttonData).render() +
+      new Card(cardData).content +
+      new Button(buttonData).content +
       new PanelLink(panelLinkData).render(),
   },
   className: "layout",

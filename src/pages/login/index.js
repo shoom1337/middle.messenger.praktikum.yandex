@@ -18,13 +18,12 @@ const cardData = {
     content: LoginForm + new Link(linkToRegisterData).render(),
     title: "Вход",
   },
-  className: "login-card",
 };
 
 const layoutData = {
   data: {
     title: "test",
-    content: new Card(cardData).render(),
+    content: new Card(cardData).content,
   },
   className: "login-page",
   title: "Логин",

@@ -1,3 +1,3 @@
-export default `<main class="gradient-layout">
+export default `<main class="layout gradient-layout">
                   {{ content }}
                 </main>`;

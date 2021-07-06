@@ -21,7 +21,6 @@ const panelLinkData = {
   data: {
     href: "/",
   },
-  className: "profile-back-link",
 };
 
 const layoutData = {
@@ -33,8 +32,6 @@ const layoutData = {
       new Button(buttonData).content +
       new PanelLink(panelLinkData).content,
   },
-  className: "layout",
-  title: "Логин",
 };
 
 const page = new Layout(layoutData);

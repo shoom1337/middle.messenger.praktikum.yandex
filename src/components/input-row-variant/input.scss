@@ -2,14 +2,15 @@
 
 .input-row {
     &__label {
+        color: $textColor;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        color: $textColor;
         font-size: 20px;
         line-height: 20px;
         align-items: baseline;
     }
+
     &__input {
         margin-top: 8px;
         color: $inputColor;
@@ -18,10 +19,12 @@
         font-size: 20px;
         line-height: 20px;
         text-align: right;
+        
         &:focus {
             outline: none;
         }
     }
+
     &__wrapper {
         margin-bottom: 23px;
     }

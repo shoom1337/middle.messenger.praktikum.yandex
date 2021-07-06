@@ -8,7 +8,6 @@ const linkToRegisterData = {
     href: "/register",
     text: "Нет аккаунта?",
   },
-  className: "login-page",
 };
 
 const cardData = {
@@ -23,8 +22,6 @@ const layoutData = {
     title: "test",
     content: new Card(cardData).content,
   },
-  className: "login-page",
-  title: "Логин",
 };
 
 const page = new Layout(layoutData);

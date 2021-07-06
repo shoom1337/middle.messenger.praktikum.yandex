@@ -16,15 +16,12 @@ const linkData = {
     href: "/",
     text: "Назад к чатам",
   },
-  className: "back-link",
 };
 
 const layoutData = {
   data: {
     content: new Error(errorData).content + new Link(linkData).content,
   },
-  title: "500",
-  className: "page-500",
 };
 
 const page = new Layout(layoutData);

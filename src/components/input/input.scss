@@ -3,11 +3,12 @@
 .input {
     &__label {
         color: $labelColor;
-        font-size: 14px;
-        line-height: 14px;
         display: flex;
         flex-direction: column;
+        font-size: 14px;
+        line-height: 14px;
     }
+
     &__input {
         margin-top: 8px;
         color: $inputColor;
@@ -15,10 +16,12 @@
         background-color: transparent;
         font-size: 20px;
         line-height: 20px;
+
         &:focus {
             outline: none;
         }
     }
+    
     &__wrapper {
         margin-bottom: 23px;
     }

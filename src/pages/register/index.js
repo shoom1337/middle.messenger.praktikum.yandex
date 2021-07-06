@@ -8,7 +8,6 @@ const linkToLoginData = {
     href: "/login",
     text: "Войти",
   },
-  className: "register-page",
 };
 
 const cardData = {
@@ -23,8 +22,6 @@ const layoutData = {
     title: "test",
     content: new Card(cardData).content,
   },
-  className: "register-page",
-  title: "Регистрация",
 };
 
 const page = new Layout(layoutData);

@@ -52,18 +52,10 @@ const registerFormData = {
   data: {
     content:
       fieldsData.reduce((acc, item) => {
-        let { value, label, name, className, error, type } = item;
         return (
           acc +
           new Input({
-            data: {
-              value,
-              label,
-              name,
-              type,
-              error,
-            },
-            className,
+            data: item,
           }).content
         );
       }, "") + new Button(buttonData).content,

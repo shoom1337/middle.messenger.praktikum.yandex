@@ -48,7 +48,6 @@ const linksData = [
 
 const layoutData = {
   data: {
-    title: "test",
     content: linksData.reduce((acc, item) => {
       return acc + new Link(item).content;
     }, ""),

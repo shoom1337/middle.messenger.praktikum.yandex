@@ -1,3 +1,3 @@
-export default `<main class="blank-layout">
+export default `<main class="layout blank-layout">
                   {{ content }}
                 </main>`;

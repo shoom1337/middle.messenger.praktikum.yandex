@@ -1,0 +1,41 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "version": "1.0.0",
+  "description": "### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main. Название pull request может быть любое.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "dev": "./node_modules/.bin/parcel serve static/index.html --open",
+    "start": "node ./server.js",
+    "clean": "rm -rf dist/",
+    "build": "npm run clean &&  ./node_modules/.bin/parcel build static/*.html --target=web"
+  },
+  "targets": {
+    "web": {
+      "context": "browser",
+      "publicUrl": "./",
+      "distDir": "dist"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex/issues"
+  },
+  "browserslist": "> 0.2%",
+  "homepage": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex#readme",
+  "devDependencies": {
+    "@parcel/transformer-sass": "=2.0.0-beta.2",
+    "express": "=4.17.1",
+    "parcel-bundler": "=1.12.5",
+    "sass": "=1.35.1"
+  },
+  "dependencies": {}
+}

@@ -1,0 +1,14 @@
+@import '../../colors.scss';
+
+.btn {
+    cursor: pointer;
+    color: $btnColor;
+    background-color: $btnBackgroundColor;
+    border: none;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 14px;
+}

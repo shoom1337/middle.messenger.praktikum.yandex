@@ -1,3 +1,5 @@
+[Ссылка на PR](https://github.com/shoom1337/middle.messenger.praktikum.yandex/pull/1)
+
 ## Описание
 
 Самостоятельный проект курса "Миддл-фронтенд разработчик".

@@ -1,5 +1,5 @@
 export type BaseComponentProps = {
-  data: object;
+  data?: object;
   tmpl: string;
 };
 

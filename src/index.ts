@@ -48,5 +48,11 @@ switch (window.location.pathname) {
     break;
 }
 
-const wrapper = document.getElementById("root");
+let wrapper = document.getElementById("root");
+
+if (!wrapper) {
+  wrapper = document.createElement("div");
+  wrapper.id = "root";
+}
+
 wrapper.innerHTML = page.content;

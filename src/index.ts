@@ -42,6 +42,8 @@ switch (window.location.pathname) {
     break;
 
   case "/404":
+    page = notFoundPage;
+    break;
 
   default:
     page = notFoundPage;

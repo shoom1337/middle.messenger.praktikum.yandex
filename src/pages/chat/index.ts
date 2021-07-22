@@ -1,6 +1,3 @@
-import Layout from "../../layout/blank";
-import Link from "../../components/link";
-
 const linksData = [
   {
     data: {
@@ -46,14 +43,7 @@ const linksData = [
   },
 ];
 
-const layoutData = {
-  data: {
-    content: linksData.reduce((acc, item) => {
-      return acc + new Link(item).content;
-    }, ""),
-  },
-};
+const el = document.createElement("div");
+el.innerText = "chat page";
 
-const page = new Layout(layoutData);
-
-export default page;
+document.getElementById("root")?.appendChild(el);

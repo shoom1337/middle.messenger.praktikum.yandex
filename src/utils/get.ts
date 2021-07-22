@@ -1,4 +1,8 @@
-function get(obj: { [key: string]: any }, path: string, defaultValue: string): string {
+function get(
+  obj: { [key: string]: any },
+  path: string,
+  defaultValue = "Значение по умолчанию не задано",
+): string {
   const keys = path.split(".");
 
   let result;

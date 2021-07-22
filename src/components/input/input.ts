@@ -1,13 +1,22 @@
-import BaseComponent from "../baseComponent";
-import tmpl from "./input.tmpl";
+import Block from "../block";
+import defaultTmpl from "./input.tmpl";
+import rowTmpl from "./input-row.tmpl";
 import "./input.scss";
 
-import { BaseComponentProps } from "../../common/types";
+type InputProps = {
+  label: string,
+  name: string,
+  value?: string,
+  type?: string,
+  variant?: "row" | "default",
+};
 
-class Input extends BaseComponent {
-  constructor({ data }: BaseComponentProps) {
-    super({ data, tmpl });
+class Input extends Block {
+  constructor({ label, name, value = "", type = "text", variant = "default" }: InputProps) {
+    const tmpl = variant === "row" ? rowTmpl : defaultTmpl;
+
+    super("fragment", { label, name, value, type }, tmpl);
   }
 }
 
-export default Input;
+export { Input, InputProps };

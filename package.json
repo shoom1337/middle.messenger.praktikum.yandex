@@ -7,10 +7,10 @@
     "node": ">=12"
   },
   "scripts": {
-    "dev": "./node_modules/.bin/parcel serve static/index.html --open",
+    "dev": "./node_modules/.bin/parcel serve static/**.html static/profile/**.html",
     "start": "npm run build && node ./server.js",
     "clean": "rm -rf dist/",
-    "build": "npm run clean &&  ./node_modules/.bin/parcel build static/*.html --target=web",
+    "build": "npm run clean &&  ./node_modules/.bin/parcel build static/*.html static/profile/**.html --target=web",
     "lint": "eslint --debug src/",
     "lint-fix": "eslint --debug --fix src/",
     "stylelint": "stylelint 'src/**/*.scss'",

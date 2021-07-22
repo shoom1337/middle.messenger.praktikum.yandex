@@ -15,6 +15,7 @@
       "quotes": [1, "double", { "allowTemplateLiterals": true }],
       "semi": [1, "always"],
       "@typescript-eslint/ban-ts-comment": "off",
-      "@typescript-eslint/no-explicit-any": "off"
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-this-alias": "off"
     }
   }

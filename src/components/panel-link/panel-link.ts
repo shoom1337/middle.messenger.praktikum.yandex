@@ -1,13 +1,15 @@
-import BaseComponent from "../baseComponent";
+import Block from "../block";
 import tmpl from "./panel-link.tmpl";
 import "./panel-link.scss";
 
-import { BaseComponentProps } from "../../common/types";
+type PanelLinkProps = {
+  href: string,
+};
 
-class PanelLink extends BaseComponent {
-  constructor({ data }: BaseComponentProps) {
-    super({ data, tmpl });
+class PanelLink extends Block {
+  constructor(props: PanelLinkProps) {
+    super("div", props, tmpl);
   }
 }
 
-export default PanelLink;
+export { PanelLink, PanelLinkProps };

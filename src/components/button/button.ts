@@ -1,13 +1,15 @@
-import BaseComponent from "../baseComponent";
+import Block from "../block";
 import tmpl from "./button.tmpl";
 import "./button.scss";
 
-import { ButtonProps } from "../../common/types";
+type ButtonProps = {
+  text: string,
+};
 
-class Button extends BaseComponent {
-  constructor({ data }: ButtonProps) {
-    super({ data, tmpl });
+class Button extends Block {
+  constructor(props: ButtonProps) {
+    super("fragment", props, tmpl);
   }
 }
 
-export default Button;
+export { Button, ButtonProps };

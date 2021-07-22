@@ -1,3 +1,3 @@
-import PanelLink from "./panel-link";
+import { PanelLink, PanelLinkProps } from "./panel-link";
 
-export default PanelLink;
+export { PanelLink, PanelLinkProps };

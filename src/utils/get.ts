@@ -1,14 +1,15 @@
-function get(obj, path, defaultValue) {
+function get(obj: { [key: string]: any }, path: string, defaultValue: string): string {
   const keys = path.split(".");
 
-  let result = obj;
+  let result;
   for (const key of keys) {
-    result = result[key];
+    result = obj[key];
 
     if (result === undefined) {
       return defaultValue;
     }
   }
+
   return result ?? defaultValue;
 }
 

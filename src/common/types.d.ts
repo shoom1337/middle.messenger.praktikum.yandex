@@ -1,43 +1,47 @@
+import { ctxProps } from "../utils/templator";
+
 export type BaseComponentProps = {
-  data?: object;
-  tmpl: string;
+  data: ctxProps,
+  tmpl: string,
+  tagName?: string
 };
 
 export type ErrorProps = {
   data: {
-    message: string;
-    status: number;
-  };
+    message: string,
+    status: number
+  }
 };
 
 export type LinkProps = {
   data: {
-    href: string;
-    text: string;
-  };
+    href: string,
+    text: string
+  },
+  tagName: string
 };
 
 export type PanelLinkProps = {
   data: {
-    href: string;
-  };
+    href: string
+  }
 };
 
 export type LayoutProps = {
   data: {
-    content: string;
-  };
+    content: string
+  }
 };
 
 export type CardProps = {
   data: {
-    content: string;
-    title?: string;
-  };
+    content: string,
+    title?: string
+  }
 };
 
 export type ButtonProps = {
   data: {
-    text: string;
-  };
+    text: string
+  }
 };

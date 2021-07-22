@@ -1,11 +1,16 @@
-import BaseComponent from "../baseComponent";
+import Block from "../block";
 import tmpl from "./error.tmpl";
 import "./error.scss";
 
-class Error extends BaseComponent {
-  constructor({ data }) {
-    super({ data, tmpl });
+type ErrorProps = {
+  message: string,
+  status: number,
+};
+
+class Error extends Block {
+  constructor(props: ErrorProps) {
+    super("div", props, tmpl);
   }
 }
 
-export default Error;
+export { Error, ErrorProps };

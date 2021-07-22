@@ -1,32 +1,12 @@
-import Layout from "../../layout/gradient";
-import Card from "../../components/card";
-import LoginForm from "../../modules/loginForm";
-import Link from "../../components/link";
+import Login from "./login";
+import mount from "../../utils/mount";
 
-import { LinkProps } from "../../common/types";
-import { CardProps } from "../../common/types";
-import { LayoutProps } from "../../common/types";
+const login = new Login();
 
-const linkToRegisterData: LinkProps = {
-  data: {
-    href: "/register",
-    text: "Нет аккаунта?",
-  },
-};
+mount("#root", login);
 
-const cardData: CardProps = {
-  data: {
-    content: LoginForm + new Link(linkToRegisterData).content,
-    title: "Вход",
-  },
-};
-
-const layoutData: LayoutProps = {
-  data: {
-    content: new Card(cardData).content,
-  },
-};
-
-const page = new Layout(layoutData);
-
-export default page;
+// setTimeout(() => {
+//   login.setProps({
+//     title: "yep",
+//   });
+// }, 1000);

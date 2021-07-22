@@ -3,7 +3,8 @@
 
 html,
 body,
-#root {
+#root,
+main {
   width: 100%;
   height: 100%;
 }
@@ -49,8 +50,22 @@ body {
 }
 
 .blank-layout {
+  background: $blankLayoutBackgroundColor;
   .link {
     font-size: 24px;
     margin-bottom: 24px;
   }
+}
+
+.gradient-layout {
+  background: linear-gradient(107.56deg, $gradientFrom 0%, $gradientTo 100%);
+}
+
+.login-card,
+.register-card {
+    width: 333px;
+}
+
+.profile-card {
+    width: 578px;
 }

@@ -1,16 +1,21 @@
 import get from "./get";
 
+export type ctxProps = { [key: string]: any };
+
 class Templator {
+  _template: string;
+
   TEMPLATE_REGEXP = /\{\{(.*?)\}\}/gi;
-  constructor(template) {
+
+  constructor(template: string) {
     this._template = template;
   }
 
-  compile(ctx) {
+  compile(ctx: ctxProps): string {
     return this._compileTemplate(ctx);
   }
 
-  _compileTemplate = (ctx) => {
+  _compileTemplate = (ctx: ctxProps): string => {
     let tmpl = this._template;
 
     let key = null;

@@ -1,13 +1,15 @@
-import BaseComponent from "../baseComponent";
+import Block from "../block";
 import tmpl from "./link.tmpl";
 import "./link.scss";
 
-import { BaseComponentProps } from "../../common/types";
+type LinkProps = {
+  href: string,
+  text: string,
+};
 
-class Input extends BaseComponent {
-  constructor({ data }: BaseComponentProps) {
-    super({ data, tmpl });
+class Link extends Block {
+  constructor(props: LinkProps) {
+    super("fragment", props, tmpl);
   }
 }
-
-export default Input;
+export { Link, LinkProps };

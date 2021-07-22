@@ -1,12 +1,16 @@
-import BaseComponent from "../baseComponent";
+import Block from "../block";
 import tmpl from "./avatar.tmpl";
 
 import "./avatar.scss";
 
-class Avatar extends BaseComponent {
-  constructor() {
-    super({ tmpl });
+type AvatarProps = {
+  src?: string,
+};
+
+class Avatar extends Block {
+  constructor(props: AvatarProps) {
+    super("div", props, tmpl);
   }
 }
 
-export default Avatar;
+export { Avatar, AvatarProps };

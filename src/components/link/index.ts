@@ -1,3 +1,3 @@
-import Link from "./link";
+import { Link, LinkProps } from "./link";
 
-export default Link;
+export { Link, LinkProps };

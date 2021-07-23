@@ -16,7 +16,6 @@ class Templator {
 
   compile(ctx: ctxProps): string {
     const iteratedTmpl = this._compileIterators(ctx);
-    // return iteratedTmpl;
     return this._compileTemplate(ctx, iteratedTmpl);
   }
 
@@ -41,8 +40,11 @@ class Templator {
           iteratorResult += item;
         }
 
-        const start = tmpl.slice(0, key.index);
-        const end = start.slice(0, endSubTmplIndex);
+        // TODO: fix this hell
+        const start = tmpl.slice(0, key.index).trim();
+        const toPoint = key.index + key[1].length + endSubTmplIndex + 5;
+        const end = tmpl.slice(toPoint).trim().slice(5);
+
         result = start + iteratorResult + end;
       }
     }

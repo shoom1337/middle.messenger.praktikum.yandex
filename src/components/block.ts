@@ -26,7 +26,6 @@ class Block {
       tagName,
       props
     };
-
     this.props = this._makePropsProxy({ ...props });
 
     this._tmpl = tmpl;

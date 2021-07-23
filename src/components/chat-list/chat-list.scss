@@ -1,0 +1,63 @@
+@import '../../colors.scss';
+
+.chat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    display: flex;
+    flex-direction: row;
+    padding-left: 15px;
+    cursor: pointer;
+    margin-bottom: 25px;
+  }
+
+  &__item-content {
+    flex-grow: 1;
+  }
+
+  &__avatar {
+    width: 47px;
+    height: 47px;
+    margin-right: 14px;
+  }
+
+  &__author {
+    padding-top: 3px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 13px;
+    color: $textColor;
+  }
+
+  &__message {
+    padding-top: 4px;
+    font-size: 12px;
+    line-height: 15px;
+    font-weight: 500;
+    color: $chatListMessageColor;
+  }
+
+  &__time {
+    margin-top: 3px;
+    margin-right: 5px;
+    margin-bottom: 11px;
+    font-size: 9px;
+    line-height: 13px;
+    color: $labelColor;
+  }
+
+  &__unread {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    line-height: 12px;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    background-color: $chatListUnreadBackgroundColor;
+    color: $chatListUnreadColor;
+  }
+}

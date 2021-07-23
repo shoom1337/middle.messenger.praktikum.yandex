@@ -2,7 +2,6 @@ import Block from "../../components/block";
 import { Button, ButtonProps } from "../../components/button";
 import { Input, InputProps } from "../../components/input";
 import { Link, LinkProps } from "../../components/link";
-// import { FormValidation } from '../../utils/validation/form-validation';
 import tmpl from "./login.tmpl";
 
 import "../../global.scss";
@@ -15,15 +14,26 @@ type LoginProps = {
     loginButton: Button,
     link: Link,
   },
+  events?: {
+    [key: string]: (event: Event) => void,
+  },
 };
 
 class Login extends Block {
   constructor() {
-    // const formValidation = new FormValidation();
-
     const loginInputProps: InputProps = {
       label: "Логин",
       name: "login",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const loginInput = new Input(loginInputProps);
 
@@ -31,19 +41,18 @@ class Login extends Block {
       label: "Пароль",
       type: "password",
       name: "password",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const passwordInput = new Input(passwordInputProps);
-    // const passwordInput: IInput = {
-    //   events: {
-    //     focus: (event: Event) => {
-    //       passwordValidation.clear(event);
-    //     },
-    //     blur: (event: Event) => {
-    //       passwordValidation.check(event);
-    //     }
-    //   },
-    //   settings: { withInternalID: true }
-    // };
 
     const linkProps: LinkProps = {
       href: "/register.html",
@@ -57,33 +66,40 @@ class Login extends Block {
 
     const loginButton = new Button(buttonProps);
 
+    const fields = { loginInput, passwordInput };
+
     const loginProps: LoginProps = {
       title: "Вход",
       components: {
-        loginInput,
-        passwordInput,
+        ...fields,
         loginButton,
         link,
       },
+      events: {
+        submit: (e: Event) => {
+          e.preventDefault();
+
+          let isFormValid = true;
+
+          Object.values(fields).forEach((field) => {
+            field.validate();
+            if (!field.isValid) {
+              isFormValid = false;
+            }
+          });
+
+          if (isFormValid) {
+            const form: { [key: string]: string } = {};
+            const inputs = document.querySelectorAll("input");
+            Array.from(inputs).forEach((input) => {
+              form[input.name] = input.value;
+            });
+            console.log(form);
+          }
+        },
+      },
     };
     super("main", loginProps, tmpl);
-
-    // {
-    //   title: "Вход",
-    //   components: {
-    //     loginInput: new Input(loginInput),
-    //     passwordInput: new Input(passwordInput),
-    //     loginButton: new Button(loginButton)
-    //   },
-    //   events: {
-    //     submit: (event: Event) => {
-    //       const changeLocation = () => {
-    //         window.location.href = "/chat/chat.html";
-    //       };
-    //       formValidation.check(event, changeLocation);
-    //     }
-    //   }
-    // }
   }
 }
 export default Login;

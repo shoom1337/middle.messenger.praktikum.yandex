@@ -14,6 +14,9 @@ type changeAvatarProps = {
     button: Button,
     panelLink: PanelLink,
   },
+  events?: {
+    [key: string]: (event: Event) => void,
+  },
 };
 
 class ChangeAvatar extends Block {
@@ -26,6 +29,16 @@ class ChangeAvatar extends Block {
       name: "avatar",
       variant: "row",
       type: "file",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const avatarInput = new Input(avatarInputProps);
 
@@ -39,15 +52,35 @@ class ChangeAvatar extends Block {
     };
     const panelLink = new PanelLink(panelLinkProps);
 
-    const changePasswordProps: changeAvatarProps = {
+    const changeAvatarProps: changeAvatarProps = {
       components: {
         avatar,
         avatarInput,
         button,
         panelLink,
       },
+      events: {
+        submit: (e: Event) => {
+          e.preventDefault();
+
+          let isFormValid = true;
+
+          avatarInput.validate();
+          if (!avatarInput.isValid) {
+            isFormValid = false;
+          }
+          if (isFormValid) {
+            const form: { [key: string]: string } = {};
+            const inputs = document.querySelectorAll("input");
+            Array.from(inputs).forEach((input) => {
+              form[input.name] = input.value;
+            });
+            console.log(form);
+          }
+        },
+      },
     };
-    super("main", changePasswordProps, tmpl);
+    super("main", changeAvatarProps, tmpl);
   }
 }
 export default ChangeAvatar;

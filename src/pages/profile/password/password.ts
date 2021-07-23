@@ -16,6 +16,9 @@ type ChangePasswordProps = {
     button: Button,
     panelLink: PanelLink,
   },
+  events?: {
+    [key: string]: (event: Event) => void,
+  },
 };
 
 class ChangePassword extends Block {
@@ -26,8 +29,18 @@ class ChangePassword extends Block {
     const prevPasswordInputProps: InputProps = {
       label: "Старый пароль",
       type: "password",
-      name: "password",
+      name: "prev-password",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const prevPasswordInput = new Input(prevPasswordInputProps);
 
@@ -36,14 +49,34 @@ class ChangePassword extends Block {
       type: "password",
       name: "password",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const newPasswordInput = new Input(newPasswordInputProps);
 
     const newPasswordConfirmInputProps: InputProps = {
       label: "Новый пароль",
       type: "password",
-      name: "password",
+      name: "password-confirm",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const newPasswordConfirmInput = new Input(newPasswordConfirmInputProps);
 
@@ -57,14 +90,41 @@ class ChangePassword extends Block {
     };
     const panelLink = new PanelLink(panelLinkProps);
 
+    const fields = {
+      prevPasswordInput,
+      newPasswordInput,
+      newPasswordConfirmInput,
+    };
+
     const changePasswordProps: ChangePasswordProps = {
       components: {
+        ...fields,
         avatar,
-        prevPasswordInput,
-        newPasswordInput,
-        newPasswordConfirmInput,
         button,
         panelLink,
+      },
+      events: {
+        submit: (e: Event) => {
+          e.preventDefault();
+
+          let isFormValid = true;
+
+          Object.values(fields).forEach((field) => {
+            field.validate();
+            if (!field.isValid) {
+              isFormValid = false;
+            }
+          });
+
+          if (isFormValid) {
+            const form: { [key: string]: string } = {};
+            const inputs = document.querySelectorAll("input");
+            Array.from(inputs).forEach((input) => {
+              form[input.name] = input.value;
+            });
+            console.log(form);
+          }
+        },
       },
     };
     super("main", changePasswordProps, tmpl);

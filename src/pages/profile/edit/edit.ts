@@ -19,6 +19,9 @@ type EditProps = {
     button: Button,
     panelLink: PanelLink,
   },
+  events?: {
+    [key: string]: (event: Event) => void,
+  },
 };
 
 class EditProfile extends Block {
@@ -30,6 +33,16 @@ class EditProfile extends Block {
       label: "Почта",
       name: "email",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const emailInput = new Input(emailInputProps);
 
@@ -37,6 +50,16 @@ class EditProfile extends Block {
       label: "Логин",
       name: "login",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const loginInput = new Input(loginInputProps);
 
@@ -44,6 +67,16 @@ class EditProfile extends Block {
       label: "Имя",
       name: "first_name",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const firstNameInput = new Input(firstNameInputProps);
 
@@ -51,6 +84,16 @@ class EditProfile extends Block {
       label: "Фамилия",
       name: "second_name",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const secondNameInput = new Input(secondNameInputProps);
 
@@ -58,6 +101,16 @@ class EditProfile extends Block {
       label: "Имя в чате",
       name: "display_name",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const displayNameInput = new Input(displayNameInputProps);
 
@@ -65,6 +118,16 @@ class EditProfile extends Block {
       label: "Телефон",
       name: "phone",
       variant: "row",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const phoneInput = new Input(phoneInputProps);
 
@@ -78,20 +141,47 @@ class EditProfile extends Block {
     };
     const panelLink = new PanelLink(panelLinkProps);
 
-    const changePasswordProps: EditProps = {
+    const fields = {
+      emailInput,
+      loginInput,
+      firstNameInput,
+      secondNameInput,
+      phoneInput,
+      displayNameInput,
+    };
+
+    const editProps: EditProps = {
       components: {
+        ...fields,
         avatar,
-        emailInput,
-        loginInput,
-        firstNameInput,
-        secondNameInput,
-        phoneInput,
-        displayNameInput,
         button,
         panelLink,
       },
+      events: {
+        submit: (e: Event) => {
+          e.preventDefault();
+
+          let isFormValid = true;
+
+          Object.values(fields).forEach((field) => {
+            field.validate();
+            if (!field.isValid) {
+              isFormValid = false;
+            }
+          });
+
+          if (isFormValid) {
+            const form: { [key: string]: string } = {};
+            const inputs = document.querySelectorAll("input");
+            Array.from(inputs).forEach((input) => {
+              form[input.name] = input.value;
+            });
+            console.log(form);
+          }
+        },
+      },
     };
-    super("main", changePasswordProps, tmpl);
+    super("main", editProps, tmpl);
   }
 }
 export default EditProfile;

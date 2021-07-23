@@ -1,5 +1,5 @@
-export default (object: object, path: string): any => {
-  const keys: Array<String> = path
+export default (object: { [key: string]: string }, path: string): string => {
+  const keys: string[] = path
     .split(/[.[\]]/)
     .map((item) => item.trim())
     .filter((item) => item);

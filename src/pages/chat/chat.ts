@@ -5,6 +5,8 @@ import { ChatList, ChatListProps } from "../../components/chat-list";
 import { ChatHeader, ChatHeaderProps } from "../../components/chat-header";
 import { ChatMessages, ChatMessagesProps } from "../../components/chat-messages";
 
+import Fetch from "../../utils/fetch";
+
 import "../../global.scss";
 import "./chat.scss";
 
@@ -18,6 +20,20 @@ type ChatProps = {
 
 class Chat extends Block {
   constructor() {
+    const fetch = new Fetch();
+    const url = "https://jsonplaceholder.typicode.com";
+    fetch
+      .get(url + "/comments", {
+        data: {
+          postId: 5,
+        },
+        timeout: 10000,
+        headers: {
+          "Content-Type": "json",
+        },
+      })
+      .then((r) => console.log(r));
+
     const chatListProps: ChatListProps = {
       list: [
         {

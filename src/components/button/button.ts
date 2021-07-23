@@ -4,6 +4,9 @@ import "./button.scss";
 
 type ButtonProps = {
   text: string,
+  events?: {
+    [key: string]: (event: Event) => void,
+  },
 };
 
 class Button extends Block {

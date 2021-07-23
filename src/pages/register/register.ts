@@ -19,6 +19,9 @@ type RegisterProps = {
     registerButton: Button,
     link: Link,
   },
+  events?: {
+    [key: string]: (event: Event) => void,
+  },
 };
 
 class Register extends Block {
@@ -26,30 +29,80 @@ class Register extends Block {
     const emailInputProps: InputProps = {
       label: "Почта",
       name: "email",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const emailInput = new Input(emailInputProps);
 
     const loginInputProps: InputProps = {
       label: "Логин",
       name: "login",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const loginInput = new Input(loginInputProps);
 
     const firstNameInputProps: InputProps = {
       label: "Имя",
       name: "first_name",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const firstNameInput = new Input(firstNameInputProps);
 
     const secondNameInputProps: InputProps = {
       label: "Фамилия",
       name: "second_name",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const secondNameInput = new Input(secondNameInputProps);
 
     const phoneInputProps: InputProps = {
       label: "Телефон",
       name: "phone",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const phoneInput = new Input(phoneInputProps);
 
@@ -57,6 +110,16 @@ class Register extends Block {
       label: "Пароль",
       type: "password",
       name: "password",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const passwordInput = new Input(passwordInputProps);
 
@@ -64,6 +127,16 @@ class Register extends Block {
       label: "Подтверждение пароля",
       type: "password",
       name: "password-confirm",
+      events: {
+        focus() {
+          if (!this.isValid) {
+            this.clearValidation();
+          }
+        },
+        blur() {
+          this.validate();
+        },
+      },
     };
     const passwordConfirmInput = new Input(passwordConfirmInputProps);
 
@@ -79,18 +152,45 @@ class Register extends Block {
 
     const registerButton = new Button(buttonProps);
 
+    const fields = {
+      emailInput,
+      loginInput,
+      firstNameInput,
+      secondNameInput,
+      phoneInput,
+      passwordInput,
+      passwordConfirmInput,
+    };
+
     const registerProps: RegisterProps = {
       title: "Регистрация",
       components: {
-        emailInput,
-        loginInput,
-        firstNameInput,
-        secondNameInput,
-        phoneInput,
-        passwordInput,
-        passwordConfirmInput,
+        ...fields,
         registerButton,
         link,
+      },
+      events: {
+        submit: (e: Event) => {
+          e.preventDefault();
+
+          let isFormValid = true;
+
+          Object.values(fields).forEach((field) => {
+            field.validate();
+            if (!field.isValid) {
+              isFormValid = false;
+            }
+          });
+
+          if (isFormValid) {
+            const form: { [key: string]: string } = {};
+            const inputs = document.querySelectorAll("input");
+            Array.from(inputs).forEach((input) => {
+              form[input.name] = input.value;
+            });
+            console.log(form);
+          }
+        },
       },
     };
     super("main", registerProps, tmpl);

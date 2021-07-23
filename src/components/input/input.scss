@@ -1,31 +1,5 @@
 @import "../../colors.scss";
 
-.input {
-  &__label {
-    color: $labelColor;
-    display: flex;
-    flex-direction: column;
-    font-size: 14px;
-    line-height: 14px;
-  }
-
-  &__input {
-    margin-top: 8px;
-    color: $inputColor;
-    border: none;
-    background-color: transparent;
-    font-size: 20px;
-    line-height: 20px;
-
-    &:focus {
-      outline: none;
-    }
-  }
-
-  &__wrapper {
-    margin-bottom: 23px;
-  }
-}
 
 .input-row {
   &__label {
@@ -46,10 +20,45 @@
     font-size: 20px;
     line-height: 20px;
     text-align: right;
+    border-bottom: 1px solid $inputBorderColor;
 
     &:focus {
       outline: none;
     }
+  }
+
+  &__wrapper {
+    margin-bottom: 23px;
+  }
+}
+
+
+.input {
+  &__label {
+    color: $labelColor;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  &__input {
+    margin-top: 8px;
+    color: $inputColor;
+    border: none;
+    background-color: transparent;
+    font-size: 20px;
+    line-height: 20px;
+    border-bottom: 1px solid $inputBorderColor;
+
+    &:focus {
+      outline: none;
+    }
+
+    &--error {
+      color: $errorColor;
+    border-bottom: 1px solid $errorColor;
+  }
   }
 
   &__wrapper {

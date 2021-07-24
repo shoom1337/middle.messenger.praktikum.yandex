@@ -4,8 +4,9 @@ import tmpl from "./chat-messages.tmpl";
 import "./chat-messages.scss";
 
 type ChatMessagesProps = {
-  messages: {
+  messageList: {
     text: string,
+    style: "incoming" | "outgoing",
   }[],
 };
 

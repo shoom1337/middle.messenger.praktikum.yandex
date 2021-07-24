@@ -3,6 +3,7 @@
 .chat-layout {
   flex-direction: row;
   background: linear-gradient(179.98deg, #9bf6dd 0.02%, #b7d9e9 99.98%);
+  overflow: hidden;
 }
 
 .sidebar {
@@ -54,36 +55,6 @@
   overflow: auto;
 }
 
-.message-form {
-  display: flex;
-  flex-direction: row;
-  box-sizing: border-box;
-  margin-left: 29px;
-  margin-right: 13px;
-  border-top: 1px solid #eaeaea;
-  padding-top: 4px;
-  padding-bottom: 6px;
-
-  &__input {
-    flex-grow: 1;
-    margin: 0 12px;
-    border-radius: 30px;
-    border: none;
-    background-color: $chatMessageBackgroundColor;
-    padding: 10px 20px;
-    font-size: 12px;
-    line-height: 12px;
-    color: $chatMessageColor;
-    font-weight: 500;
-
-    &::placeholder {
-      color: $chatMessageColor;
-      font-weight: 500;
-    }
-  }
-
-  &__attach-icon {
-    width: 23px;
-    height: 21px;
-  }
+#messageFormInput {
+  flex-grow: 1;
 }

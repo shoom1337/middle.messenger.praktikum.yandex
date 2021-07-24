@@ -3,6 +3,7 @@ import { Button, ButtonProps } from "../../components/button";
 import { Input, InputProps } from "../../components/input";
 import { Link, LinkProps } from "../../components/link";
 import tmpl from "./register.tmpl";
+import { INPUT_ERRORS } from "../../common/messages";
 
 import "../../global.scss";
 
@@ -29,6 +30,7 @@ class Register extends Block {
     const emailInputProps: InputProps = {
       label: "Почта",
       name: "email",
+      error: INPUT_ERRORS.EMAIL,
       events: {
         focus() {
           if (!this.isValid) {
@@ -45,6 +47,7 @@ class Register extends Block {
     const loginInputProps: InputProps = {
       label: "Логин",
       name: "login",
+      error: INPUT_ERRORS.LOGIN,
       events: {
         focus() {
           if (!this.isValid) {
@@ -61,6 +64,7 @@ class Register extends Block {
     const firstNameInputProps: InputProps = {
       label: "Имя",
       name: "first_name",
+      error: INPUT_ERRORS.NAME,
       events: {
         focus() {
           if (!this.isValid) {
@@ -77,6 +81,7 @@ class Register extends Block {
     const secondNameInputProps: InputProps = {
       label: "Фамилия",
       name: "second_name",
+      error: INPUT_ERRORS.NAME,
       events: {
         focus() {
           if (!this.isValid) {
@@ -93,6 +98,7 @@ class Register extends Block {
     const phoneInputProps: InputProps = {
       label: "Телефон",
       name: "phone",
+      error: INPUT_ERRORS.PHONE,
       events: {
         focus() {
           if (!this.isValid) {
@@ -110,6 +116,7 @@ class Register extends Block {
       label: "Пароль",
       type: "password",
       name: "password",
+      error: INPUT_ERRORS.PASSWORD,
       events: {
         focus() {
           if (!this.isValid) {
@@ -127,6 +134,7 @@ class Register extends Block {
       label: "Подтверждение пароля",
       type: "password",
       name: "password-confirm",
+      error: INPUT_ERRORS.PASSWORD_CONFIRM,
       events: {
         focus() {
           if (!this.isValid) {

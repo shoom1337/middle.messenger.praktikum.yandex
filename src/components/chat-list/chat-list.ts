@@ -4,7 +4,7 @@ import tmpl from "./chat-list.tmpl";
 import "./chat-list.scss";
 
 type ChatListProps = {
-  list: {
+  chatList: {
     name: string,
     text: string,
     unreadCount: number,

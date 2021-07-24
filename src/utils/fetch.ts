@@ -9,7 +9,7 @@ type RequestOptions = {
   method?: METHODS;
   headers?: Record<string, string>
   timeout?: number
-  data?: unknown
+  data?: {[key:string]: string}
 }
 
 class Fetch {

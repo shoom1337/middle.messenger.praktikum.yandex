@@ -7,7 +7,7 @@ export default `
         <div id="newPasswordInput"></div>
         <div id="newPasswordConfirmInput"></div>
       </div>
-      <div id="button"></div>
+      <div id="button" class="center"></div>
     </form>
     <div id="panelLink"></div>
     </div>

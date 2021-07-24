@@ -57,7 +57,7 @@ class Block {
   }
 
   // eslint-disable-next-line
-  componentDidMount(oldProps?: { [key: string]: any }): void {}
+  componentDidMount(): void {}
 
   _componentDidUpdate(oldProps?: { [key: string]: any }, newProps?: { [key: string]: any }): void {
     const response = this.componentDidUpdate(oldProps, newProps);
@@ -119,6 +119,7 @@ class Block {
             node.appendChild(value.getContent());
           });
         } else {
+          // @ts-expect-error
           node.appendChild(value.getContent());
         }
       });

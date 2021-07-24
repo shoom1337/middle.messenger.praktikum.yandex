@@ -1,13 +1,15 @@
 import Block from "../block";
 import defaultTmpl from "./input.tmpl";
 import rowTmpl from "./input-row.tmpl";
+import messageTmpl from "./input-message.tmpl";
 import "./input.scss";
 
 type InputProps = {
   label: string,
   name: string,
   type?: string,
-  variant?: "row" | "default",
+  variant?: "row" | "default" | "message",
+  error?: string,
   events?: {
     [key: string]: (event?: Event) => void,
   },
@@ -23,10 +25,21 @@ const VALIDATION_REGEXP = {
 class Input extends Block {
   isValid: boolean;
 
-  constructor({ label, name, type = "text", variant = "default", events = {} }: InputProps) {
-    const tmpl = variant === "row" ? rowTmpl : defaultTmpl;
+  constructor({ label, name, type = "text", variant = "default", events = {}, error = "Поле заполнено не верно" }: InputProps) {
+    let tmpl;
+    switch (variant) {
+      case "row":
+        tmpl = rowTmpl;
+        break;
+      case "message":
+        tmpl = messageTmpl;
+        break;
+      default:
+        tmpl = defaultTmpl;
+        break;
+    }
 
-    super("fragment", { label, name, type, events }, tmpl);
+    super("fragment", { label, name, type, events, error }, tmpl);
 
     this.isValid = false;
   }
@@ -72,9 +85,9 @@ class Input extends Block {
         }
         return true;
       }
-      // case "message": {
-      //   return !value.toLowerCase().includes(badWord);
-      // }
+      case "message": {
+        return value.length > 0;
+      }
       default: {
         return value.length > 0;
       }
@@ -88,10 +101,12 @@ class Input extends Block {
 
   _addErrorClass(): void {
     this.getContent().querySelector(".input__input")?.classList.add("input__input--error");
+    this.getContent().querySelector(".input__error")?.classList.add("show");
   }
 
   _removeErrorClass(): void {
     this.getContent().querySelector(".input__input")?.classList.remove("input__input--error");
+    this.getContent().querySelector(".input__error")?.classList.remove("show");
   }
 }
 

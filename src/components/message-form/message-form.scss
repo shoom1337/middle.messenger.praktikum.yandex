@@ -1,0 +1,17 @@
+@import '../../colors.scss';
+
+.message-form {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  margin-left: 29px;
+  margin-right: 13px;
+  border-top: 1px solid #eaeaea;
+  padding-top: 4px;
+  padding-bottom: 6px;
+
+  &__attach-icon {
+    width: 23px;
+    height: 21px;
+  }
+}

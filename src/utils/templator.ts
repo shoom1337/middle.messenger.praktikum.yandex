@@ -2,6 +2,30 @@ import get from "./get";
 
 export type ctxProps = { [key: string]: any };
 
+const TEMPLATE_REG_EXP = /^{{(.*?)}}$/;
+const ITERATOR_REG_EXP = /<each\s{{(.*?)}}>([\s\S]*?)<\/each>/;
+const ITERATOR_DELIMITER = " in ";
+const MESSAGES = {
+  ARRAY_NOT_FOUND: "Массив не найден",
+  TEMPLATE_VAR_NOT_FOUND: "Ошибка поиска переменной",
+};
+
+const isVariable = (string: string) => {
+  const regExp = TEMPLATE_REG_EXP;
+  return regExp.test(string);
+};
+
+const getVariable = (string: string) => {
+  const regExp = TEMPLATE_REG_EXP;
+  const result = string.match(regExp);
+
+  if (!result) {
+    return `${MESSAGES.TEMPLATE_VAR_NOT_FOUND} ${string}`;
+  }
+
+  return result[1];
+};
+
 class Templator {
   _template: string;
 
@@ -15,81 +39,40 @@ class Templator {
   }
 
   compile(ctx: ctxProps): string {
-    const iteratedTmpl = this._compileIterators(ctx);
-    return this._compileTemplate(ctx, iteratedTmpl);
+    return this._compileTemplate(ctx);
   }
 
-  _compileIterators = (ctx: ctxProps): string => {
-    const tmpl = this._template;
+  _compileTemplate = (ctx: ctxProps): string => {
+    let result = "";
 
-    let key = null;
-
-    let result = tmpl;
-
-    const startIteratorRegExp = this.ITERATOR_START_REGEXP;
-    const endIteratoregExp = this.ITERATOR_END_REGEXP;
-
-    while ((key = startIteratorRegExp.exec(tmpl))) {
-      if (key[1]) {
-        const { endSubTmplIndex, subTmpl } = findSubTmplAndIndexes(key);
-
-        let iteratorResult = "";
-        for (let i = 0; i < ctx[key[1]].length; i++) {
-          const itemData = ctx[key[1]][i];
-          const item = this._compileTemplate(itemData, subTmpl);
-          iteratorResult += item;
+    const elements = this._template
+      .replace(/\s+/g, " ")
+      .replace(/\{\{\s/g, "{{")
+      .replace(/\s\}\}/g, "}}")
+      // @ts-expect-error
+      .replace(ITERATOR_REG_EXP, (substr, meta, template) => {
+        const [item, key] = meta.split(ITERATOR_DELIMITER);
+        const array = get(ctx, key);
+        let result = "";
+        if (!array) {
+          return MESSAGES.ARRAY_NOT_FOUND;
         }
+        for (let i = 0; i < array.length; i++) {
+          const tmplString = `{{${item}`;
+          const value = `{{${key}[${i}]`;
+          result += template.split(tmplString).join(value);
+        }
+        return result;
+      })
+      .split(/(?<=>)|(?=<)|(?<=\}\})|(?=\{\{)/g)
+      .map((item) => item.trim())
+      .filter((item) => item);
 
-        // TODO: fix this hell
-        const start = tmpl.slice(0, key.index).trim();
-        const toPoint = key.index + key[1].length + endSubTmplIndex + 5;
-        const end = tmpl.slice(toPoint).trim().slice(5);
-
-        result = start + iteratorResult + end;
-      }
-    }
-
-    function findSubTmplAndIndexes(key) {
-      const startSubTmplIndex = key.index + key[0].length;
-      let subTmpl = tmpl.slice(startSubTmplIndex);
-
-      if (!endIteratoregExp.exec(subTmpl)) {
-        throw new Error("Templator: Iterator compile error. Syntax error?");
-      }
-
-      const endSubTmplIndex = subTmpl.indexOf("{{@}}");
-      subTmpl = subTmpl.slice(0, endSubTmplIndex).trim();
-
-      endIteratoregExp.lastIndex = 0;
-
-      return {
-        startSubTmplIndex,
-        endSubTmplIndex,
-        subTmpl,
-      };
-    }
+    elements.forEach((item) => {
+      result += isVariable(item) ? get(ctx, getVariable(item)) : item;
+    });
 
     return result;
-  };
-
-  _compileTemplate = (ctx: ctxProps, tmpl: string): string => {
-    let key = null;
-
-    const regExp = this.TEMPLATE_REGEXP;
-
-    while ((key = regExp.exec(tmpl))) {
-      if (key[1]) {
-        const tmplValue = key[1].trim();
-
-        const data = get(ctx, tmplValue);
-
-        tmpl = tmpl.replace(new RegExp(key[0], "gi"), data);
-
-        regExp.lastIndex = 0;
-      }
-    }
-
-    return tmpl;
   };
 }
 

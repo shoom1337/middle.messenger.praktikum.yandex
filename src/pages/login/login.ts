@@ -2,6 +2,7 @@ import Block from "../../components/block";
 import { Button, ButtonProps } from "../../components/button";
 import { Input, InputProps } from "../../components/input";
 import { Link, LinkProps } from "../../components/link";
+import { INPUT_ERRORS } from "../../common/messages";
 import tmpl from "./login.tmpl";
 
 import "../../global.scss";
@@ -24,6 +25,7 @@ class Login extends Block {
     const loginInputProps: InputProps = {
       label: "Логин",
       name: "login",
+      error: INPUT_ERRORS.LOGIN,
       events: {
         focus() {
           if (!this.isValid) {
@@ -41,6 +43,7 @@ class Login extends Block {
       label: "Пароль",
       type: "password",
       name: "password",
+      error: INPUT_ERRORS.PASSWORD,
       events: {
         focus() {
           if (!this.isValid) {

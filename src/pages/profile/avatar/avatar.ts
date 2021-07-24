@@ -5,6 +5,8 @@ import { Avatar, AvatarProps } from "../../../components/avatar";
 import { PanelLink, PanelLinkProps } from "../../../components/panel-link";
 import tmpl from "./avatar.tmpl";
 
+import { INPUT_ERRORS } from "../../../common/messages";
+
 import "../../../global.scss";
 
 type changeAvatarProps = {
@@ -29,6 +31,7 @@ class ChangeAvatar extends Block {
       name: "avatar",
       variant: "row",
       type: "file",
+      error: INPUT_ERRORS.AVATAR,
       events: {
         focus() {
           if (!this.isValid) {

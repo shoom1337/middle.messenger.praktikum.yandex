@@ -4,6 +4,7 @@ import { Input, InputProps } from "../../../components/input";
 import { Avatar, AvatarProps } from "../../../components/avatar";
 import { PanelLink, PanelLinkProps } from "../../../components/panel-link";
 import tmpl from "./password.tmpl";
+import { INPUT_ERRORS } from "../../../common/messages";
 
 import "../../../global.scss";
 
@@ -49,6 +50,7 @@ class ChangePassword extends Block {
       type: "password",
       name: "password",
       variant: "row",
+      error: INPUT_ERRORS.PASSWORD,
       events: {
         focus() {
           if (!this.isValid) {
@@ -67,6 +69,7 @@ class ChangePassword extends Block {
       type: "password",
       name: "password-confirm",
       variant: "row",
+      error: INPUT_ERRORS.PASSWORD_CONFIRM,
       events: {
         focus() {
           if (!this.isValid) {

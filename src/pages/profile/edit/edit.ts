@@ -4,6 +4,7 @@ import { Input, InputProps } from "../../../components/input";
 import { Avatar, AvatarProps } from "../../../components/avatar";
 import { PanelLink, PanelLinkProps } from "../../../components/panel-link";
 import tmpl from "./edit.tmpl";
+import { INPUT_ERRORS } from "../../../common/messages";
 
 import "../../../global.scss";
 
@@ -33,6 +34,7 @@ class EditProfile extends Block {
       label: "Почта",
       name: "email",
       variant: "row",
+      error: INPUT_ERRORS.EMAIL,
       events: {
         focus() {
           if (!this.isValid) {
@@ -50,6 +52,7 @@ class EditProfile extends Block {
       label: "Логин",
       name: "login",
       variant: "row",
+      error: INPUT_ERRORS.LOGIN,
       events: {
         focus() {
           if (!this.isValid) {
@@ -67,6 +70,7 @@ class EditProfile extends Block {
       label: "Имя",
       name: "first_name",
       variant: "row",
+      error: INPUT_ERRORS.NAME,
       events: {
         focus() {
           if (!this.isValid) {
@@ -84,6 +88,7 @@ class EditProfile extends Block {
       label: "Фамилия",
       name: "second_name",
       variant: "row",
+      error: INPUT_ERRORS.NAME,
       events: {
         focus() {
           if (!this.isValid) {
@@ -101,6 +106,7 @@ class EditProfile extends Block {
       label: "Имя в чате",
       name: "display_name",
       variant: "row",
+      error: INPUT_ERRORS.NAME,
       events: {
         focus() {
           if (!this.isValid) {
@@ -118,6 +124,7 @@ class EditProfile extends Block {
       label: "Телефон",
       name: "phone",
       variant: "row",
+      error: INPUT_ERRORS.PHONE,
       events: {
         focus() {
           if (!this.isValid) {

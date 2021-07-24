@@ -3,6 +3,7 @@ export default `
     <label class="input-row__label">
       {{ label }}
       <input class="input__input input-row__input" type="{{ type }}" name="{{ name }}"/>
+      <span class="input__error">{{ error }}</span>
     </label>
   </div>
 `;

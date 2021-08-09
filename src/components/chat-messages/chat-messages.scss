@@ -1,0 +1,43 @@
+@import '../../colors.scss';
+
+.chat-messages {
+  overflow: auto;
+}
+
+.chat-message {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  margin-top: 50px;
+  padding-left: 55px;
+  position: relative;
+
+  &__avatar {
+    width: 124px;
+    height: 124px;
+    margin-right: 34px;
+  }
+
+  &__message {
+    background-color: $chatIncomingMessageBackgroundColor;
+    padding: 17px 24px;
+    margin-top: -24px;
+    border-radius: 10px;
+    border-top-left-radius: 0;
+    position: relative;
+    top: -20px;
+    max-width: 540px;
+
+    &_outgoing {
+      margin-right: 55px;
+      background-color: $chatOutgoingMessageBackgroundColor;
+      border-radius: 10px;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &_outgoing {
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+  }
+}

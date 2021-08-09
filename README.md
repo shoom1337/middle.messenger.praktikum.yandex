@@ -1,69 +1,60 @@
-<<<<<<< HEAD
-=======
 [Ссылка на PR](https://github.com/shoom1337/middle.messenger.praktikum.yandex/pull/1)
 
-### Ветка, в которой делаете задания спринта, должна называться sprint_i, где i - номер спринта. Не переименовывайте её.
-
-### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main. Название pull request может быть любое.
-
-### Например, задания для проектной работы во втором спринте вы делаете в ветке sprint_2. Открываете из неё pull request в ветку main (pr может называться произвольно). Ссылку на этот pr добавляете в README.md в ветке main. После этого на платформе Практикума нажимаете «Проверить задание».
-
-### Также не забудьте проверить, что репозиторий публичный.
----
-
-
-Даже законченный проект остаётся только заготовкой, пока им не начнут пользоваться. Но сначала пользователь должен понять, зачем ему пользоваться вашим кодом. В этом помогает файл README.
-
-README — первое, что прочитает пользователь, когда попадёт в репозиторий на «Гитхабе». Хороший REAMDE отвечает на четыре вопроса:
-
-- Готов ли проект к использованию?
-- В чём его польза?
-- Как установить?
-- Как применять?
-
-## Бейджи
-
-Быстро понять статус проекта помогают бейджи на «Гитхабе». Иногда разработчики ограничиваются парой бейджев, которые сообщат о статусе тестов кода:
-
-![Бэйджи](https://github.com/yandex-praktikum/mf.messenger.praktikum.yandex.images/blob/master/mf/b.png)
-
-Если пользователь увидит ошибку в работе тестов, то поймёт: использовать текущую версию в важном проекте — не лучшая идея.
-
-Бейджи помогают похвастаться достижениями: насколько популярен проект, как много разработчиков создавало этот код. Через бейджи можно даже пригласить пользователя в чат:
-
-![Версии](https://github.com/yandex-praktikum/mf.messenger.praktikum.yandex.images/blob/master/mf/vers.png)
-
-В README **Webpack** строка бейджев подробно рассказывает о покрытии кода тестами. Когда проект протестирован, это вызывает доверие пользователя. Последний бейдж приглашает присоединиться к разработке. 
-
-Другая строка убедит пользователя в стабильности инфраструктуры и популярности проекта. Последний бейдж зовёт в чат проекта.
-
->>>>>>> 5546e8d802cc77fc82b1f5d0946904d3efbe3c54
 ## Описание
 
 Самостоятельный проект курса "Миддл-фронтенд разработчик".
 
-На данный момент создана структура проекта, базовые компоненты: Layout, Card, Form, Button, Input, Link.
+На данный момент доступны страницы:
 
-При помощи этих компонентов свёрстаны следующие страницы:
+- [Авторизация](https://relaxed-williams-5a7518.netlify.app/login.html)
+- [Регистрация](https://relaxed-williams-5a7518.netlify.app/register.html)
+- [404](https://relaxed-williams-5a7518.netlify.app/404.html)
+- [5\*\*](https://relaxed-williams-5a7518.netlify.app/500.html)
+- [Редактирование профиля](https://relaxed-williams-5a7518.netlify.app/profile/edit.html)
+- [Смена пароля](https://relaxed-williams-5a7518.netlify.app/profile/password.html)
+- [Загрузка аватара](https://relaxed-williams-5a7518.netlify.app/profile/avatar.html)
+- [Страница чата](https://relaxed-williams-5a7518.netlify.app/)
 
-- [Авторизация](https://relaxed-williams-5a7518.netlify.app/login)
-- [Регистрация](https://relaxed-williams-5a7518.netlify.app/register)
-- [404](https://relaxed-williams-5a7518.netlify.app/404)
-- [5\*\*](https://relaxed-williams-5a7518.netlify.app/500)
-- [Редактирование профиля](https://relaxed-williams-5a7518.netlify.app/edit)
-- [Смена пароля](https://relaxed-williams-5a7518.netlify.app/password)
-- [Загрузка аватара](https://relaxed-williams-5a7518.netlify.app/avatar)
-- [Заглушка страницы чата](https://relaxed-williams-5a7518.netlify.app/)
+## Новое во втором спринте
+### Общее
+- Внедрён TS
+- Настроены линтеры: ESLint, StyleLint
+- Добавлен .editconfig
+
+### Шаблонизатор
+- Добавлен функционал работы с циклом:
+    ```
+    <each {{message in messageList}}>
+      <div class="chat-message chat-message_{{ message.style }}">
+        <img src="${avatar}" class="chat-message__avatar"/>
+        <p class="chat-message__message chat-message__message_{{ message.style }}">
+          {{ message.text }}
+        </p>
+      </div>
+    </each>
+    ```
+### Блок и EventBus
+- Реализован компонентный подход с класса Block из теории 2 спринта
+- Жизненный цикл внутри Block использует EventBus
+- Наследуясь от блока реализованы следующие компоненты: Input, Link, Button и др.
+
+### Формы
+- Все формы и поля ввода проходят валидацию
+- Отправка валидной формы выводит в консоль объект со всеми полями и значениями
+
+### Fetch
+- Реализован и типизирован класс Fetch(HTTPTransport): src/utils/fetch.js
 
 ## Установка
 
 Для запуска проекта необходимо выполнить следующие команды:
-
-- `git clone https://github.com/shoom1337/middle.messenger.praktikum.yandex.git` — клонировать репозиторий,
-- `cd middle.messenger.praktikum.yandex` — перейти в директорию с проектом,
-- `git checkout sprint_1` — переключить репозиторий на ветку разработки,
-- `npm install` — установить зависимости,
-- `npm run start` — запустить express со сборщиком в middleware и сервингом static/index.html,
+```
+git clone https://github.com/shoom1337/middle.messenger.praktikum.yandex.git
+cd middle.messenger.praktikum.yandex
+git checkout sprint_2
+npm install
+npm run start
+```
 - [http://localhost:3000](http://localhost:3000) — сервер запустится на порту 3000.
 
 Для сборки production:

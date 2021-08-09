@@ -1,0 +1,42 @@
+@import '../../colors.scss';
+
+.chat-header {
+  display: flex;
+  flex-direction: row;
+  background: linear-gradient(90deg, $gradientFrom 24.53%, $gradientTo 100%);
+  padding-left: 30px;
+  padding-right: 20px;
+  padding-top: 4px;
+  padding-bottom: 5px;
+
+  &__avatar {
+    width: 47px;
+    height: 47px;
+    margin-right: 22px;
+  }
+
+  &__user-info {
+    margin-top: 20px;
+    flex-grow: 1;
+  }
+
+  &__user-name {
+    font-size: 13px;
+    line-height: 13px;
+    font-weight: 600;
+    margin-bottom: 3px;
+    color: $textColor;
+  }
+
+  &__last-visit {
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: 500;
+    color: $chatHeaderLastVisitColor;
+  }
+
+  &__menu {
+    cursor: pointer;
+    padding: 0 24px;
+  }
+}

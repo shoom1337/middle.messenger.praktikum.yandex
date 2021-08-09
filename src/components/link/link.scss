@@ -1,9 +1,9 @@
-@import '../../colors.scss';
+@import "../../colors.scss";
 
 .link {
-    text-decoration: none;
-    color: $linkColor;
-    font-size: 14px;
-    display: block;
-    text-align: center;
+  text-decoration: none;
+  color: $linkColor;
+  font-size: 14px;
+  display: block;
+  text-align: center;
 }

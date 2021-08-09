@@ -3,7 +3,7 @@ import tmpl from "./panel-link.tmpl";
 import "./panel-link.scss";
 
 type PanelLinkProps = {
-  href: string,
+  href: string;
 };
 
 class PanelLink extends Block {

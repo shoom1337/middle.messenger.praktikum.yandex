@@ -11,14 +11,14 @@ import "../../../global.scss";
 
 type changeAvatarProps = {
   components: {
-    avatar: Avatar,
-    avatarInput: Input,
-    button: Button,
-    panelLink: PanelLink,
-  },
+    avatar: Avatar;
+    avatarInput: Input;
+    button: Button;
+    panelLink: PanelLink;
+  };
   events?: {
-    [key: string]: (event: Event) => void,
-  },
+    [key: string]: (event: Event) => void;
+  };
 };
 
 class ChangeAvatar extends Block {

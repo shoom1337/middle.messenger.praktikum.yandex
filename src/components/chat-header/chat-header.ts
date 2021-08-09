@@ -5,9 +5,9 @@ import "./chat-header.scss";
 
 type ChatHeaderProps = {
   correspondent: {
-    name: string,
-    lastVisit: string,
-  },
+    name: string;
+    lastVisit: string;
+  };
 };
 
 class ChatHeader extends Block {

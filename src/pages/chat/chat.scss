@@ -2,7 +2,7 @@
 
 .chat-layout {
   flex-direction: row;
-  background: linear-gradient(179.98deg, #9bf6dd 0.02%, #b7d9e9 99.98%);
+  background: linear-gradient(179.98deg, $gradientFrom 0.02%, $gradientTo 99.98%);
   overflow: hidden;
 }
 
@@ -45,7 +45,7 @@
 .chat {
   flex-grow: 1;
   height: 100%;
-  background: #fff;
+  background: white;
   display: flex;
   flex-direction: column;
 }

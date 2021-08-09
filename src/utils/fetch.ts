@@ -7,10 +7,10 @@ enum METHODS {
 
 type RequestOptions = {
   method?: METHODS;
-  headers?: Record<string, string>
-  timeout?: number
-  data?: {[key:string]: string}
-}
+  headers?: Record<string, string>;
+  timeout?: number;
+  data?: { [key: string]: string };
+};
 
 class Fetch {
   get = (url: string, options = {}): Promise<XMLHttpRequest> => {
@@ -29,10 +29,7 @@ class Fetch {
     return this.request(url, { ...options, method: METHODS.DELETE });
   };
 
-  request = (
-    url: string,
-    options: RequestOptions,
-  ): Promise<XMLHttpRequest> => {
+  request = (url: string, options: RequestOptions): Promise<XMLHttpRequest> => {
     const { method = METHODS.GET, headers = {}, data, timeout = 5000 } = options;
 
     return new Promise((resolve, reject) => {
@@ -58,13 +55,12 @@ class Fetch {
       if (isGet || !data) {
         xhr.send();
       } else {
-        console.log(data);
         xhr.send(JSON.stringify(data));
       }
     });
   };
 
-  _queryStringify(data: {[key:string]: string | number}): string {
+  _queryStringify(data: { [key: string]: string | number }): string {
     const result = Object.entries(data).reduce(
       (acc, [key, value]) => (acc += `${key}=${value}&`),
       "?",

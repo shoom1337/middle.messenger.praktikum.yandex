@@ -8,21 +8,21 @@ import { INPUT_ERRORS } from "../../common/messages";
 import "../../global.scss";
 
 type RegisterProps = {
-  title: string,
+  title: string;
   components: {
-    emailInput: Input,
-    loginInput: Input,
-    firstNameInput: Input,
-    secondNameInput: Input,
-    phoneInput: Input,
-    passwordInput: Input,
-    passwordConfirmInput: Input,
-    registerButton: Button,
-    link: Link,
-  },
+    emailInput: Input;
+    loginInput: Input;
+    firstNameInput: Input;
+    secondNameInput: Input;
+    phoneInput: Input;
+    passwordInput: Input;
+    passwordConfirmInput: Input;
+    registerButton: Button;
+    link: Link;
+  };
   events?: {
-    [key: string]: (event: Event) => void,
-  },
+    [key: string]: (event: Event) => void;
+  };
 };
 
 class Register extends Block {

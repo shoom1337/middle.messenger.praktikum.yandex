@@ -3,8 +3,8 @@ import tmpl from "./error.tmpl";
 import "./error.scss";
 
 type ErrorProps = {
-  message: string,
-  status: number,
+  message: string;
+  status: number;
 };
 
 class Error extends Block {

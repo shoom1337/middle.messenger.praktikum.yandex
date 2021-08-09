@@ -4,7 +4,7 @@ import tmpl from "./avatar.tmpl";
 import "./avatar.scss";
 
 type AvatarProps = {
-  src?: string,
+  src?: string;
 };
 
 class Avatar extends Block {

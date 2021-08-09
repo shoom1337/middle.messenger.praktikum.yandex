@@ -5,14 +5,14 @@ import messageTmpl from "./input-message.tmpl";
 import "./input.scss";
 
 type InputProps = {
-  label: string,
-  name: string,
-  type?: string,
-  variant?: "row" | "default" | "message",
-  error?: string,
+  label: string;
+  name: string;
+  type?: string;
+  variant?: "row" | "default" | "message";
+  error?: string;
   events?: {
-    [key: string]: (event?: Event) => void,
-  },
+    [key: string]: (event?: Event) => void;
+  };
 };
 
 const VALIDATION_REGEXP = {
@@ -25,7 +25,14 @@ const VALIDATION_REGEXP = {
 class Input extends Block {
   isValid: boolean;
 
-  constructor({ label, name, type = "text", variant = "default", events = {}, error = "Поле заполнено не верно" }: InputProps) {
+  constructor({
+    label,
+    name,
+    type = "text",
+    variant = "default",
+    events = {},
+    error = "Поле заполнено не верно",
+  }: InputProps) {
     let tmpl;
     switch (variant) {
       case "row":

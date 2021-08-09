@@ -1,6 +1,8 @@
 import EventBus from "../utils/eventBus";
 import Templator from "../utils/templator";
 
+import { ObjectLiteral } from "../common/types";
+
 enum EVENTS {
   INIT = "init",
   FLOW_CDM = "flow:component-did-mount",
@@ -15,9 +17,9 @@ class Block {
 
   _meta: {
     tagName: string,
-    props: { [key: string]: any }
+    props: ObjectLiteral,
   };
-  props: Record<string, any>;
+  props: ObjectLiteral;
   eventBus: EventBus;
 
   constructor(tagName = "fragment", props = {}, tmpl: string) {
@@ -59,7 +61,7 @@ class Block {
   // eslint-disable-next-line
   componentDidMount(): void {}
 
-  _componentDidUpdate(oldProps?: { [key: string]: any }, newProps?: { [key: string]: any }): void {
+  _componentDidUpdate(oldProps?: ObjectLiteral, newProps?: ObjectLiteral): void {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -67,11 +69,11 @@ class Block {
     this._render();
   }
 
-  componentDidUpdate(oldProps?: { [key: string]: any }, newProps?: { [key: string]: any }): boolean {
+  componentDidUpdate(oldProps?: ObjectLiteral, newProps?: ObjectLiteral): boolean {
     return oldProps !== newProps;
   }
 
-  setProps = (nextProps: { [key: string]: any }): void => {
+  setProps = (nextProps: ObjectLiteral): void => {
     if (!nextProps) {
       return;
     }
@@ -87,17 +89,7 @@ class Block {
     const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
-      let node: HTMLElement | null;
-      if (eventName === "submit") {
-        node = this.element.querySelector("form");
-      } else {
-        node = this.element.querySelector("input");
-      }
-      if (node) {
-        node.addEventListener(eventName, events[eventName].bind(this));
-      } else {
-        this.element.addEventListener(eventName, events[eventName].bind(this));
-      }
+      this.element.addEventListener(eventName, events[eventName]);
     });
   }
 
@@ -105,7 +97,7 @@ class Block {
     const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
-      this.element.removeEventListener(eventName, events[eventName].bind(this));
+      this.element.removeEventListener(eventName, events[eventName]);
     });
   }
 
@@ -146,7 +138,7 @@ class Block {
     return this.element;
   }
 
-  _makePropsProxy(props: { [key: string]: any }): { [key: string]: any }  {
+  _makePropsProxy(props: ObjectLiteral): ObjectLiteral  {
     const self = this;
 
     return new Proxy(props, {

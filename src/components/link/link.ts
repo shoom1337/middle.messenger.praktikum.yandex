@@ -3,8 +3,8 @@ import tmpl from "./link.tmpl";
 import "./link.scss";
 
 type LinkProps = {
-  href: string,
-  text: string,
+  href: string;
+  text: string;
 };
 
 class Link extends Block {

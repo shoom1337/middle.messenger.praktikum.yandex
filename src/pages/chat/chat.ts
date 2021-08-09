@@ -12,11 +12,11 @@ import { Input, InputProps } from "../../components/input";
 
 type ChatProps = {
   components: {
-    chatList: ChatList,
-    chatHeader: ChatHeader,
-    chatMessages: ChatMessages,
-    messageForm: MessageForm,
-  },
+    chatList: ChatList;
+    chatHeader: ChatHeader;
+    chatMessages: ChatMessages;
+    messageForm: MessageForm;
+  };
 };
 
 class Chat extends Block {

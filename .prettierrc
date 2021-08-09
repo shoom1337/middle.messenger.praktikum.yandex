@@ -6,5 +6,5 @@
   "singleQuote": false,
   "trailingComma": "all",
   "jsxBracketSameLine": false,
-  "parser": "flow"
+  "parser": "typescript"
 }

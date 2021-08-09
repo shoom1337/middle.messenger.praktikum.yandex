@@ -10,16 +10,16 @@ import "../../../global.scss";
 
 type ChangePasswordProps = {
   components: {
-    avatar: Avatar,
-    prevPasswordInput: Input,
-    newPasswordInput: Input,
-    newPasswordConfirmInput: Input,
-    button: Button,
-    panelLink: PanelLink,
-  },
+    avatar: Avatar;
+    prevPasswordInput: Input;
+    newPasswordInput: Input;
+    newPasswordConfirmInput: Input;
+    button: Button;
+    panelLink: PanelLink;
+  };
   events?: {
-    [key: string]: (event: Event) => void,
-  },
+    [key: string]: (event: Event) => void;
+  };
 };
 
 class ChangePassword extends Block {

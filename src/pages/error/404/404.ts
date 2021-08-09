@@ -8,9 +8,9 @@ import "../error.scss";
 
 type ErrorPageProps = {
   components: {
-    error: Error,
-    link: Link,
-  },
+    error: Error;
+    link: Link;
+  };
 };
 
 class Page404 extends Block {

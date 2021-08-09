@@ -5,9 +5,9 @@ import "./chat-messages.scss";
 
 type ChatMessagesProps = {
   messageList: {
-    text: string,
-    style: "incoming" | "outgoing",
-  }[],
+    text: string;
+    style: "incoming" | "outgoing";
+  }[];
 };
 
 class ChatMessages extends Block {

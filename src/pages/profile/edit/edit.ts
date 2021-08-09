@@ -10,19 +10,19 @@ import "../../../global.scss";
 
 type EditProps = {
   components: {
-    avatar: Avatar,
-    emailInput: Input,
-    loginInput: Input,
-    firstNameInput: Input,
-    secondNameInput: Input,
-    displayNameInput: Input,
-    phoneInput: Input,
-    button: Button,
-    panelLink: PanelLink,
-  },
+    avatar: Avatar;
+    emailInput: Input;
+    loginInput: Input;
+    firstNameInput: Input;
+    secondNameInput: Input;
+    displayNameInput: Input;
+    phoneInput: Input;
+    button: Button;
+    panelLink: PanelLink;
+  };
   events?: {
-    [key: string]: (event: Event) => void,
-  },
+    [key: string]: (event: Event) => void;
+  };
 };
 
 class EditProfile extends Block {

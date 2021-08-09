@@ -8,16 +8,16 @@ import tmpl from "./login.tmpl";
 import "../../global.scss";
 
 type LoginProps = {
-  title: string,
+  title: string;
   components: {
-    loginInput: Input,
-    passwordInput: Input,
-    loginButton: Button,
-    link: Link,
-  },
+    loginInput: Input;
+    passwordInput: Input;
+    loginButton: Button;
+    link: Link;
+  };
   events?: {
-    [key: string]: (event: Event) => void,
-  },
+    [key: string]: (event: Event) => void;
+  };
 };
 
 class Login extends Block {

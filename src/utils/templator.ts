@@ -1,6 +1,8 @@
 import get from "./get";
 
-export type ctxProps = { [key: string]: any };
+import { ObjectLiteral } from "../common/types";
+
+export type ctxProps = ObjectLiteral;
 
 const TEMPLATE_REG_EXP = /^{{(.*?)}}$/;
 const ITERATOR_REG_EXP = /<each\s{{(.*?)}}>([\s\S]*?)<\/each>/;

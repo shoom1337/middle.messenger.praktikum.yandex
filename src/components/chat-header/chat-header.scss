@@ -3,7 +3,7 @@
 .chat-header {
   display: flex;
   flex-direction: row;
-  background: linear-gradient(90deg, #9bf6dd 24.53%, #b7d8e9 100%);
+  background: linear-gradient(90deg, $gradientFrom 24.53%, $gradientTo 100%);
   padding-left: 30px;
   padding-right: 20px;
   padding-top: 4px;

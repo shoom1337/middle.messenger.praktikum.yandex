@@ -6,11 +6,11 @@ import { Input } from "../input";
 
 type MessageFormProps = {
   components: {
-    messageFormInput: Input,
-  },
+    messageFormInput: Input;
+  };
   events?: {
-    submit: (event: Event) => void,
-  },
+    submit: (event: Event) => void;
+  };
 };
 
 class MessageForm extends Block {

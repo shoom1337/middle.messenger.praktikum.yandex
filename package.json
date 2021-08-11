@@ -7,8 +7,9 @@
     "node": ">=12"
   },
   "scripts": {
-    "dev:parcel": "./node_modules/.bin/parcel serve static/**.html static/profile/**.html",
+    "dev:parcel": "parcel watch build ./static/index.html",
     "dev:ts": "tsc --watch --noEmit",
+    "dev:server": "node ./server.js",
     "dev": "run-p -l dev:**",
     "start": "npm run build && node ./server.js",
     "clean": "rm -rf dist/",

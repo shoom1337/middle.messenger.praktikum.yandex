@@ -149,7 +149,7 @@ class Register extends Block {
     const passwordConfirmInput = new Input(passwordConfirmInputProps);
 
     const linkProps: LinkProps = {
-      href: "/login.html",
+      href: "/login",
       text: "Войти",
     };
     const link = new Link(linkProps);

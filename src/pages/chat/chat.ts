@@ -121,11 +121,11 @@ class Chat extends Block {
     const chatMessagesProps: ChatMessagesProps = {
       messageList: [
         {
-          text: "<a href='/login.html'>Страница логина</a><br><a href='/register.html'>Страница регистрации</a>",
+          text: "<a href='/login'>Страница логина</a><br><a href='/register'>Страница регистрации</a>",
           style: "incoming",
         },
         {
-          text: "Профиль:<br><a href='/profile/edit.html'>Редактирование</a><br><a href='/profile/password.html'>Смена пароля</a><br><a href='/profile/avatar.html'>Смена аватара</a>",
+          text: "Профиль:<br><a href='/profile/edit'>Редактирование</a><br><a href='/profile/password'>Смена пароля</a><br><a href='/profile/avatar'>Смена аватара</a>",
           style: "outgoing",
         },
         { text: "Есть над чем задуматься: зима близко", style: "incoming" },

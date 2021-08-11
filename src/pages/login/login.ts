@@ -58,7 +58,7 @@ class Login extends Block {
     const passwordInput = new Input(passwordInputProps);
 
     const linkProps: LinkProps = {
-      href: "/register.html",
+      href: "/register",
       text: "Нет аккаунта?",
     };
     const link = new Link(linkProps);

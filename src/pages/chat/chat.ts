@@ -125,7 +125,7 @@ class Chat extends Block {
           style: "incoming",
         },
         {
-          text: "Профиль:<br><a href='/profile/edit'>Редактирование</a><br><a href='/profile/password'>Смена пароля</a><br><a href='/profile/avatar'>Смена аватара</a>",
+          text: "Профиль:<br><a href='/edit'>Редактирование</a><br><a href='/password'>Смена пароля</a><br><a href='/avatar'>Смена аватара</a>",
           style: "outgoing",
         },
         { text: "Есть над чем задуматься: зима близко", style: "incoming" },

@@ -15,9 +15,9 @@ router
   .use("/", Chat)
   .use("/login", Login)
   .use("/register", Register)
-  .use("/profile/edit", EditProfile)
-  .use("/profile/password", ChangePassword)
-  .use("/profile/avatar", ChangeAvatar)
+  .use("/edit", EditProfile)
+  .use("/password", ChangePassword)
+  .use("/avatar", ChangeAvatar)
   .use("/500", Page500)
   .use("/404", Page404)
   .start();

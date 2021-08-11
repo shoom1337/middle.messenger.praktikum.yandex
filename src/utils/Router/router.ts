@@ -59,6 +59,8 @@ class Router {
       this._currentRoute.leave();
     }
 
+    this._currentRoute = route;
+
     route.render();
 
     //   if (!this._unprotectedPaths.includes(pathname as `/${string}`)) {

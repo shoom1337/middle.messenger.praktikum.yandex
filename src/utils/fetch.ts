@@ -54,7 +54,6 @@ class Fetch {
       xhr.timeout = timeout;
 
       if (withCredentials) {
-        console.log("creden");
         xhr.withCredentials = true;
       }
 
@@ -62,13 +61,17 @@ class Fetch {
         xhr.setRequestHeader(header, value);
       });
 
-      xhr.onload = function () {
-        resolve(xhr);
+      xhr.onload = () => {
+        if (xhr.status >= 300) {
+          reject(xhr);
+        } else {
+          resolve(xhr);
+        }
       };
 
-      xhr.onabort = reject;
-      xhr.onerror = reject;
-      xhr.ontimeout = reject;
+      xhr.onabort = () => reject(xhr);
+      xhr.onerror = () => reject(xhr);
+      xhr.ontimeout = () => reject(xhr);
 
       xhr.send(JSON.stringify(data));
     });

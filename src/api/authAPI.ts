@@ -6,15 +6,14 @@ class AuthAPI extends BaseAPI {
     super();
   }
 
-  public register(data: ObjectLiteral): void {
-    this.post("/auth/signup", data);
+  public register(data: ObjectLiteral) {
+    return this.post("/auth/signup", { data });
   }
 
   public login(data: ObjectLiteral): void {
     this.post("/auth/signin", {
       data,
     }).then((r) => {
-      console.log(r);
       this.getUser();
     });
   }

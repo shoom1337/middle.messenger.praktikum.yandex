@@ -6,6 +6,9 @@ import tmpl from "./register.tmpl";
 import { INPUT_ERRORS } from "../../common/messages";
 
 import { PageProps } from "../../common/types";
+import { getFormData } from "../../utils/getFormData";
+
+import AuthAPI from "../../api/authAPI";
 
 class Register extends Page {
   constructor() {
@@ -173,12 +176,10 @@ class Register extends Page {
           });
 
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const formData = getFormData(document.forms[0]);
+            console.log(formData);
+            const api = new AuthAPI();
+            api.register(formData);
           }
         },
       },

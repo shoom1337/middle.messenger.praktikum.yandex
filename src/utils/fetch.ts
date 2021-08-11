@@ -10,11 +10,20 @@ type RequestOptions = {
   headers?: Record<string, string>;
   timeout?: number;
   data?: { [key: string]: string };
+  withCredentials?: boolean;
 };
 
+import { ObjectLiteral } from "../common/types";
+
 class Fetch {
-  get = (url: string, options = {}): Promise<XMLHttpRequest> => {
-    return this.request(url, { ...options, method: METHODS.GET });
+  get = (
+    url: string,
+    options: { data?: { [key: string]: string }; headers?: ObjectLiteral },
+  ): Promise<XMLHttpRequest> => {
+    return this.request(`${url}${this._queryStringify(options.data)}`, {
+      ...options,
+      method: METHODS.GET,
+    });
   };
 
   post = (url: string, options = {}): Promise<XMLHttpRequest> => {
@@ -30,15 +39,24 @@ class Fetch {
   };
 
   request = (url: string, options: RequestOptions): Promise<XMLHttpRequest> => {
-    const { method = METHODS.GET, headers = {}, data, timeout = 5000 } = options;
+    const {
+      method = METHODS.GET,
+      headers = {},
+      data,
+      timeout = 5000,
+      withCredentials = false,
+    } = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
 
-      const isGet = method === METHODS.GET;
-
-      xhr.open(method, isGet && !!data ? `${url}${this._queryStringify(data)}` : url);
+      xhr.open(method, url);
       xhr.timeout = timeout;
+
+      if (withCredentials) {
+        console.log("creden");
+        xhr.withCredentials = true;
+      }
 
       Object.entries(headers).forEach(([header, value]) => {
         xhr.setRequestHeader(header, value);
@@ -52,15 +70,14 @@ class Fetch {
       xhr.onerror = reject;
       xhr.ontimeout = reject;
 
-      if (isGet || !data) {
-        xhr.send();
-      } else {
-        xhr.send(JSON.stringify(data));
-      }
+      xhr.send(JSON.stringify(data));
     });
   };
 
   _queryStringify(data: { [key: string]: string | number }): string {
+    if (!data) {
+      return "";
+    }
     const result = Object.entries(data).reduce(
       (acc, [key, value]) => (acc += `${key}=${value}&`),
       "?",

@@ -1,4 +1,4 @@
-import Block from "../../components/block";
+import Page from "../../components/page";
 import tmpl from "./chat.tmpl";
 
 import { ChatList, ChatListProps } from "../../components/chat-list";
@@ -10,16 +10,9 @@ import "../../global.scss";
 import "./chat.scss";
 import { Input, InputProps } from "../../components/input";
 
-type ChatProps = {
-  components: {
-    chatList: ChatList;
-    chatHeader: ChatHeader;
-    chatMessages: ChatMessages;
-    messageForm: MessageForm;
-  };
-};
+import { PageProps } from "../../common/types";
 
-class Chat extends Block {
+class Chat extends Page {
   constructor() {
     const chatListProps: ChatListProps = {
       chatList: [
@@ -195,15 +188,16 @@ class Chat extends Block {
     };
     const messageForm = new MessageForm(messageFormProps);
 
-    const chatProps: ChatProps = {
+    const chatProps: PageProps = {
       components: {
         chatList,
         chatHeader,
         chatMessages,
         messageForm,
       },
+      title: "Чат",
     };
-    super("main", chatProps, tmpl);
+    super(chatProps, tmpl);
   }
 }
 

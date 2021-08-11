@@ -1,26 +1,13 @@
-import Block from "../../components/block";
+import Page from "../../components/page";
 import { Button, ButtonProps } from "../../components/button";
 import { Input, InputProps } from "../../components/input";
 import { Link, LinkProps } from "../../components/link";
 import { INPUT_ERRORS } from "../../common/messages";
 import tmpl from "./login.tmpl";
 
-import "../../global.scss";
+import { PageProps } from "../../common/types";
 
-type LoginProps = {
-  title: string;
-  components: {
-    loginInput: Input;
-    passwordInput: Input;
-    loginButton: Button;
-    link: Link;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
-
-class Login extends Block {
+class Login extends Page {
   constructor() {
     const loginInputProps: InputProps = {
       label: "Логин",
@@ -71,7 +58,7 @@ class Login extends Block {
 
     const fields = { loginInput, passwordInput };
 
-    const loginProps: LoginProps = {
+    const loginProps: PageProps = {
       title: "Вход",
       components: {
         ...fields,
@@ -102,7 +89,7 @@ class Login extends Block {
         },
       },
     };
-    super("main", loginProps, tmpl);
+    super(loginProps, tmpl);
   }
 }
 export default Login;

@@ -1,4 +1,4 @@
-import Block from "../../../components/block";
+import Page from "../../../components/page";
 import { Button, ButtonProps } from "../../../components/button";
 import { Input, InputProps } from "../../../components/input";
 import { Avatar, AvatarProps } from "../../../components/avatar";
@@ -7,21 +7,9 @@ import tmpl from "./avatar.tmpl";
 
 import { INPUT_ERRORS } from "../../../common/messages";
 
-import "../../../global.scss";
+import { PageProps } from "../../../common/types";
 
-type changeAvatarProps = {
-  components: {
-    avatar: Avatar;
-    avatarInput: Input;
-    button: Button;
-    panelLink: PanelLink;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
-
-class ChangeAvatar extends Block {
+class ChangeAvatar extends Page {
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
@@ -55,7 +43,8 @@ class ChangeAvatar extends Block {
     };
     const panelLink = new PanelLink(panelLinkProps);
 
-    const changeAvatarProps: changeAvatarProps = {
+    const changeAvatarProps: PageProps = {
+      title: "Смена аватара",
       components: {
         avatar,
         avatarInput,
@@ -83,7 +72,7 @@ class ChangeAvatar extends Block {
         },
       },
     };
-    super("main", changeAvatarProps, tmpl);
+    super(changeAvatarProps, tmpl);
   }
 }
 export default ChangeAvatar;

@@ -1,4 +1,4 @@
-import Block from "../../../components/block";
+import Page from "../../../components/page";
 import { Button, ButtonProps } from "../../../components/button";
 import { Input, InputProps } from "../../../components/input";
 import { Avatar, AvatarProps } from "../../../components/avatar";
@@ -6,23 +6,9 @@ import { PanelLink, PanelLinkProps } from "../../../components/panel-link";
 import tmpl from "./password.tmpl";
 import { INPUT_ERRORS } from "../../../common/messages";
 
-import "../../../global.scss";
+import { PageProps } from "../../../common/types";
 
-type ChangePasswordProps = {
-  components: {
-    avatar: Avatar;
-    prevPasswordInput: Input;
-    newPasswordInput: Input;
-    newPasswordConfirmInput: Input;
-    button: Button;
-    panelLink: PanelLink;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
-
-class ChangePassword extends Block {
+class ChangePassword extends Page {
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
@@ -99,7 +85,8 @@ class ChangePassword extends Block {
       newPasswordConfirmInput,
     };
 
-    const changePasswordProps: ChangePasswordProps = {
+    const changePasswordProps: PageProps = {
+      title: "Смена пароля",
       components: {
         ...fields,
         avatar,
@@ -130,7 +117,7 @@ class ChangePassword extends Block {
         },
       },
     };
-    super("main", changePasswordProps, tmpl);
+    super(changePasswordProps, tmpl);
   }
 }
 export default ChangePassword;

@@ -1,4 +1,4 @@
-import Block from "../../../components/block";
+import Page from "../../../components/page";
 import { Button, ButtonProps } from "../../../components/button";
 import { Input, InputProps } from "../../../components/input";
 import { Avatar, AvatarProps } from "../../../components/avatar";
@@ -6,26 +6,9 @@ import { PanelLink, PanelLinkProps } from "../../../components/panel-link";
 import tmpl from "./edit.tmpl";
 import { INPUT_ERRORS } from "../../../common/messages";
 
-import "../../../global.scss";
+import { PageProps } from "../../../common/types";
 
-type EditProps = {
-  components: {
-    avatar: Avatar;
-    emailInput: Input;
-    loginInput: Input;
-    firstNameInput: Input;
-    secondNameInput: Input;
-    displayNameInput: Input;
-    phoneInput: Input;
-    button: Button;
-    panelLink: PanelLink;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
-
-class EditProfile extends Block {
+class EditProfile extends Page {
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
@@ -157,7 +140,8 @@ class EditProfile extends Block {
       displayNameInput,
     };
 
-    const editProps: EditProps = {
+    const editProps: PageProps = {
+      title: "Редактирование профиля",
       components: {
         ...fields,
         avatar,
@@ -188,7 +172,7 @@ class EditProfile extends Block {
         },
       },
     };
-    super("main", editProps, tmpl);
+    super(editProps, tmpl);
   }
 }
 export default EditProfile;

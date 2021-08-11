@@ -12,7 +12,7 @@ class Router {
   private _rootQuery: string;
   private _registeredPaths: string[];
   private _onRouteCallback: () => void;
-  private _unprotectedPaths: `/${string}`[];
+  private _unprotectedPaths: string[];
 
   constructor(rootQuery: string) {
     if (Router.__instance) {

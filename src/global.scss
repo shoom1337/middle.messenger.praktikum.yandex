@@ -96,3 +96,9 @@ button {
 .show {
   display: block !important;
 }
+
+.error {
+  &-wrapper {
+    margin-bottom: 69px;
+  }
+}

@@ -14,7 +14,7 @@ const block = new Block("div", options, "<div>{{text}}</div>");
 
 describe("Block", () => {
   it("render", () => {
-    assert.equal(block.render(), "<div>example</div>");
+    assert.equal(block.element.innerHTML, "<div>example</div>");
   });
 
   it("event binding", () => {

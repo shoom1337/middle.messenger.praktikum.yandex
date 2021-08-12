@@ -18,7 +18,7 @@ import { ObjectLiteral } from "../common/types";
 class Fetch {
   get = (
     url: string,
-    options: { data?: { [key: string]: string }; headers?: ObjectLiteral },
+    options: { data?: ObjectLiteral; headers?: ObjectLiteral },
   ): Promise<XMLHttpRequest> => {
     return this.request(`${url}${this._queryStringify(options.data)}`, {
       ...options,
@@ -48,7 +48,8 @@ class Fetch {
     } = options;
 
     return new Promise((resolve, reject) => {
-      const xhr = new XMLHttpRequest();
+      //@ts-ignore
+      const xhr = new window.XMLHttpRequest();
 
       xhr.open(method, url);
       xhr.timeout = timeout;
@@ -77,7 +78,7 @@ class Fetch {
     });
   };
 
-  _queryStringify(data: { [key: string]: string | number }): string {
+  _queryStringify(data: ObjectLiteral | undefined): string {
     if (!data) {
       return "";
     }

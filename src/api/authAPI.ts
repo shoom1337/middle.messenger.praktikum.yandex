@@ -13,6 +13,7 @@ class AuthAPI extends BaseAPI {
   public login(data: ObjectLiteral): void {
     this.post("/auth/signin", {
       data,
+      withCredentials: true,
     }).then((r) => {
       this.getUser();
     });
@@ -20,6 +21,12 @@ class AuthAPI extends BaseAPI {
 
   public getUser(): void {
     this.get("/auth/user", {
+      withCredentials: true,
+    });
+  }
+
+  public logout(): void {
+    this.post("/auth/logout", {
       withCredentials: true,
     });
   }

@@ -6,13 +6,14 @@ const NOT_FOUND_PATH = "/404";
 class Router {
   static __instance: Router;
 
-  private routes: Route[];
-  private history: History;
-  private _currentRoute: Route | null;
-  private _rootQuery: string;
-  private _registeredPaths: string[];
-  private _onRouteCallback: () => void;
-  private _unprotectedPaths: string[];
+  public history!: History;
+
+  private routes!: Route[];
+  private _currentRoute!: Route | null;
+  private _rootQuery!: string;
+  private _registeredPaths!: string[];
+  // private _onRouteCallback: () => void;
+  // private _unprotectedPaths: string[];
 
   constructor(rootQuery: string) {
     if (Router.__instance) {
@@ -20,11 +21,11 @@ class Router {
     }
     this.routes = [];
     this._registeredPaths = [];
-    this._unprotectedPaths = [];
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
-    this._onRouteCallback = () => {};
+    // this._unprotectedPaths = [];
+    // this._onRouteCallback = () => {};
     Router.__instance = this;
   }
 
@@ -38,7 +39,7 @@ class Router {
   }
 
   public start(): void {
-    const pathname = this._isRouteRegistered(window.location.pathname)
+    const pathname = this.isRouteRegistered(window.location.pathname)
       ? window.location.pathname
       : NOT_FOUND_PATH;
 
@@ -68,12 +69,19 @@ class Router {
     //   }
   }
 
+  public currentRoutePathname(): string {
+    if (!this._currentRoute) {
+      return "";
+    }
+    return this._currentRoute._pathname;
+  }
+
   public go(pathname: string): void {
     this.history.pushState({}, "", pathname);
     this._onRoute(pathname);
   }
 
-  public getRoute(pathname: string): Route {
+  public getRoute(pathname: string): Route | undefined {
     return this.routes.find((route) => route.match(pathname));
   }
 
@@ -81,7 +89,7 @@ class Router {
     this._registeredPaths.push(pathname);
   }
 
-  private _isRouteRegistered(pathname: string): boolean {
+  public isRouteRegistered(pathname: string): boolean {
     return this._registeredPaths.includes(pathname);
   }
 }

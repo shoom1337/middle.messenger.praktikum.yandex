@@ -58,6 +58,16 @@ class Login extends Page {
 
     const loginButton = new Button(buttonProps);
 
+    // const logoutButton = new Button({
+    //   text: "выйти",
+    //   events: {
+    //     click: () => {
+    //       const api = new AuthAPI();
+    //       api.logout();
+    //     },
+    //   },
+    // });
+
     const fields = { loginInput, passwordInput };
 
     const loginProps: PageProps = {

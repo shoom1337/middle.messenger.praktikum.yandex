@@ -13,13 +13,12 @@ function render(query: string, block: Block) {
 class Route {
   _pathname: string;
   _blockClass: typeof Block;
-  _block: Block;
+  _block!: Block;
   _props;
 
   constructor(pathname: string, view: typeof Block, props: ObjectLiteral) {
     this._pathname = pathname;
     this._blockClass = view;
-    this._block = null;
     this._props = props;
   }
 

@@ -16,6 +16,8 @@ class Page extends Block {
   private _setDocumentTitle(): void {
     document.title = `${this.title} | ${TITLE_POSTFIX}`;
   }
+
+  public componentDidMount(): void {}
 }
 
 export default Page;

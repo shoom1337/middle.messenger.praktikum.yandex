@@ -1,9 +1,9 @@
 import Fetch from "../utils/fetch";
-import config from "./config";
+import config from "../config";
 
 import { ObjectLiteral } from "../common/types";
 
-const headers = {
+const defaultHeaders = {
   "Content-type": "application/json",
 };
 
@@ -20,7 +20,7 @@ class BaseAPI {
     return this._fetch
       .post(`${this._baseURL}${path}`, {
         ...options,
-        headers,
+        headers: defaultHeaders,
       })
       .then(this._parseResponse);
   }
@@ -29,7 +29,18 @@ class BaseAPI {
     return this._fetch
       .get(`${this._baseURL}${path}`, {
         ...options,
-        headers,
+        headers: defaultHeaders,
+      })
+      .then(this._parseResponse);
+  }
+
+  public put(path: string, options: ObjectLiteral): ObjectLiteral {
+    const { headers, ...rest } = options;
+
+    return this._fetch
+      .put(`${this._baseURL}${path}`, {
+        ...rest,
+        headers: headers || defaultHeaders,
       })
       .then(this._parseResponse);
   }

@@ -8,7 +8,18 @@ import { INPUT_ERRORS } from "../../../common/messages";
 
 import { PageProps } from "../../../common/types";
 
+import { store } from "../../../store";
+import keysToCamelCase from "../../../utils/keysToCamelCase";
+import fillFields from "../../../utils/fillFields";
+import fillUserAvatar from "../../../utils/fillUserAvatar";
+
+import userController from "../../../controllers/userController";
+import { getFormData } from "../../../utils/getFormData";
+
 class EditProfile extends Page {
+  private fields;
+  private avatar;
+
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
@@ -162,17 +173,29 @@ class EditProfile extends Page {
           });
 
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const data = getFormData(document.forms[0]);
+
+            userController.updateProfile(data);
           }
         },
       },
     };
+
     super(editProps, tmpl);
+
+    this.fields = fields;
+
+    this.avatar = avatar;
+  }
+
+  componentDidMount(): void {
+    store.subscribe((state) => {
+      fillFields(keysToCamelCase(state.user), this.fields);
+      fillUserAvatar(state.user.avatar, this.avatar);
+      // this.props.ChooseAvatar.props.src = state.currentUser?.avatar
+      //   ? env.HOST_RESOURCES + state.currentUser?.avatar
+      //   : defaultAvatar;
+    });
   }
 }
 export default EditProfile;

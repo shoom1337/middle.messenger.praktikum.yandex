@@ -9,14 +9,21 @@ import { INPUT_ERRORS } from "../../../common/messages";
 
 import { PageProps } from "../../../common/types";
 
+import { store } from "../../../store";
+import userController from "../../../controllers/userController";
+
+import fillUserAvatar from "../../../utils/fillUserAvatar";
+
 class ChangeAvatar extends Page {
+  private avatar;
+
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
 
     const avatarInputProps: InputProps = {
       label: "Аватар",
-      name: "avatar",
+      name: "file",
       variant: "row",
       type: "file",
       error: INPUT_ERRORS.AVATAR,
@@ -62,17 +69,23 @@ class ChangeAvatar extends Page {
             isFormValid = false;
           }
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const formData = new FormData();
+            formData.append("avatar", avatarInput.element.querySelector("input").files[0]);
+
+            userController.updateAvatar(formData);
           }
         },
       },
     };
     super(changeAvatarProps, tmpl);
+
+    this.avatar = avatar;
+  }
+
+  componentDidMount(): void {
+    store.subscribe((state) => {
+      fillUserAvatar(state.user.avatar, this.avatar);
+    });
   }
 }
 export default ChangeAvatar;

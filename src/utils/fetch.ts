@@ -74,7 +74,7 @@ class Fetch {
       xhr.onerror = () => reject(xhr);
       xhr.ontimeout = () => reject(xhr);
 
-      xhr.send(JSON.stringify(data));
+      xhr.send(data);
     });
   };
 

@@ -8,7 +8,14 @@ import { INPUT_ERRORS } from "../../../common/messages";
 
 import { PageProps } from "../../../common/types";
 
+import { store } from "../../../store";
+import userController from "../../../controllers/userController";
+import { getFormData } from "../../../utils/getFormData";
+import fillUserAvatar from "../../../utils/fillUserAvatar";
+
 class ChangePassword extends Page {
+  private avatar;
+
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
@@ -16,7 +23,7 @@ class ChangePassword extends Page {
     const prevPasswordInputProps: InputProps = {
       label: "Старый пароль",
       type: "password",
-      name: "prev-password",
+      name: "oldPassword",
       variant: "row",
       events: {
         focus() {
@@ -34,7 +41,7 @@ class ChangePassword extends Page {
     const newPasswordInputProps: InputProps = {
       label: "Новый пароль",
       type: "password",
-      name: "password",
+      name: "newPassword",
       variant: "row",
       error: INPUT_ERRORS.PASSWORD,
       events: {
@@ -107,17 +114,21 @@ class ChangePassword extends Page {
           });
 
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const data = getFormData(document.forms[0], ["oldPassword", "newPassword"]);
+            userController.updatePassword(data);
           }
         },
       },
     };
     super(changePasswordProps, tmpl);
+
+    this.avatar = avatar;
+  }
+
+  componentDidMount(): void {
+    store.subscribe((state) => {
+      fillUserAvatar(state.user.avatar, this.avatar);
+    });
   }
 }
 export default ChangePassword;

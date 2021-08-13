@@ -7,5 +7,6 @@ export default (object: { [key: string]: string }, path: string): string => {
   keys.forEach((element: string) => {
     value = value[element];
   });
-  return value;
+
+  return value || "";
 };

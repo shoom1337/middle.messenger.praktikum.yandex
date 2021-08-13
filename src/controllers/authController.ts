@@ -4,6 +4,7 @@ import { showAlert } from "../utils/showAlert";
 import { errorHandler } from "../utils/errorHandler";
 
 import { router } from "../router";
+import { store } from "../store";
 
 class AuthController {
   public login(data: ObjectLiteral): void {
@@ -37,14 +38,14 @@ class AuthController {
     return authAPI
       .getUser()
       .then((user) => {
-        console.log(user);
-        // store.setState({
-        //   currentUser: user,
-        // });
+        store.setState({
+          user,
+        });
       })
       .catch((error) => {
         errorHandler(error);
-        router.go("/login");
+        console.log(error);
+        // router.go("/login");
       });
   }
 }

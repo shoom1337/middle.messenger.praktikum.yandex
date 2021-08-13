@@ -2,12 +2,13 @@ import Page from "../../components/page";
 import { Button, ButtonProps } from "../../components/button";
 import { Input, InputProps } from "../../components/input";
 import { Link, LinkProps } from "../../components/link";
-import { INPUT_ERRORS } from "../../common/messages";
 import tmpl from "./login.tmpl";
+import { INPUT_ERRORS } from "../../common/messages";
 
 import { PageProps } from "../../common/types";
 import { getFormData } from "../../utils/getFormData";
-import AuthAPI from "../../api/authAPI";
+
+import authController from "../../controllers/authController";
 
 class Login extends Page {
   constructor() {
@@ -53,22 +54,15 @@ class Login extends Page {
     const link = new Link(linkProps);
 
     const buttonProps: ButtonProps = {
-      text: "Авторизоваться",
+      text: "Войти",
     };
 
     const loginButton = new Button(buttonProps);
 
-    // const logoutButton = new Button({
-    //   text: "выйти",
-    //   events: {
-    //     click: () => {
-    //       const api = new AuthAPI();
-    //       api.logout();
-    //     },
-    //   },
-    // });
-
-    const fields = { loginInput, passwordInput };
+    const fields = {
+      loginInput,
+      passwordInput,
+    };
 
     const loginProps: PageProps = {
       title: "Вход",
@@ -93,8 +87,7 @@ class Login extends Page {
           if (isFormValid) {
             const formData = getFormData(document.forms[0]);
 
-            const api = new AuthAPI();
-            api.login(formData);
+            authController.login(formData);
           }
         },
       },

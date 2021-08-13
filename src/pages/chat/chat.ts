@@ -6,11 +6,15 @@ import { ChatHeader, ChatHeaderProps } from "../../components/chat-header";
 import { ChatMessages, ChatMessagesProps } from "../../components/chat-messages";
 import { MessageForm, MessageFormProps } from "../../components/message-form";
 
+import { Button } from "../../components/button";
+
 import "../../global.scss";
 import "./chat.scss";
 import { Input, InputProps } from "../../components/input";
 
 import { PageProps } from "../../common/types";
+
+import authController from "../../controllers/authController";
 
 class Chat extends Page {
   constructor() {
@@ -139,6 +143,15 @@ class Chat extends Page {
     };
     const chatMessages = new ChatMessages(chatMessagesProps);
 
+    const logoutButton = new Button({
+      text: "выйти",
+      events: {
+        click: () => {
+          authController.logout();
+        },
+      },
+    });
+
     const chatHeaderProps: ChatHeaderProps = {
       correspondent: {
         name: "Вадим",
@@ -194,6 +207,7 @@ class Chat extends Page {
         chatHeader,
         chatMessages,
         messageForm,
+        logoutButton,
       },
       title: "Чат",
     };

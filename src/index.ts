@@ -7,9 +7,9 @@ import ChangeAvatar from "./pages/profile/avatar";
 
 import Page404 from "./pages/error/404";
 import Page500 from "./pages/error/500";
-import Router from "./utils/Router";
 
-const router = new Router("#root");
+import { router } from "./router";
+import authController from "./controllers/authController";
 
 router
   .use("/", Chat)
@@ -20,4 +20,5 @@ router
   .use("/avatar", ChangeAvatar)
   .use("/500", Page500)
   .use("/404", Page404)
+  .setPublicPaths(["/login", "/register", "/404", "/500"], authController.checkAuth)
   .start();

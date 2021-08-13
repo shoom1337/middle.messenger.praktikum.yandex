@@ -10,26 +10,24 @@ class AuthAPI extends BaseAPI {
     return this.post("/auth/signup", { data });
   }
 
-  public login(data: ObjectLiteral): void {
-    this.post("/auth/signin", {
+  public login(data: ObjectLiteral) {
+    return this.post("/auth/signin", {
       data,
       withCredentials: true,
-    }).then((r) => {
-      this.getUser();
     });
   }
 
-  public getUser(): void {
-    this.get("/auth/user", {
+  public getUser() {
+    return this.get("/auth/user", {
       withCredentials: true,
     });
   }
 
-  public logout(): void {
-    this.post("/auth/logout", {
+  public logout() {
+    return this.post("/auth/logout", {
       withCredentials: true,
     });
   }
 }
 
-export default AuthAPI;
+export default new AuthAPI();

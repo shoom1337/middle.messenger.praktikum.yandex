@@ -88,23 +88,23 @@ class Block {
   addEvents(): void {
     const { events = {} } = this.props;
 
-    Object.keys(events).forEach((eventName) => {
-      this.element.addEventListener(eventName, events[eventName]);
-    });
-
     // Object.keys(events).forEach((eventName) => {
-    //   let node: HTMLElement | null;
-    //   if (eventName === "submit") {
-    //     node = this.element.querySelector("form");
-    //   } else {
-    //     node = this.element.querySelector("input");
-    //   }
-    //   if (node) {
-    //     node.addEventListener(eventName, events[eventName].bind(this));
-    //   } else {
-    //     this.element.addEventListener(eventName, events[eventName].bind(this));
-    //   }
+    //   this.element.addEventListener(eventName, events[eventName]);
     // });
+
+    Object.keys(events).forEach((eventName) => {
+      let node: HTMLElement | null;
+      if (eventName === "submit") {
+        node = this.element.querySelector("form");
+      } else {
+        node = this.element.querySelector("input");
+      }
+      if (node) {
+        node.addEventListener(eventName, events[eventName].bind(this));
+      } else {
+        this.element.addEventListener(eventName, events[eventName].bind(this));
+      }
+    });
   }
 
   removeEvents(): void {

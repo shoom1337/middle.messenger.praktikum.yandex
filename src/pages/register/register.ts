@@ -8,7 +8,7 @@ import { INPUT_ERRORS } from "../../common/messages";
 import { PageProps } from "../../common/types";
 import { getFormData } from "../../utils/getFormData";
 
-import AuthController from "../../controllers/authController";
+import authController from "../../controllers/authController";
 
 class Register extends Page {
   constructor() {
@@ -178,18 +178,8 @@ class Register extends Page {
           if (isFormValid) {
             const formData = getFormData(document.forms[0]);
 
-            const controller = new AuthController();
-            controller.register(formData);
+            authController.register(formData);
           }
-          // const controller = new AuthController();
-          // controller.register({
-          //   first_name: "shoom",
-          //   second_name: "the great",
-          //   login: "shoom",
-          //   email: "shoom@test.com",
-          //   password: "111111",
-          //   phone: "811111111111",
-          // });
         },
       },
     };

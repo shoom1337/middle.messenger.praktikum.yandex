@@ -1,22 +1,52 @@
 import { ObjectLiteral } from "../common/types";
-import Router from "../utils/Router";
-import AuthAPI from "../api/authAPI";
+import authAPI from "../api/authAPI";
+import { showAlert } from "../utils/showAlert";
+import { errorHandler } from "../utils/errorHandler";
+
+import { router } from "../router";
 
 class AuthController {
-  protected _router: Router;
-  private _api: AuthAPI;
-  constructor() {
-    this._router = new Router("#root");
-    this._api = new AuthAPI();
+  public login(data: ObjectLiteral): void {
+    return authAPI
+      .login(data)
+      .then(() => {
+        showAlert({ message: "Logged in", variant: "success" });
+        router.go("/");
+      })
+      .catch(errorHandler);
   }
+
   public register(data: ObjectLiteral): void {
-    return this._api
+    return authAPI
       .register(data)
       .then(() => {
-        this._router.go("/login");
+        showAlert({ message: "Registered", variant: "success" });
+        router.go("/login");
       })
-      .catch((e) => console.log(e));
+      .catch(errorHandler);
+  }
+
+  public logout(): void {
+    return authAPI.logout().then(() => {
+      showAlert({ message: "Logged out", variant: "success" });
+      router.go("/login");
+    });
+  }
+
+  public checkAuth() {
+    return authAPI
+      .getUser()
+      .then((user) => {
+        console.log(user);
+        // store.setState({
+        //   currentUser: user,
+        // });
+      })
+      .catch((error) => {
+        errorHandler(error);
+        router.go("/login");
+      });
   }
 }
 
-export default AuthController;
+export default new AuthController();

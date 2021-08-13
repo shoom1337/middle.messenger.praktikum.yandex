@@ -12,8 +12,8 @@ class Router {
   private _currentRoute!: Route | null;
   private _rootQuery!: string;
   private _registeredPaths!: string[];
-  // private _onRouteCallback: () => void;
-  // private _unprotectedPaths: string[];
+  private _checkAuth!: () => void;
+  private _publicPaths: string[];
 
   constructor(rootQuery: string) {
     if (Router.__instance) {
@@ -24,8 +24,7 @@ class Router {
     this.history = window.history;
     this._currentRoute = null;
     this._rootQuery = rootQuery;
-    // this._unprotectedPaths = [];
-    // this._onRouteCallback = () => {};
+    this._publicPaths = [];
     Router.__instance = this;
   }
 
@@ -64,9 +63,9 @@ class Router {
 
     route.render();
 
-    //   if (!this._unprotectedPaths.includes(pathname as `/${string}`)) {
-    //     this._onRouteCallback();
-    //   }
+    if (!this._publicPaths.includes(pathname)) {
+      this._checkAuth();
+    }
   }
 
   public currentRoutePathname(): string {
@@ -91,6 +90,12 @@ class Router {
 
   public isRouteRegistered(pathname: string): boolean {
     return this._registeredPaths.includes(pathname);
+  }
+
+  public setPublicPaths(pathnames: string[], checkAuth: () => void): Router {
+    this._checkAuth = checkAuth;
+    this._publicPaths = pathnames;
+    return this;
   }
 }
 

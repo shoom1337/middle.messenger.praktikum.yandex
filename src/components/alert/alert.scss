@@ -1,0 +1,31 @@
+@import '../../colors.scss';
+
+alert {
+  position: fixed;
+  display: block;
+  bottom: 0px;
+  width: 100%;
+}
+
+.alert {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  height: 60px;
+
+  font-size: 16px;
+  line-height: 24px;
+  color: $teal;
+  border-top: 4px solid;
+
+  &_success {
+    background-color: $lightGreen;
+    border-top-color: $darkGreen;
+  }
+
+  &_error {
+    background-color: $lightRed;
+    border-top-color: $red;
+  }
+}

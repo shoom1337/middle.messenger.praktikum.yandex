@@ -6,8 +6,8 @@ export default `
         <div id="loginInput"></div>
         <div id="passwordInput"></div>
         <div id="loginButton"></div>
-        </form>
+      </form>
       <div id="link"></div>
-      </div>
+    </div>
   </div>
 `;

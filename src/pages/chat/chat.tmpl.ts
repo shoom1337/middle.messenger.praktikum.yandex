@@ -7,6 +7,7 @@ export default `
         <button class="sidebar__menu">
           <img src="${burger}" class="sidebar__menu-icon">
         </button>
+        <div id="logoutButton"></div>
         <input class="sidebar__search" type="text" placeholder="Поиск"/>
       </header>
       <div id="chatList" class="chat-list"></div>

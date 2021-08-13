@@ -1,7 +1,7 @@
-import Block from "../../components/block";
 import { ObjectLiteral } from "../../common/types";
+import Page from "../../components/page";
 
-function render(query: string, block: Block) {
+function render(query: string, block: Page) {
   const root = document.querySelector(query);
   if (root) {
     root.append(block.getContent());
@@ -11,41 +11,31 @@ function render(query: string, block: Block) {
 }
 
 class Route {
-  _pathname: string;
-  _blockClass: typeof Block;
-  _block!: Block;
-  _props;
+  public pathname: string;
+  private _blockClass: typeof Page;
+  private _block: Page | null;
+  private _props: ObjectLiteral;
 
-  constructor(pathname: string, view: typeof Block, props: ObjectLiteral) {
-    this._pathname = pathname;
+  constructor(pathname: string, view: typeof Page, props: ObjectLiteral) {
+    this.pathname = pathname;
     this._blockClass = view;
+    this._block = null;
     this._props = props;
   }
 
-  navigate(pathname: string): void {
-    if (this.match(pathname)) {
-      this._pathname = pathname;
-      this.render();
-    }
-  }
-
-  leave(): void {
+  public leave(): void {
     if (this._block) {
       this._block.remove();
     }
   }
 
-  match(pathname: string): boolean {
-    return pathname === this._pathname;
+  public match(pathname: string): boolean {
+    return pathname === this.pathname;
   }
 
-  render(): void {
-    if (!this._block) {
-      this._block = new this._blockClass("div", {}, "<div>render error</div>");
-      render(this._props.rootQuery, this._block);
-      return;
-    }
-    this._block.show();
+  public render(): void {
+    this._block = new this._blockClass();
+    render(this._props.rootQuery, this._block);
   }
 }
 

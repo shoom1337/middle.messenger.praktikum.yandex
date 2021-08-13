@@ -16,6 +16,8 @@ import { PageProps } from "../../common/types";
 
 import authController from "../../controllers/authController";
 
+import chatsAPI from "../../api/chatsAPI";
+
 class Chat extends Page {
   constructor() {
     const chatListProps: ChatListProps = {
@@ -212,6 +214,9 @@ class Chat extends Page {
       title: "Чат",
     };
     super(chatProps, tmpl);
+
+    // chatsAPI.createChat({ title: "chat888" }).then((r) => console.log(r));
+    chatsAPI.getChats().then((r) => console.log(r));
   }
 }
 

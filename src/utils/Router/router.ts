@@ -72,7 +72,7 @@ class Router {
     if (!this._currentRoute) {
       return "";
     }
-    return this._currentRoute._pathname;
+    return this._currentRoute.pathname;
   }
 
   public go(pathname: string): void {

@@ -93,7 +93,7 @@ button {
   align-items: center;
 }
 
-.hide {
+.hidden {
   display: none !important;
 }
 
@@ -105,4 +105,10 @@ button {
   &-wrapper {
     margin-bottom: 69px;
   }
+}
+
+.menu-icon {
+  margin-top: 6px;
+  width: 24px;
+  height: 18px;
 }

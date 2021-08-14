@@ -3,35 +3,38 @@ $darkGreen: #438756;
 $teal: #134E4A;
 $red: #ff2f2f;
 $lightRed: #ffa7a7;
+$black: #1e1e1e;
+$white: #fff;
+$blue: #3369F3;
 
 $gradientFrom: $lightGreen;
 $gradientTo: #b7d9e9;
 
-$blankLayoutBackgroundColor: #fff;
+$blankLayoutBackgroundColor: $white;
 
 $cardTitle: $darkGreen;
 
 $labelColor: #999;
 $inputColor: $darkGreen;
-$inputBorderColor: #3369f3;
+$inputBorderColor: $blue;
 
 $btnBackgroundColor: $darkGreen;
-$btnColor: #fff;
+$btnColor: $white;
 
-$linkColor: #3369f3;
+$linkColor: $blue;
 
-$panelLinkBackgroundColor: #fff;
+$panelLinkBackgroundColor: $white;
 
 $errorColor: $red;
 
-$textColor: #1e1e1e;
+$textColor: $black;
 
 $searchBackgroundColor: #efefef;
 $searchColor: #999;
 
 $chatListMessageColor: $darkGreen;
 $chatListUnreadBackgroundColor: $darkGreen;
-$chatListUnreadColor: #fff;
+$chatListUnreadColor: $white;
 
 $chatHeaderLastVisitColor: $darkGreen;
 
@@ -39,6 +42,6 @@ $chatMessageColor: $darkGreen;
 
 $chatIncomingMessageBackgroundColor: #efefef;
 
-$chatOutgoingMessageBackgroundColor: #9bf6dd;
+$chatOutgoingMessageBackgroundColor: $lightGreen;
 
 $chatMessageBorderColor: #eaeaea;

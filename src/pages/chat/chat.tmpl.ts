@@ -1,17 +1,13 @@
-import burger from "../../../static/burger.svg";
-
 export default `
   <div class="layout chat-layout">
     <section class="sidebar">
       <header class="sidebar__header">
-        <button class="sidebar__menu">
-          <img src="${burger}" class="sidebar__menu-icon">
-        </button>
-        <div id="logoutButton"></div>
+        <div id="openButton"></div>
         <input class="sidebar__search" type="text" placeholder="Поиск"/>
       </header>
       <div id="chatList" class="chat-list"></div>
     </section>
+    <div id="userSettings" class="hidden"></div>
     <section class="chat">
       <div id="chatHeader"></div>
       <div id="chatMessages"></div>

@@ -5,21 +5,38 @@ import { ChatList, ChatListProps } from "../../components/chat-list";
 import { ChatHeader, ChatHeaderProps } from "../../components/chat-header";
 import { ChatMessages, ChatMessagesProps } from "../../components/chat-messages";
 import { MessageForm, MessageFormProps } from "../../components/message-form";
-
-import { Button } from "../../components/button";
-
+import { UserSettings, UserSettingsProps } from "../../components/user-settings/user-settings";
+import { BurgerButton, BurgerButtonProps } from "../../components/burger-button/burger-button";
 import "../../global.scss";
 import "./chat.scss";
 import { Input, InputProps } from "../../components/input";
 
 import { PageProps } from "../../common/types";
 
-import authController from "../../controllers/authController";
-
 import chatsAPI from "../../api/chatsAPI";
+import { store } from "../../store";
 
 class Chat extends Page {
   constructor() {
+    const burgerButtonProps: BurgerButtonProps = {
+      events: {
+        click() {
+          store.setState({ showSettings: true });
+        },
+      },
+    };
+    const openButton = new BurgerButton(burgerButtonProps);
+
+    const userSettingsProps: UserSettingsProps = {
+      title: "Профиль",
+      user: {
+        name: "Иван",
+        email: "email@domain.com",
+      },
+      rootID: "userSettings",
+    };
+    const userSettings = new UserSettings(userSettingsProps);
+
     const chatListProps: ChatListProps = {
       chatList: [
         {
@@ -145,15 +162,6 @@ class Chat extends Page {
     };
     const chatMessages = new ChatMessages(chatMessagesProps);
 
-    const logoutButton = new Button({
-      text: "выйти",
-      events: {
-        click: () => {
-          authController.logout();
-        },
-      },
-    });
-
     const chatHeaderProps: ChatHeaderProps = {
       correspondent: {
         name: "Вадим",
@@ -205,11 +213,12 @@ class Chat extends Page {
 
     const chatProps: PageProps = {
       components: {
+        openButton,
+        userSettings,
         chatList,
         chatHeader,
         chatMessages,
         messageForm,
-        logoutButton,
       },
       title: "Чат",
     };

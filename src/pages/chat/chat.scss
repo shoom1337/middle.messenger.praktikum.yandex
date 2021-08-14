@@ -1,9 +1,20 @@
 @import '../../colors.scss';
 
 .chat-layout {
+  position: relative;
   flex-direction: row;
   background: linear-gradient(179.98deg, $gradientFrom 0.02%, $gradientTo 99.98%);
   overflow: hidden;
+}
+
+
+#userSettings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 310px;
+  background: linear-gradient(179.98deg, $gradientFrom 0.02%, $gradientTo 99.98%);
 }
 
 .sidebar {
@@ -21,11 +32,6 @@
     margin: 10px;
     margin-left: 14px;
     margin-bottom: 14px;
-  }
-
-  &__menu-icon {
-    width: 16px;
-    height: 12px;
   }
 
   &__search {

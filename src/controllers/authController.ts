@@ -44,7 +44,8 @@ class AuthController {
       })
       .catch((error) => {
         errorHandler(error);
-        router.go("/login");
+        console.error(error);
+        // router.go("/login");
       });
   }
 }

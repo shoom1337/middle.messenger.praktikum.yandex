@@ -88,10 +88,6 @@ class Block {
   addEvents(): void {
     const { events = {} } = this.props;
 
-    // Object.keys(events).forEach((eventName) => {
-    //   this.element.addEventListener(eventName, events[eventName]);
-    // });
-
     Object.keys(events).forEach((eventName) => {
       let node: HTMLElement | null;
       if (eventName === "submit") {
@@ -178,11 +174,11 @@ class Block {
   }
 
   show(): void {
-    this.getContent().classList.remove("hidden");
+    this._element.classList.remove("hidden");
   }
 
   hide(): void {
-    this.getContent().classList.add("hidden");
+    this._element.classList.add("hidden");
   }
 
   remove(): void {

@@ -1,0 +1,8 @@
+@import '../../colors.scss';
+
+.chat-settings {
+  background: linear-gradient(101.7deg, $dustBlue 0%, $lightGreen 100%);
+  box-shadow: 10px 10px 50px -10px rgba($black, 0.25);
+  border-radius: 25px 0px 0px 25px;
+  padding: 20px;
+}

@@ -1,20 +1,24 @@
 import Page from "../../components/page";
 import tmpl from "./chat.tmpl";
 
-import { ChatList, ChatListProps } from "../../components/chat-list";
+import { ChatList } from "../../components/chat-list";
 import { ChatHeader, ChatHeaderProps } from "../../components/chat-header";
 import { ChatMessages, ChatMessagesProps } from "../../components/chat-messages";
 import { MessageForm, MessageFormProps } from "../../components/message-form";
 import { UserSettings, UserSettingsProps } from "../../components/user-settings/user-settings";
 import { BurgerButton, BurgerButtonProps } from "../../components/burger-button/burger-button";
+import { AddChat } from "../../components/add-chat/add-chat";
+
 import "../../global.scss";
 import "./chat.scss";
 import { Input, InputProps } from "../../components/input";
 
 import { PageProps } from "../../common/types";
 
-import chatsAPI from "../../api/chatsAPI";
+import chatsController from "../../controllers/chatsController";
 import { store } from "../../store";
+import { ChatSettings } from "../../components/chat-settings/chat-settings";
+import { AddChatUser } from "../../components/add-chat-user/add-chat-user";
 
 class Chat extends Page {
   constructor() {
@@ -37,102 +41,12 @@ class Chat extends Page {
     };
     const userSettings = new UserSettings(userSettingsProps);
 
-    const chatListProps: ChatListProps = {
-      chatList: [
-        {
-          name: "Андрей",
-          text: "Изображение",
-          unreadCount: 2,
-          time: "10:49",
-          isActive: true,
-        },
-        {
-          name: "Киноклуб",
-          text: "стикер",
-          unreadCount: 1,
-          time: "11:12",
-          isActive: false,
-        },
-        {
-          name: "Киноклуб",
-          text: "стикер",
-          unreadCount: 1,
-          time: "11:12",
-          isActive: false,
-        },
-        {
-          name: "Андрей",
-          text: "Изображение",
-          unreadCount: 2,
-          time: "10:49",
-          isActive: true,
-        },
-        {
-          name: "Киноклуб",
-          text: "стикер",
-          unreadCount: 1,
-          time: "11:12",
-          isActive: false,
-        },
-        {
-          name: "Киноклуб",
-          text: "стикер",
-          unreadCount: 1,
-          time: "11:12",
-          isActive: false,
-        },
-        {
-          name: "Андрей",
-          text: "Изображение",
-          unreadCount: 2,
-          time: "10:49",
-          isActive: true,
-        },
-        {
-          name: "Киноклуб",
-          text: "стикер",
-          unreadCount: 1,
-          time: "11:12",
-          isActive: false,
-        },
-        {
-          name: "Киноклуб",
-          text: "стикер",
-          unreadCount: 1,
-          time: "11:12",
-          isActive: false,
-        },
-        {
-          name: "Андрей",
-          text: "Изображение",
-          unreadCount: 2,
-          time: "10:49",
-          isActive: true,
-        },
-        {
-          name: "Киноклуб",
-          text: "стикер",
-          unreadCount: 1,
-          time: "11:12",
-          isActive: false,
-        },
-        {
-          name: "Киноклуб",
-          text: "стикер",
-          unreadCount: 1,
-          time: "11:12",
-          isActive: false,
-        },
-        {
-          name: "Андрей",
-          text: "Изображение",
-          unreadCount: 2,
-          time: "10:49",
-          isActive: true,
-        },
-      ],
-    };
-    const chatList = new ChatList(chatListProps);
+    const addChatDialog = new AddChat({
+      title: "Добавить чат",
+      rootID: "addChatDialog",
+    });
+
+    const chatList = new ChatList();
 
     const chatMessagesProps: ChatMessagesProps = {
       messageList: [
@@ -169,6 +83,15 @@ class Chat extends Page {
       },
     };
     const chatHeader = new ChatHeader(chatHeaderProps);
+
+    const chatSettings = new ChatSettings({
+      rootID: "chatSettings",
+    });
+
+    const addChatUserDialog = new AddChatUser({
+      title: "Добавить пользователя",
+      rootID: "addChatUserDialog",
+    });
 
     const messageFormInputProps: InputProps = {
       label: "Сообщение",
@@ -215,17 +138,21 @@ class Chat extends Page {
       components: {
         openButton,
         userSettings,
+        addChatDialog,
         chatList,
         chatHeader,
+        chatSettings,
         chatMessages,
+        addChatUserDialog,
         messageForm,
       },
       title: "Чат",
     };
     super(chatProps, tmpl);
+  }
 
-    // chatsAPI.createChat({ title: "chat888" }).then((r) => console.log(r));
-    chatsAPI.getChats().then((r) => console.log(r));
+  componentDidMount(): void {
+    chatsController.getChats();
   }
 }
 

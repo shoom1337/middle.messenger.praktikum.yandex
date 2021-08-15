@@ -1,0 +1,19 @@
+@import '../../colors.scss';
+@import '../../mixins.scss';
+
+.chat-settings-btn {
+  @include flexCenter;
+
+  padding: 10px 0;
+
+  &__icon {
+    margin-top: 0;
+    margin-right: 17px;
+  }
+
+  &__text {
+    color: $darkGreen;
+    font-size: 16px;
+    line-height: 16px;
+  }
+}

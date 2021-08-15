@@ -11,20 +11,7 @@ import "./user-settings.scss";
 
 import { store } from "../../store";
 import fillUserAvatar from "../../utils/fillUserAvatar";
-
-const HIDDEN_CLASS = "hidden";
-
-function showHide(rootId: string, show: boolean): void {
-  if (!rootId) {
-    return;
-  }
-  const root = document.getElementById(rootId);
-  if (show) {
-    root.classList.remove(HIDDEN_CLASS);
-  } else {
-    root.classList.add(HIDDEN_CLASS);
-  }
-}
+import showHide from "../../utils/showHide";
 
 type UserSettingsProps = {
   title: string;

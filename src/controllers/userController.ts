@@ -4,6 +4,7 @@ import { showAlert } from "../utils/showAlert";
 import { errorHandler } from "../utils/errorHandler";
 
 import { router } from "../router";
+import { store } from "../store";
 
 class UserController {
   public updateProfile(data: ObjectLiteral): void {
@@ -32,6 +33,17 @@ class UserController {
       .then(() => {
         showAlert({ message: "Avatar was updated successfully", variant: "success" });
         router.go("/");
+      })
+      .catch(errorHandler);
+  }
+
+  public searchUsers(data: ObjectLiteral): void {
+    return userAPI
+      .searchUsers(data)
+      .then((users) => {
+        store.setState({
+          findedUsers: users,
+        });
       })
       .catch(errorHandler);
   }

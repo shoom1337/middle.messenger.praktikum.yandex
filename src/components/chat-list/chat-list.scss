@@ -24,6 +24,11 @@
   }
 
   &__author {
+    font-weight: bold;
+    margin-right: 6px;
+  }
+
+  &__title {
     padding-top: 3px;
     font-size: 13px;
     font-weight: 600;
@@ -37,6 +42,13 @@
     line-height: 15px;
     font-weight: 500;
     color: $chatListMessageColor;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 12px;
   }
 
   &__time {
@@ -60,4 +72,10 @@
     background-color: $chatListUnreadBackgroundColor;
     color: $chatListUnreadColor;
   }
+}
+
+#addChatButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

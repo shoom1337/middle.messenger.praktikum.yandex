@@ -13,5 +13,8 @@ export default `
       <div id="chatMessages"></div>
       <div id="messageForm"></div>
     </section>
+    <div id="chatSettings" class="hidden"></div>
+    <div id="addChatDialog" class="hidden"></div>
+    <div id="addChatUserDialog" class="hidden"></div>
   </div>
 `;

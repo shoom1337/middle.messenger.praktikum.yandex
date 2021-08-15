@@ -14,8 +14,12 @@ class ChatsAPI extends BaseAPI {
     return this.get("/chats", { data: JSON.stringify(data), withCredentials: true });
   }
 
-  public createChat(data: CreateChatProps) {
+  public addChat(data: CreateChatProps) {
     return this.post("/chats", { data: JSON.stringify(data), withCredentials: true });
+  }
+
+  public addChatUsers(data: ObjectLiteral) {
+    return this.put("/chats/users", { data: JSON.stringify(data), withCredentials: true });
   }
 }
 

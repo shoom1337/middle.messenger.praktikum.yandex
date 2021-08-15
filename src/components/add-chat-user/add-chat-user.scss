@@ -1,0 +1,23 @@
+@import '../../colors.scss';
+@import '../../mixins.scss';
+
+.add-chat-user {
+  &__search {
+    @include flexCenter;
+
+    flex-wrap: wrap;
+    justify-content: start;
+    margin-bottom: 30px;
+  }
+
+  &__card {
+    display: block;
+    margin-right: 20px;
+    margin-bottom: 6px;
+    padding: 6px;
+    background-color: $white;
+    border: 1px solid $lightGreen;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}

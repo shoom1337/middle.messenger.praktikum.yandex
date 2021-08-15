@@ -1,5 +1,5 @@
 import avatar from "../../../static/avatar.svg";
-import dots from "../../../static/dots.svg";
+
 export default `
   <div class="chat-header">
     <img src="${avatar}" class="chat-header__avatar">
@@ -11,6 +11,6 @@ export default `
         {{ correspondent.lastVisit }}
       </p>
     </div>
-    <img src="${dots}" class="chat-header__menu">
+    <div id="toggleChatSettingsButton"></div>
   </div>
 `;

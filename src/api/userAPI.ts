@@ -21,6 +21,10 @@ class UserAPI extends BaseAPI {
       withCredentials: true,
     });
   }
+
+  public searchUsers(data: ObjectLiteral) {
+    return this.post("/user/search", { data: JSON.stringify(data), withCredentials: true });
+  }
 }
 
 export default new UserAPI();

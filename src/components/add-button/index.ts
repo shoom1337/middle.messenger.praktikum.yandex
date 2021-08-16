@@ -1,3 +1,1 @@
-import { AddButton, AddButtonProps } from "./add-button";
-
-export { AddButton, AddButtonProps };
+export { AddButton, AddButtonProps } from "./add-button";

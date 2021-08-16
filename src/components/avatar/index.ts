@@ -1,3 +1,1 @@
-import { Avatar, AvatarProps } from "./avatar";
-
-export { Avatar, AvatarProps };
+export { Avatar, AvatarProps } from "./avatar";

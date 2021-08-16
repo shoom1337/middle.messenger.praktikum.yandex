@@ -1,3 +1,1 @@
-import { CloseButton, CloseButtonProps } from "./close-button";
-
-export { CloseButton, CloseButtonProps };
+export { CloseButton, CloseButtonProps } from "./close-button";

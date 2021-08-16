@@ -55,21 +55,21 @@ button {
 .card {
   box-sizing: border-box;
   border-radius: 50px;
-  background: linear-gradient(101.7deg, #b7dae9 0%, #9df5de 100%);
+  background: linear-gradient(101.7deg, $dustBlue 0%, $lightGreen 100%);
   box-shadow: 10px 10px 50px -10px rgba(0, 0, 0, 0.25);
   min-width: 200px;
   padding: 41px 25px;
   margin-bottom: 27px;
 
   &__title {
-    color: $cardTitle;
+    color: $darkGreen;
     text-align: center;
     font-weight: 500;
   }
 }
 
 .blank-layout {
-  background: $blankLayoutBackgroundColor;
+  background: $white;
 
   .link {
     font-size: 24px;
@@ -78,7 +78,7 @@ button {
 }
 
 .gradient-layout {
-  background: linear-gradient(107.56deg, $gradientFrom 0%, $gradientTo 100%);
+  background: linear-gradient(107.56deg, $lightGreen 0%, $dustBlue 100%);
 }
 
 .login-card,

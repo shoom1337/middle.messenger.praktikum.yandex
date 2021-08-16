@@ -4,7 +4,7 @@
 .chat-layout {
   position: relative;
   flex-direction: row;
-  background: linear-gradient(179.98deg, $gradientFrom 0.02%, $gradientTo 99.98%);
+  background: linear-gradient(179.98deg, $lightGreen 0.02%, $dustBlue 99.98%);
   overflow: hidden;
 }
 
@@ -14,7 +14,7 @@
   left: 0;
   height: 100%;
   width: 310px;
-  background: linear-gradient(179.98deg, $gradientFrom 0.02%, $gradientTo 99.98%);
+  background: linear-gradient(179.98deg, $lightGreen 0.02%, $dustBlue 99.98%);
 }
 
 .sidebar {
@@ -39,9 +39,9 @@
     width: 224px;
     height: 32px;
     border: none;
-    background: $searchBackgroundColor;
+    background: $lightGray;
     border-radius: 5px;
-    color: $searchColor;
+    color: $darkGray;
     font-size: 12px;
     line-height: 12px;
     text-align: center;

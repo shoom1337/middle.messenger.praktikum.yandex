@@ -1,3 +1,1 @@
-import { BurgerButton, BurgerButtonProps } from "./burger-button";
-
-export { BurgerButton, BurgerButtonProps };
+export { BurgerButton, BurgerButtonProps } from "./burger-button";

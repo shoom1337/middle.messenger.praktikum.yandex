@@ -1,3 +1,1 @@
-import { ChatSettingsButton, ChatSettingsButtonProps } from "./chat-settings-button";
-
-export { ChatSettingsButton, ChatSettingsButtonProps };
+export { ChatSettingsButton, ChatSettingsButtonProps } from "./chat-settings-button";

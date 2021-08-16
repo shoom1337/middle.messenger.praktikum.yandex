@@ -39,7 +39,7 @@
     font-size: 13px;
     font-weight: 600;
     line-height: 13px;
-    color: $textColor;
+    color: $black;
   }
 
   &__message {
@@ -47,7 +47,7 @@
     font-size: 12px;
     line-height: 15px;
     font-weight: 500;
-    color: $chatListMessageColor;
+    color: $darkGreen;
   }
 
   &__info {
@@ -63,7 +63,7 @@
     margin-bottom: 11px;
     font-size: 9px;
     line-height: 13px;
-    color: $labelColor;
+    color: $darkGray;
   }
 
   &__unread {
@@ -75,8 +75,8 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background-color: $chatListUnreadBackgroundColor;
-    color: $chatListUnreadColor;
+    background-color: $darkGreen;
+    color: $white;
   }
 
   &__unread_ {

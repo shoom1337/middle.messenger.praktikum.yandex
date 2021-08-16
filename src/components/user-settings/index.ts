@@ -1,3 +1,1 @@
-import { UserSettings, UserSettingsProps } from "./user-settings";
-
-export { UserSettings, UserSettingsProps };
+export { UserSettings, UserSettingsProps } from "./user-settings";

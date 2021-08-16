@@ -11,32 +11,30 @@ class ChatsAPI extends BaseAPI {
   }
 
   public getChats(data?: ObjectLiteral) {
-    return this.get("/chats", { data: JSON.stringify(data), withCredentials: true });
+    return this.get("/chats", { data });
   }
 
   public addChat(data: CreateChatProps) {
-    return this.post("/chats", { data: JSON.stringify(data), withCredentials: true });
+    return this.post("/chats", { data });
   }
 
   public addChatUsers(data: ObjectLiteral) {
-    return this.put("/chats/users", { data: JSON.stringify(data), withCredentials: true });
+    return this.put("/chats/users", { data });
   }
 
   public getChatUsers(data: ObjectLiteral) {
     return this.get(`/chats/${data.chatId}/users`, {
       data: JSON.stringify(data),
-      withCredentials: true,
     });
   }
 
   public removeChatUsers(data: ObjectLiteral) {
-    return this.delete("/chats/users", { data: JSON.stringify(data), withCredentials: true });
+    return this.delete("/chats/users", { data });
   }
 
   public getChatToken(data: ObjectLiteral) {
     return this.post(`/chats/token/${data.chatId}`, {
-      data: JSON.stringify(data),
-      withCredentials: true,
+      data,
     });
   }
 }

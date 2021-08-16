@@ -1,3 +1,1 @@
-import { ChatList, ChatListProps } from "./chat-list";
-
-export { ChatList, ChatListProps };
+export { ChatList, ChatListProps } from "./chat-list";

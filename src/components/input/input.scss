@@ -2,7 +2,7 @@
 
 .input-row {
   &__label {
-    color: $textColor;
+    color: $black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -14,13 +14,13 @@
 
   &__input {
     margin-top: 8px;
-    color: $inputColor;
+    color: $darkGreen;
     border: none;
     background-color: transparent;
     font-size: 20px;
     line-height: 20px;
     text-align: right;
-    border-bottom: 1px solid $inputBorderColor;
+    border-bottom: 1px solid $blue;
 
     &:focus {
       outline: none;
@@ -34,7 +34,7 @@
 
 .input {
   &__label {
-    color: $labelColor;
+    color: $darkGray;
     display: flex;
     flex-direction: column;
     font-size: 14px;
@@ -44,20 +44,20 @@
 
   &__input {
     margin-top: 8px;
-    color: $inputColor;
+    color: $darkGreen;
     border: none;
     background-color: transparent;
     font-size: 20px;
     line-height: 20px;
-    border-bottom: 1px solid $inputBorderColor;
+    border-bottom: 1px solid $blue;
 
     &:focus {
       outline: none;
     }
 
     &--error {
-      color: $errorColor;
-      border-bottom: 1px solid $errorColor;
+      color: $red;
+      border-bottom: 1px solid $red;
     }
   }
 
@@ -68,7 +68,7 @@
     right: 0;
     font-size: 14px;
     line-height: 14px;
-    color: $errorColor;
+    color: $red;
   }
 
   &__wrapper {
@@ -81,15 +81,15 @@
     margin: 0 12px;
     border-radius: 30px;
     border: none;
-    background-color: $chatIncomingMessageBackgroundColor;
+    background-color: $lightGray;
     padding: 10px 20px;
     font-size: 12px;
     line-height: 12px;
-    color: $chatMessageColor;
+    color: $darkGreen;
     font-weight: 500;
 
     &::placeholder {
-      color: $chatMessageColor;
+      color: $darkGreen;
       font-weight: 500;
     }
   }

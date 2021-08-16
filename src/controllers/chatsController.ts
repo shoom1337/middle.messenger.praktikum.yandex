@@ -1,5 +1,3 @@
-// chatsAPI.createChat({ title: "chat888" }).then((r) => console.log(r));
-
 import { ObjectLiteral } from "../common/types";
 import chatsAPI, { CreateChatProps } from "../api/chatsAPI";
 import { errorHandler } from "../utils/errorHandler";

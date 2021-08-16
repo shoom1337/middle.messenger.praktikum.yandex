@@ -4,46 +4,18 @@
 
 Самостоятельный проект курса "Миддл-фронтенд разработчик".
 
-На данный момент доступны страницы:
+## Новое во третьем спринте
 
-- [Авторизация](https://relaxed-williams-5a7518.netlify.app/login.html)
-- [Регистрация](https://relaxed-williams-5a7518.netlify.app/register.html)
-- [404](https://relaxed-williams-5a7518.netlify.app/404.html)
-- [5\*\*](https://relaxed-williams-5a7518.netlify.app/500.html)
-- [Редактирование профиля](https://relaxed-williams-5a7518.netlify.app/profile/edit.html)
-- [Смена пароля](https://relaxed-williams-5a7518.netlify.app/profile/password.html)
-- [Загрузка аватара](https://relaxed-williams-5a7518.netlify.app/profile/avatar.html)
-- [Страница чата](https://relaxed-williams-5a7518.netlify.app/)
+### Роутер
+- Внедрен и настроен роутер
 
-## Новое во втором спринте
-### Общее
-- Внедрён TS
-- Настроены линтеры: ESLint, StyleLint
-- Добавлен .editconfig
+### Чат
+- Реализован функционал работы с данными пользователя
+- Функционал создания чата, добавления и удаления в него пользователя
+- Настроен обмен сообщениями через websocket
 
-### Шаблонизатор
-- Добавлен функционал работы с циклом:
-    ```
-    <each {{message in messageList}}>
-      <div class="chat-message chat-message_{{ message.style }}">
-        <img src="${avatar}" class="chat-message__avatar"/>
-        <p class="chat-message__message chat-message__message_{{ message.style }}">
-          {{ message.text }}
-        </p>
-      </div>
-    </each>
-    ```
-### Блок и EventBus
-- Реализован компонентный подход с класса Block из теории 2 спринта
-- Жизненный цикл внутри Block использует EventBus
-- Наследуясь от блока реализованы следующие компоненты: Input, Link, Button и др.
-
-### Формы
-- Все формы и поля ввода проходят валидацию
-- Отправка валидной формы выводит в консоль объект со всеми полями и значениями
-
-### Fetch
-- Реализован и типизирован класс Fetch(HTTPTransport): src/utils/fetch.js
+### Тесты
+- Написаны первые тесты для роутера, шаблонизатора, блока и транспорта
 
 ## Установка
 
@@ -51,7 +23,7 @@
 ```
 git clone https://github.com/shoom1337/middle.messenger.praktikum.yandex.git
 cd middle.messenger.praktikum.yandex
-git checkout sprint_2
+git checkout sprint_3
 npm install
 npm run start
 ```
@@ -61,10 +33,26 @@ npm run start
 
 - `npm run build`
 
-## Макет
-
-Шаблоны страниц в [фигме](https://www.figma.com/file/Xa3tPYf1tIwoPKQcONZEqG/Chatic?node-id=0%3A1)
-
 ## Production в Netlify
 
 Собранное приложение доступно по [ссылке](https://relaxed-williams-5a7518.netlify.app/).
+
+
+## TODO
+### Блок
+- Перейти с id на uuid
+- Убрать лишнюю вложенность div в div
+- Исправить работу с событиями
+
+### Типы
+- Типизировать сущности вместо использования ObjectLiteral
+
+### Шаблонизатор
+- Добавить <if> для отображения контента по условию
+
+### Общее
+- Дореализовать оставшийся функционал мессенджера:
+    - Удаление чата
+    - Файлы в сообщениях
+    - Оживить список чатов
+    - Добавить стикеры/смайлы

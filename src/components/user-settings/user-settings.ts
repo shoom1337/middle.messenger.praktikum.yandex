@@ -12,6 +12,7 @@ import "./user-settings.scss";
 import { store } from "../../store";
 import fillUserAvatar from "../../utils/fillUserAvatar";
 import showHide from "../../utils/showHide";
+import defaultState from "../../defaultState";
 
 type UserSettingsProps = {
   title: string;
@@ -31,6 +32,7 @@ class UserSettings extends Block {
       text: "Выйти",
       events: {
         click: () => {
+          store.setState({ ...defaultState });
           authController.logout();
         },
       },

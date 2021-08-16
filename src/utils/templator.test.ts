@@ -14,7 +14,7 @@ describe("Templator", () => {
       const template = "<div>{{text}}</div>";
       const templator = new Templator(template);
       const data = { text1: 123 };
-      assert.equal(templator.compile(data), "<div>undefined</div>");
+      assert.equal(templator.compile(data), "<div></div>");
     });
   });
 

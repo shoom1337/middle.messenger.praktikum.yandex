@@ -1,14 +1,19 @@
 import Router from "./router";
-import Block from "../../components/block";
+import Page from "../../components/page";
 import { expect } from "chai";
 
 describe("Router", () => {
   const router = new Router("#app");
-  class Index extends Block {}
-  class Login extends Block {}
-  class Register extends Block {}
+  class Index extends Page {}
+  class Login extends Page {}
+  class Register extends Page {}
 
-  router.use("/", Index).use("/login", Login).use("/register", Register).start();
+  router
+    .use("/", Index)
+    .use("/login", Login)
+    .use("/register", Register)
+    .setPublicPaths(["/", "/login", "/register"], () => true)
+    .start();
   describe("History", () => {
     it("navigate 3 times", () => {
       router.go("/");
@@ -25,11 +30,11 @@ describe("Router", () => {
 
   describe("Route", () => {
     it("get route", () => {
-      expect(router.getRoute("/register")?._pathname).to.eq("/register");
+      expect(router.getRoute("/register")?.pathname).to.eq("/register");
     });
 
     it("get undefined route", () => {
-      expect(router.getRoute("/undefined-route")?._pathname).to.undefined;
+      expect(router.getRoute("/undefined-route")?.pathname).to.undefined;
     });
 
     it("route registered", () => {

@@ -45,11 +45,44 @@ class ChatsController {
         showAlert({ message: "Users added to chat", variant: "success" });
         store.setState({
           showAddChatUserDialog: false,
-          findedUsers: false,
+          findedUsers: [],
         });
         router.go("/");
       })
       .catch(errorHandler);
+  }
+
+  public getChatUsers(data: ObjectLiteral) {
+    return chatsAPI
+      .getChatUsers(data)
+      .then((users) => {
+        store.setState({
+          chatUsers: users,
+        });
+      })
+      .catch(errorHandler);
+  }
+
+  public removeChatUsers(data: ObjectLiteral) {
+    return chatsAPI
+      .removeChatUsers(data)
+      .then(() => {
+        showAlert({ message: "Users removes", variant: "success" });
+        store.setState({
+          showRemoveChatUserDialog: false,
+          chatUsers: [],
+        });
+        router.go("/");
+      })
+      .catch(errorHandler);
+  }
+
+  public getChatToken(data: ObjectLiteral) {
+    return chatsAPI.getChatToken(data).then(({ token }) => {
+      store.setState({
+        token,
+      });
+    });
   }
 }
 

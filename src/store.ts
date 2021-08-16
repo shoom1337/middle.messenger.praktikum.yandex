@@ -1,12 +1,4 @@
 import Store from "./utils/store";
+import defaultState from "./defaultState";
 
-export const store = new Store({
-  user: {},
-  showSettings: false,
-  chatList: [],
-  showAddChatDialog: false,
-  showAddChatUserDialog: false,
-  showChatSettings: false,
-  currentChatId: 0,
-  findedUsers: [],
-});
+export const store = new Store({ ...defaultState });

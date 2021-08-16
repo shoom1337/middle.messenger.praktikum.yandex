@@ -48,7 +48,7 @@ class Store {
   }
 
   //@ts-ignore
-  public storeDidMount() {}
+  public storeDidMount(): void {}
 
   private _storeDidUpdate(oldState: ObjectLiteral, newState: ObjectLiteral) {
     const response = this.storeDidUpdate(oldState, newState);

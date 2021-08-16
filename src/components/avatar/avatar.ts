@@ -13,13 +13,13 @@ class Avatar extends Block {
     super("div", props, tmpl);
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     if (!this.props.src) {
       this.props.src = avatar;
     }
   }
 
-  componentDidUpdate(oldProps, newProps) {
+  componentDidUpdate(): boolean {
     return this.props.src !== undefined;
   }
 }

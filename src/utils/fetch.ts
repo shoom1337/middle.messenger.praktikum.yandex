@@ -4,6 +4,8 @@ enum METHODS {
   POST = "POST",
   DELETE = "DELETE",
 }
+const ACCEPTED_DELTA = 1000;
+const ACCEPTED_COUNT = 5;
 
 type RequestOptions = {
   method?: METHODS;
@@ -14,8 +16,20 @@ type RequestOptions = {
 };
 
 import { ObjectLiteral } from "../common/types";
+import { showAlert } from "./showAlert";
 
 class Fetch {
+  static __instance: Fetch;
+  private __lastRequestTime: Date | number = 0;
+  private __requestCounter = 0;
+
+  constructor() {
+    if (Fetch.__instance) {
+      return Fetch.__instance;
+    }
+
+    Fetch.__instance = this;
+  }
   get = (
     url: string,
     options: { data?: ObjectLiteral; headers?: ObjectLiteral },
@@ -48,6 +62,22 @@ class Fetch {
     } = options;
 
     return new Promise((resolve, reject) => {
+      const currentTime = new Date();
+      const delta = Number(currentTime) - Number(this.__lastRequestTime);
+      const isFrequently = delta < ACCEPTED_DELTA;
+      const isCountDanger = this.__requestCounter >= ACCEPTED_COUNT;
+
+      if (isFrequently && isCountDanger) {
+        showAlert({
+          message: "DOS?",
+          variant: "error",
+        });
+        this.__requestCounter++;
+        return;
+      } else {
+        this.__lastRequestTime = currentTime;
+        this.__requestCounter = 0;
+      }
       //@ts-ignore
       const xhr = new window.XMLHttpRequest();
 
@@ -73,7 +103,7 @@ class Fetch {
       xhr.onabort = () => reject(xhr);
       xhr.onerror = () => reject(xhr);
       xhr.ontimeout = () => reject(xhr);
-
+      //@ts-ignore
       xhr.send(data);
     });
   };

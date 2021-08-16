@@ -1,12 +1,11 @@
 import Block from "./block";
-import { PageProps } from "../common/types";
 
 const TITLE_POSTFIX = "Turbo messenger";
 
 class Page extends Block {
   public title: string;
 
-  constructor(props: PageProps, tmpl: string) {
+  constructor(props = { title: "default page" }, tmpl = "<div>default page</div>") {
     super("main", props, tmpl);
 
     this.title = props.title;

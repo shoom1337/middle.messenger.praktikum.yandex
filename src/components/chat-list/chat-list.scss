@@ -8,9 +8,15 @@
   &__item {
     display: flex;
     flex-direction: row;
+    padding-top: 6px;
     padding-left: 15px;
     cursor: pointer;
-    margin-bottom: 25px;
+    padding-bottom: 25px;
+    margin: 6px 0;
+
+    &_active {
+      background-color: $white;
+    }
   }
 
   &__item-content {
@@ -71,6 +77,10 @@
     border-radius: 50%;
     background-color: $chatListUnreadBackgroundColor;
     color: $chatListUnreadColor;
+  }
+
+  &__unread_ {
+    display: none;
   }
 }
 

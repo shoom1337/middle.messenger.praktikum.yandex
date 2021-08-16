@@ -5,6 +5,7 @@ import "./chat-settings.scss";
 import { store } from "../../store";
 import showHide from "../../utils/showHide";
 import { ChatSettingsButton } from "../chat-settings-button/chat-settings-button";
+import chatsController from "../../controllers/chatsController";
 
 type ChatSettingsProps = {
   rootID: string;
@@ -31,7 +32,12 @@ class ChatSettings extends Block {
       text: "Удалить пользователя из чата",
       events: {
         click() {
-          console.log("remove add chat user dialog");
+          chatsController.getChatUsers({
+            chatId: store.state.currentChatId,
+          });
+          store.setState({
+            showRemoveChatUserDialog: true,
+          });
         },
       },
     });

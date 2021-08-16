@@ -16,5 +16,6 @@ export default `
     <div id="chatSettings" class="hidden"></div>
     <div id="addChatDialog" class="hidden"></div>
     <div id="addChatUserDialog" class="hidden"></div>
+    <div id="removeChatUserDialog" class="hidden"></div>
   </div>
 `;

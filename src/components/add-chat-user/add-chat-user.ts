@@ -54,7 +54,7 @@ class AddChatUser extends Block {
           }
           chatsController.addChatUsers({
             users: ids,
-            chatId: 355,
+            chatId: store.state.currentChatId,
           });
         },
       },

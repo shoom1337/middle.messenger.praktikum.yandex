@@ -3,7 +3,7 @@ import tmpl from "./chat.tmpl";
 
 import { ChatList } from "../../components/chat-list";
 import { ChatHeader, ChatHeaderProps } from "../../components/chat-header";
-import { ChatMessages, ChatMessagesProps } from "../../components/chat-messages";
+import { ChatMessages } from "../../components/chat-messages";
 import { MessageForm, MessageFormProps } from "../../components/message-form";
 import { UserSettings, UserSettingsProps } from "../../components/user-settings/user-settings";
 import { BurgerButton, BurgerButtonProps } from "../../components/burger-button/burger-button";
@@ -19,6 +19,9 @@ import chatsController from "../../controllers/chatsController";
 import { store } from "../../store";
 import { ChatSettings } from "../../components/chat-settings/chat-settings";
 import { AddChatUser } from "../../components/add-chat-user/add-chat-user";
+import { RemoveChatUser } from "../../components/remove-chat-user/remove-chat-user";
+import messagesController from "../../controllers/messagesController";
+import sanitize from "../../utils/sanitize";
 
 class Chat extends Page {
   constructor() {
@@ -48,33 +51,7 @@ class Chat extends Page {
 
     const chatList = new ChatList();
 
-    const chatMessagesProps: ChatMessagesProps = {
-      messageList: [
-        {
-          text: "<a href='/login'>Страница логина</a><br><a href='/register'>Страница регистрации</a>",
-          style: "incoming",
-        },
-        {
-          text: "Профиль:<br><a href='/edit'>Редактирование</a><br><a href='/password'>Смена пароля</a><br><a href='/avatar'>Смена аватара</a>",
-          style: "outgoing",
-        },
-        { text: "Есть над чем задуматься: зима близко", style: "incoming" },
-        {
-          text: "Повседневная практика показывает, что базовый вектор развития, а также свежий взгляд на привычные вещи - безусловно открывает новые горизонты для укрепления моральных ценностей. Являясь всего лишь частью общей картины, активно развивающиеся страны третьего мира представляют собой не что иное, как квинтэссенцию победы маркетинга над разумом и должны быть объявлены нарушающими общечеловеческие нормы этики и морали.",
-          style: "outgoing",
-        },
-        {
-          text: "Прототип нового сервиса - это как старческий скрип Амстердама",
-          style: "incoming",
-        },
-        { text: "Очевидцы сообщают, что слышали песнь светлого будущего", style: "outgoing" },
-        {
-          text: "Но действия представителей оппозиции функционально разнесены на независимые элементы. В целом, конечно, высокотехнологичная концепция общественного уклада играет определяющее значение для системы обучения кадров, соответствующей насущным потребностям.",
-          style: "incoming",
-        },
-      ],
-    };
-    const chatMessages = new ChatMessages(chatMessagesProps);
+    const chatMessages = new ChatMessages();
 
     const chatHeaderProps: ChatHeaderProps = {
       correspondent: {
@@ -91,6 +68,11 @@ class Chat extends Page {
     const addChatUserDialog = new AddChatUser({
       title: "Добавить пользователя",
       rootID: "addChatUserDialog",
+    });
+
+    const removeChatUserDialog = new RemoveChatUser({
+      title: "Удалить пользователя",
+      rootID: "removeChatUserDialog",
     });
 
     const messageFormInputProps: InputProps = {
@@ -111,23 +93,31 @@ class Chat extends Page {
     };
     const messageFormInput = new Input(messageFormInputProps);
 
+    function send(e: Event) {
+      e.preventDefault();
+
+      let isFormValid = true;
+
+      messageFormInput.validate();
+      if (!messageFormInput.isValid) {
+        isFormValid = false;
+      }
+      if (isFormValid) {
+        messagesController.send(sanitize(messageFormInput.getValue()));
+        messageFormInput.setProps({
+          value: "",
+        });
+      }
+    }
+
     const messageFormProps: MessageFormProps = {
       components: { messageFormInput },
       events: {
-        submit: (e: Event) => {
-          e.preventDefault();
-
-          let isFormValid = true;
-
-          messageFormInput.validate();
-          if (!messageFormInput.isValid) {
-            isFormValid = false;
-          }
-          if (isFormValid) {
-            const form: { [key: string]: string } = {
-              message: messageFormInput.getValue(),
-            };
-            console.log(form);
+        submit: send,
+        keyup: (e: Event) => {
+          //@ts-ignore
+          if (e.keyCode === 13) {
+            send(e);
           }
         },
       },
@@ -144,6 +134,7 @@ class Chat extends Page {
         chatSettings,
         chatMessages,
         addChatUserDialog,
+        removeChatUserDialog,
         messageForm,
       },
       title: "Чат",

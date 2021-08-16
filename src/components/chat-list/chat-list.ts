@@ -6,6 +6,24 @@ import { store } from "../../store";
 
 import "./chat-list.scss";
 
+function chatSelected() {
+  const list = document.querySelectorAll(".chat-list__item");
+  for (const item of list) {
+    const chatId = item.dataset.chatId;
+    item.classList.remove("chat-list__item_active");
+
+    item.addEventListener("click", () => {
+      store.setState({
+        currentChatId: chatId,
+      });
+    });
+
+    if (chatId === store.state.currentChatId) {
+      item.classList.add("chat-list__item_active");
+    }
+  }
+}
+
 type ChatListProps = {
   chatList: {
     name: string;
@@ -18,7 +36,7 @@ type ChatListProps = {
 
 class ChatList extends Block {
   constructor(props?: ChatListProps) {
-    const addChatButtonProps = {
+    const addChatButtonProps: AddButtonProps = {
       events: {
         click() {
           store.setState({
@@ -46,7 +64,7 @@ class ChatList extends Block {
       this.setProps({
         chatList,
       });
-      console.log(chatList);
+      chatSelected();
     });
   }
 }

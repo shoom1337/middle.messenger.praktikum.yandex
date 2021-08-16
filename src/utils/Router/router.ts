@@ -1,4 +1,4 @@
-import Block from "../../components/block";
+import Page from "../../components/page";
 import Route from "./route";
 
 const NOT_FOUND_PATH = "/404";
@@ -13,7 +13,7 @@ class Router {
   private _rootQuery!: string;
   private _registeredPaths!: string[];
   private _checkAuth!: () => void;
-  private _publicPaths: string[];
+  private _publicPaths = ["/login", "/register"];
 
   constructor(rootQuery: string) {
     if (Router.__instance) {
@@ -28,7 +28,7 @@ class Router {
     Router.__instance = this;
   }
 
-  public use(pathname: string, block: typeof Block): Router {
+  public use(pathname: string, block: typeof Page): Router {
     const route = new Route(pathname, block, { rootQuery: this._rootQuery });
 
     this.routes.push(route);

@@ -37,6 +37,7 @@ button {
 
 .layout {
   @include flexCenter;
+
   position: relative;
   height: 100%;
   flex-direction: column;
@@ -91,6 +92,7 @@ button {
 
 .center {
   @include flexCenter;
+
   flex-direction: row;
 }
 
@@ -113,7 +115,6 @@ button {
   width: 24px;
   height: 18px;
 }
-
 
 .modal {
   &__wrapper {

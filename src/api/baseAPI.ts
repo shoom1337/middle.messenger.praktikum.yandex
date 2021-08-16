@@ -45,6 +45,15 @@ class BaseAPI {
       .then(this._parseResponse);
   }
 
+  public delete(path: string, options: ObjectLiteral): ObjectLiteral {
+    return this._fetch
+      .delete(`${this._baseURL}${path}`, {
+        ...options,
+        headers: defaultHeaders,
+      })
+      .then(this._parseResponse);
+  }
+
   private _parseResponse(res: XMLHttpRequest) {
     if (res.response === "OK") {
       return {

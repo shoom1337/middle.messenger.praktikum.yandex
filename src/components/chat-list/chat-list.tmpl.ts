@@ -4,7 +4,7 @@ export default `
   <div>
     <ul class="chat-list">
       <each {{item in chatList}}>
-        <li class="chat-list__item">
+        <li id="chat-{{item.id}}" class="chat-list__item" data-chat-id={{item.id}}>
           <img src="${avatar}" class="chat-list__avatar"/>
           <div class="chat-list__item-content">
             <p class="chat-list__title">
@@ -21,7 +21,7 @@ export default `
             <p class="chat-list__time">
               {{ item.lastMessage.time }}
             </p>
-            <span class="chat-list__unread">
+            <span class="chat-list__unread chat-list__unread_{{item.unreadCount}}">
               {{ item.unreadCount }}
             </span>
           </div>

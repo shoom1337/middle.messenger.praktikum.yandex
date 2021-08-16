@@ -28,7 +28,6 @@
     margin-bottom: 60px;
   }
 
-
   &__user-data {
     list-style: none;
     margin: 0;
@@ -50,7 +49,7 @@
   }
 
   &__property-value {
-    color: $darkGreen
+    color: $darkGreen;
   }
 
   &__link {
@@ -65,4 +64,3 @@
   display: block;
   margin: 0 auto;
 }
-

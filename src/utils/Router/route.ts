@@ -34,6 +34,7 @@ class Route {
   }
 
   public render(): void {
+    //@ts-ignore
     this._block = new this._blockClass();
     render(this._props.rootQuery, this._block);
   }

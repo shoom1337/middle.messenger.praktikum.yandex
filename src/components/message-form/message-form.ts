@@ -10,6 +10,7 @@ type MessageFormProps = {
   };
   events?: {
     submit: (event: Event) => void;
+    keyup?: (event: Event) => void;
   };
 };
 

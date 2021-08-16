@@ -1,5 +1,3 @@
-import burger from "../../../static/burger.svg";
-
 export default `
   <section class="settinigs settings__wrapper">
     <div class="settings__header">

@@ -1,0 +1,15 @@
+@import '../../colors.scss';
+@import '../../mixins.scss';
+
+.remove-chat-user {
+  &__card {
+    display: block;
+    margin-right: 20px;
+    margin-bottom: 6px;
+    padding: 6px;
+    background-color: $white;
+    border: 1px solid $lightGreen;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+}

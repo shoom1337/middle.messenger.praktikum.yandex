@@ -19,7 +19,7 @@ function parseMessage(
   };
 }
 
-export default function (list: ObjectLiteral[]) {
+export default function (list: ObjectLiteral[]): ObjectLiteral {
   return list.reduce((acc, item) => {
     const result = {
       id: item.id,

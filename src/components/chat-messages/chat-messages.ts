@@ -21,6 +21,11 @@ class ChatMessages extends Block {
         messagesController.close();
         messagesController.connect();
       }
+      const list = document.getElementById("chat-messages");
+
+      if (list?.scrollHeight) {
+        document.getElementById("chatMessages").scrollTo(0, list.scrollHeight);
+      }
     });
   }
 }

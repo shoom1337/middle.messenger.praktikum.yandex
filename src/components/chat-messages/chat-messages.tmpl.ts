@@ -1,7 +1,7 @@
 import avatar from "../../../static/avatar.svg";
 
 export default `
-  <div class="chat-messages">
+  <div class="chat-messages" id="chat-messages">
     <each {{message in messages}}>
       <div class="chat-message chat-message_{{ message.style }}">
         <img src="${avatar}" class="chat-message__avatar"/>

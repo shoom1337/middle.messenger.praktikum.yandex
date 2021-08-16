@@ -1,7 +1,6 @@
 import chatsAPI from "../api/chatsAPI";
 import config from "../config";
 import { store } from "../store";
-import { showAlert } from "../utils/showAlert";
 
 class MessagesController {
   private _ws: WebSocket;
@@ -53,7 +52,7 @@ class MessagesController {
   }
 
   private _handleError(event) {
-    showAlert({ message: event.message, variant: "error" });
+    console.log("socker error: ", event);
   }
 
   private _handleClose() {}

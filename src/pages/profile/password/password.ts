@@ -1,4 +1,4 @@
-import Block from "../../../components/block";
+import Page from "../../../components/page";
 import { Button, ButtonProps } from "../../../components/button";
 import { Input, InputProps } from "../../../components/input";
 import { Avatar, AvatarProps } from "../../../components/avatar";
@@ -6,23 +6,16 @@ import { PanelLink, PanelLinkProps } from "../../../components/panel-link";
 import tmpl from "./password.tmpl";
 import { INPUT_ERRORS } from "../../../common/messages";
 
-import "../../../global.scss";
+import { PageProps } from "../../../common/types";
 
-type ChangePasswordProps = {
-  components: {
-    avatar: Avatar;
-    prevPasswordInput: Input;
-    newPasswordInput: Input;
-    newPasswordConfirmInput: Input;
-    button: Button;
-    panelLink: PanelLink;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
+import { store } from "../../../store";
+import userController from "../../../controllers/userController";
+import { getFormData } from "../../../utils/getFormData";
+import fillUserAvatar from "../../../utils/fillUserAvatar";
 
-class ChangePassword extends Block {
+class ChangePassword extends Page {
+  private avatar;
+
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
@@ -30,7 +23,7 @@ class ChangePassword extends Block {
     const prevPasswordInputProps: InputProps = {
       label: "Старый пароль",
       type: "password",
-      name: "prev-password",
+      name: "oldPassword",
       variant: "row",
       events: {
         focus() {
@@ -48,7 +41,7 @@ class ChangePassword extends Block {
     const newPasswordInputProps: InputProps = {
       label: "Новый пароль",
       type: "password",
-      name: "password",
+      name: "newPassword",
       variant: "row",
       error: INPUT_ERRORS.PASSWORD,
       events: {
@@ -99,7 +92,8 @@ class ChangePassword extends Block {
       newPasswordConfirmInput,
     };
 
-    const changePasswordProps: ChangePasswordProps = {
+    const changePasswordProps: PageProps = {
+      title: "Смена пароля",
       components: {
         ...fields,
         avatar,
@@ -120,17 +114,21 @@ class ChangePassword extends Block {
           });
 
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const data = getFormData(document.forms[0], ["oldPassword", "newPassword"]);
+            userController.updatePassword(data);
           }
         },
       },
     };
-    super("main", changePasswordProps, tmpl);
+    super(changePasswordProps, tmpl);
+
+    this.avatar = avatar;
+  }
+
+  componentDidMount(): void {
+    store.subscribe((state) => {
+      fillUserAvatar(state.user.avatar, this.avatar);
+    });
   }
 }
 export default ChangePassword;

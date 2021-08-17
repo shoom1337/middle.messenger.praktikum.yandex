@@ -1,26 +1,16 @@
-import Block from "../../components/block";
+import Page from "../../components/page";
 import { Button, ButtonProps } from "../../components/button";
 import { Input, InputProps } from "../../components/input";
 import { Link, LinkProps } from "../../components/link";
-import { INPUT_ERRORS } from "../../common/messages";
 import tmpl from "./login.tmpl";
+import { INPUT_ERRORS } from "../../common/messages";
 
-import "../../global.scss";
+import { PageProps } from "../../common/types";
+import { getFormData } from "../../utils/getFormData";
 
-type LoginProps = {
-  title: string;
-  components: {
-    loginInput: Input;
-    passwordInput: Input;
-    loginButton: Button;
-    link: Link;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
+import authController from "../../controllers/authController";
 
-class Login extends Block {
+class Login extends Page {
   constructor() {
     const loginInputProps: InputProps = {
       label: "Логин",
@@ -58,20 +48,23 @@ class Login extends Block {
     const passwordInput = new Input(passwordInputProps);
 
     const linkProps: LinkProps = {
-      href: "/register.html",
+      href: "/register",
       text: "Нет аккаунта?",
     };
     const link = new Link(linkProps);
 
     const buttonProps: ButtonProps = {
-      text: "Авторизоваться",
+      text: "Войти",
     };
 
     const loginButton = new Button(buttonProps);
 
-    const fields = { loginInput, passwordInput };
+    const fields = {
+      loginInput,
+      passwordInput,
+    };
 
-    const loginProps: LoginProps = {
+    const loginProps: PageProps = {
       title: "Вход",
       components: {
         ...fields,
@@ -92,17 +85,14 @@ class Login extends Block {
           });
 
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const formData = getFormData(document.forms[0]);
+
+            authController.login(formData);
           }
         },
       },
     };
-    super("main", loginProps, tmpl);
+    super(loginProps, tmpl);
   }
 }
 export default Login;

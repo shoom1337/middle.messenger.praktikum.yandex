@@ -8,9 +8,15 @@
   &__item {
     display: flex;
     flex-direction: row;
+    padding-top: 6px;
     padding-left: 15px;
     cursor: pointer;
-    margin-bottom: 25px;
+    padding-bottom: 25px;
+    margin: 6px 0;
+
+    &_active {
+      background-color: $white;
+    }
   }
 
   &__item-content {
@@ -24,11 +30,16 @@
   }
 
   &__author {
+    font-weight: bold;
+    margin-right: 6px;
+  }
+
+  &__title {
     padding-top: 3px;
     font-size: 13px;
     font-weight: 600;
     line-height: 13px;
-    color: $textColor;
+    color: $black;
   }
 
   &__message {
@@ -36,7 +47,14 @@
     font-size: 12px;
     line-height: 15px;
     font-weight: 500;
-    color: $chatListMessageColor;
+    color: $darkGreen;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 12px;
   }
 
   &__time {
@@ -45,7 +63,7 @@
     margin-bottom: 11px;
     font-size: 9px;
     line-height: 13px;
-    color: $labelColor;
+    color: $darkGray;
   }
 
   &__unread {
@@ -57,7 +75,17 @@
     height: 20px;
     width: 20px;
     border-radius: 50%;
-    background-color: $chatListUnreadBackgroundColor;
-    color: $chatListUnreadColor;
+    background-color: $darkGreen;
+    color: $white;
   }
+
+  &__unread_ {
+    display: none;
+  }
+}
+
+#addChatButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

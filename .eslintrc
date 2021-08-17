@@ -14,8 +14,10 @@
     "rules": {
       "quotes": [1, "double", { "allowTemplateLiterals": true }],
       "semi": [1, "always"],
+      "no-console": ["warn"],
       "@typescript-eslint/ban-ts-comment": "off",
       "@typescript-eslint/no-explicit-any": "off",
-      "@typescript-eslint/no-this-alias": "off"
+      "@typescript-eslint/no-this-alias": "off",
+      "@typescript-eslint/no-empty-function": ["off"]
     }
   }

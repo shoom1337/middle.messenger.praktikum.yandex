@@ -1,9 +1,20 @@
+@import '../../mixins.scss';
 @import '../../colors.scss';
 
 .chat-layout {
+  position: relative;
   flex-direction: row;
-  background: linear-gradient(179.98deg, $gradientFrom 0.02%, $gradientTo 99.98%);
+  background: linear-gradient(179.98deg, $lightGreen 0.02%, $dustBlue 99.98%);
   overflow: hidden;
+}
+
+#userSettings {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 310px;
+  background: linear-gradient(179.98deg, $lightGreen 0.02%, $dustBlue 99.98%);
 }
 
 .sidebar {
@@ -23,19 +34,14 @@
     margin-bottom: 14px;
   }
 
-  &__menu-icon {
-    width: 16px;
-    height: 12px;
-  }
-
   &__search {
     box-sizing: border-box;
     width: 224px;
     height: 32px;
     border: none;
-    background: $searchBackgroundColor;
+    background: $lightGray;
     border-radius: 5px;
-    color: $searchColor;
+    color: $darkGray;
     font-size: 12px;
     line-height: 12px;
     text-align: center;
@@ -57,4 +63,20 @@
 
 #messageFormInput {
   flex-grow: 1;
+}
+
+#addChatDialog,
+#addChatUserDialog,
+#removeChatUserDialog {
+  @include flexCenter;
+  @include modal;
+}
+
+#chatSettings {
+  @include flexCenter;
+
+  position: absolute;
+  top: 57px;
+  right: 0;
+  z-index: 1000;
 }

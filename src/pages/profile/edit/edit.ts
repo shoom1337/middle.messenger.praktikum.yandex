@@ -1,4 +1,4 @@
-import Block from "../../../components/block";
+import Page from "../../../components/page";
 import { Button, ButtonProps } from "../../../components/button";
 import { Input, InputProps } from "../../../components/input";
 import { Avatar, AvatarProps } from "../../../components/avatar";
@@ -6,26 +6,20 @@ import { PanelLink, PanelLinkProps } from "../../../components/panel-link";
 import tmpl from "./edit.tmpl";
 import { INPUT_ERRORS } from "../../../common/messages";
 
-import "../../../global.scss";
+import { PageProps } from "../../../common/types";
 
-type EditProps = {
-  components: {
-    avatar: Avatar;
-    emailInput: Input;
-    loginInput: Input;
-    firstNameInput: Input;
-    secondNameInput: Input;
-    displayNameInput: Input;
-    phoneInput: Input;
-    button: Button;
-    panelLink: PanelLink;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
+import { store } from "../../../store";
+import keysToCamelCase from "../../../utils/keysToCamelCase";
+import fillFields from "../../../utils/fillFields";
+import fillUserAvatar from "../../../utils/fillUserAvatar";
 
-class EditProfile extends Block {
+import userController from "../../../controllers/userController";
+import { getFormData } from "../../../utils/getFormData";
+
+class EditProfile extends Page {
+  private fields;
+  private avatar;
+
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
@@ -157,7 +151,8 @@ class EditProfile extends Block {
       displayNameInput,
     };
 
-    const editProps: EditProps = {
+    const editProps: PageProps = {
+      title: "Редактирование профиля",
       components: {
         ...fields,
         avatar,
@@ -178,17 +173,29 @@ class EditProfile extends Block {
           });
 
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const data = getFormData(document.forms[0]);
+
+            userController.updateProfile(data);
           }
         },
       },
     };
-    super("main", editProps, tmpl);
+
+    super(editProps, tmpl);
+
+    this.fields = fields;
+
+    this.avatar = avatar;
+  }
+
+  componentDidMount(): void {
+    store.subscribe((state) => {
+      fillFields(keysToCamelCase(state.user), this.fields);
+      fillUserAvatar(state.user.avatar, this.avatar);
+      // this.props.ChooseAvatar.props.src = state.currentUser?.avatar
+      //   ? env.HOST_RESOURCES + state.currentUser?.avatar
+      //   : defaultAvatar;
+    });
   }
 }
 export default EditProfile;

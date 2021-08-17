@@ -1,4 +1,4 @@
-import Block from "../../../components/block";
+import Page from "../../../components/page";
 import { Button, ButtonProps } from "../../../components/button";
 import { Input, InputProps } from "../../../components/input";
 import { Avatar, AvatarProps } from "../../../components/avatar";
@@ -7,28 +7,23 @@ import tmpl from "./avatar.tmpl";
 
 import { INPUT_ERRORS } from "../../../common/messages";
 
-import "../../../global.scss";
+import { PageProps } from "../../../common/types";
 
-type changeAvatarProps = {
-  components: {
-    avatar: Avatar;
-    avatarInput: Input;
-    button: Button;
-    panelLink: PanelLink;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
+import { store } from "../../../store";
+import userController from "../../../controllers/userController";
 
-class ChangeAvatar extends Block {
+import fillUserAvatar from "../../../utils/fillUserAvatar";
+
+class ChangeAvatar extends Page {
+  private avatar;
+
   constructor() {
     const avatarProps: AvatarProps = {};
     const avatar = new Avatar(avatarProps);
 
     const avatarInputProps: InputProps = {
       label: "Аватар",
-      name: "avatar",
+      name: "file",
       variant: "row",
       type: "file",
       error: INPUT_ERRORS.AVATAR,
@@ -55,7 +50,8 @@ class ChangeAvatar extends Block {
     };
     const panelLink = new PanelLink(panelLinkProps);
 
-    const changeAvatarProps: changeAvatarProps = {
+    const changeAvatarProps: PageProps = {
+      title: "Смена аватара",
       components: {
         avatar,
         avatarInput,
@@ -73,17 +69,23 @@ class ChangeAvatar extends Block {
             isFormValid = false;
           }
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const formData = new FormData();
+            formData.append("avatar", avatarInput.element.querySelector("input").files[0]);
+
+            userController.updateAvatar(formData);
           }
         },
       },
     };
-    super("main", changeAvatarProps, tmpl);
+    super(changeAvatarProps, tmpl);
+
+    this.avatar = avatar;
+  }
+
+  componentDidMount(): void {
+    store.subscribe((state) => {
+      fillUserAvatar(state.user.avatar, this.avatar);
+    });
   }
 }
 export default ChangeAvatar;

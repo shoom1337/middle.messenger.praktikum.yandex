@@ -1,19 +1,11 @@
-import Block from "../../../components/block";
+import Page from "../../../components/page";
 import { Link, LinkProps } from "../../../components/link";
 import { Error, ErrorProps } from "../../../components/error";
 import tmpl from "../error.tmpl";
 
-import "../../../global.scss";
-import "../error.scss";
+import { PageProps } from "../../../common/types";
 
-type ErrorPageProps = {
-  components: {
-    error: Error;
-    link: Link;
-  };
-};
-
-class Page500 extends Block {
+class Page500 extends Page {
   constructor() {
     const errorProps: ErrorProps = {
       message: "Кто-то что-то нажал, а мы чиним",
@@ -27,14 +19,15 @@ class Page500 extends Block {
     };
     const link = new Link(linkProps);
 
-    const errorPageProps: ErrorPageProps = {
+    const errorPageProps: PageProps = {
       components: {
         error,
         link,
       },
+      title: "Внутренняя ошибка",
     };
 
-    super("main", errorPageProps, tmpl);
+    super(errorPageProps, tmpl);
   }
 }
 export default Page500;

@@ -5,7 +5,12 @@ export default (object: { [key: string]: string }, path: string): string => {
     .filter((item) => item);
   let value: any = object;
   keys.forEach((element: string) => {
-    value = value[element];
+    if (value[element]) {
+      value = value[element];
+    } else {
+      value = "";
+    }
   });
-  return value;
+
+  return value || "";
 };

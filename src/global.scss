@@ -1,5 +1,6 @@
 @import "./fonts.scss";
 @import "./colors.scss";
+@import './mixins.scss';
 
 html,
 body,
@@ -9,10 +10,18 @@ main {
   height: 100%;
 }
 
+#root {
+  position: relative;
+}
+
 body {
   margin: 0;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 500;
+}
+
+div {
+  box-sizing: border-box;
 }
 
 p {
@@ -27,12 +36,11 @@ button {
 }
 
 .layout {
+  @include flexCenter;
+
   position: relative;
   height: 100%;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .avatar {
@@ -47,21 +55,21 @@ button {
 .card {
   box-sizing: border-box;
   border-radius: 50px;
-  background: linear-gradient(101.7deg, #b7dae9 0%, #9df5de 100%);
+  background: linear-gradient(101.7deg, $dustBlue 0%, $lightGreen 100%);
   box-shadow: 10px 10px 50px -10px rgba(0, 0, 0, 0.25);
   min-width: 200px;
   padding: 41px 25px;
   margin-bottom: 27px;
 
   &__title {
-    color: $cardTitle;
+    color: $darkGreen;
     text-align: center;
     font-weight: 500;
   }
 }
 
 .blank-layout {
-  background: $blankLayoutBackgroundColor;
+  background: $white;
 
   .link {
     font-size: 24px;
@@ -70,7 +78,7 @@ button {
 }
 
 .gradient-layout {
-  background: linear-gradient(107.56deg, $gradientFrom 0%, $gradientTo 100%);
+  background: linear-gradient(107.56deg, $lightGreen 0%, $dustBlue 100%);
 }
 
 .login-card,
@@ -83,16 +91,52 @@ button {
 }
 
 .center {
-  display: flex;
+  @include flexCenter;
+
   flex-direction: row;
-  justify-content: center;
-  align-items: center;
 }
 
-.hide {
+.hidden {
   display: none !important;
 }
 
 .show {
   display: block !important;
+}
+
+.error {
+  &-wrapper {
+    margin-bottom: 69px;
+  }
+}
+
+.menu-icon {
+  margin-top: 6px;
+  width: 24px;
+  height: 18px;
+}
+
+.modal {
+  &__wrapper {
+    width: 280px;
+    padding: 30px;
+    background: linear-gradient(101.7deg, $dustBlue 0%, $lightGreen 100%);
+    box-shadow: 10px 10px 50px -10px rgba(0, 0, 0, 0.25);
+    border-radius: 50px;
+  }
+
+  &__header {
+    @include flexCenter;
+
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
+
+  &__title {
+    color: $darkGreen;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    flex-grow: 1;
+  }
 }

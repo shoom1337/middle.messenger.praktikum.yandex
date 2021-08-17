@@ -1,3 +1,1 @@
-import { ChatMessages, ChatMessagesProps } from "./chat-messages";
-
-export { ChatMessages, ChatMessagesProps };
+export { ChatMessages } from "./chat-messages";

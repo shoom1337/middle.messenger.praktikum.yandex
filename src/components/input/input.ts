@@ -86,7 +86,7 @@ class Input extends Block {
         return value.length >= 5;
       }
       case "password-confirm": {
-        const passwordInput = <HTMLInputElement>document.querySelector("input[name=password]");
+        const passwordInput = <HTMLInputElement>document.querySelector("input[name=newPassword]");
         if (passwordInput !== null) {
           return passwordInput.value === value;
         }

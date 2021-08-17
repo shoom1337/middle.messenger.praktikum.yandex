@@ -3,7 +3,7 @@
 .chat-header {
   display: flex;
   flex-direction: row;
-  background: linear-gradient(90deg, $gradientFrom 24.53%, $gradientTo 100%);
+  background: linear-gradient(90deg, $lightGreen 24.53%, $dustBlue 100%);
   padding-left: 30px;
   padding-right: 20px;
   padding-top: 4px;
@@ -25,18 +25,13 @@
     line-height: 13px;
     font-weight: 600;
     margin-bottom: 3px;
-    color: $textColor;
+    color: $black;
   }
 
   &__last-visit {
     font-size: 12px;
     line-height: 12px;
     font-weight: 500;
-    color: $chatHeaderLastVisitColor;
-  }
-
-  &__menu {
-    cursor: pointer;
-    padding: 0 24px;
+    color: $darkGreen;
   }
 }

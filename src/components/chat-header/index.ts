@@ -1,3 +1,1 @@
-import { ChatHeader, ChatHeaderProps } from "./chat-header";
-
-export { ChatHeader, ChatHeaderProps };
+export { ChatHeader, ChatHeaderProps } from "./chat-header";

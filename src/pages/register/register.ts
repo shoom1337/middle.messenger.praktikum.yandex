@@ -1,31 +1,16 @@
-import Block from "../../components/block";
+import Page from "../../components/page";
 import { Button, ButtonProps } from "../../components/button";
 import { Input, InputProps } from "../../components/input";
 import { Link, LinkProps } from "../../components/link";
 import tmpl from "./register.tmpl";
 import { INPUT_ERRORS } from "../../common/messages";
 
-import "../../global.scss";
+import { PageProps } from "../../common/types";
+import { getFormData } from "../../utils/getFormData";
 
-type RegisterProps = {
-  title: string;
-  components: {
-    emailInput: Input;
-    loginInput: Input;
-    firstNameInput: Input;
-    secondNameInput: Input;
-    phoneInput: Input;
-    passwordInput: Input;
-    passwordConfirmInput: Input;
-    registerButton: Button;
-    link: Link;
-  };
-  events?: {
-    [key: string]: (event: Event) => void;
-  };
-};
+import authController from "../../controllers/authController";
 
-class Register extends Block {
+class Register extends Page {
   constructor() {
     const emailInputProps: InputProps = {
       label: "Почта",
@@ -149,7 +134,7 @@ class Register extends Block {
     const passwordConfirmInput = new Input(passwordConfirmInputProps);
 
     const linkProps: LinkProps = {
-      href: "/login.html",
+      href: "/login",
       text: "Войти",
     };
     const link = new Link(linkProps);
@@ -170,7 +155,7 @@ class Register extends Block {
       passwordConfirmInput,
     };
 
-    const registerProps: RegisterProps = {
+    const registerProps: PageProps = {
       title: "Регистрация",
       components: {
         ...fields,
@@ -191,17 +176,14 @@ class Register extends Block {
           });
 
           if (isFormValid) {
-            const form: { [key: string]: string } = {};
-            const inputs = document.querySelectorAll("input");
-            Array.from(inputs).forEach((input) => {
-              form[input.name] = input.value;
-            });
-            console.log(form);
+            const formData = getFormData(document.forms[0]);
+
+            authController.register(formData);
           }
         },
       },
     };
-    super("main", registerProps, tmpl);
+    super(registerProps, tmpl);
   }
 }
 export default Register;

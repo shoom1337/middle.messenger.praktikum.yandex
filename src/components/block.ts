@@ -7,7 +7,7 @@ enum EVENTS {
   INIT = "init",
   FLOW_CDM = "flow:component-did-mount",
   FLOW_CDU = "flow:component-did-update",
-  FLOW_RENDER = "flow:render"
+  FLOW_RENDER = "flow:render",
 }
 
 class Block {
@@ -16,8 +16,8 @@ class Block {
   _tmpl!: string;
 
   _meta: {
-    tagName: string,
-    props: ObjectLiteral,
+    tagName: string;
+    props: ObjectLiteral;
   };
   props: ObjectLiteral;
   eventBus: EventBus;
@@ -26,7 +26,7 @@ class Block {
     this.eventBus = new EventBus();
     this._meta = {
       tagName,
-      props
+      props,
     };
     this.props = this._makePropsProxy({ ...props });
 
@@ -89,7 +89,17 @@ class Block {
     const { events = {} } = this.props;
 
     Object.keys(events).forEach((eventName) => {
-      this.element.addEventListener(eventName, events[eventName]);
+      let node: HTMLElement | null;
+      if (eventName === "submit") {
+        node = this.element.querySelector("form");
+      } else {
+        node = this.element.querySelector("input");
+      }
+      if (node) {
+        node.addEventListener(eventName, events[eventName].bind(this));
+      } else {
+        this.element.addEventListener(eventName, events[eventName].bind(this));
+      }
     });
   }
 
@@ -132,13 +142,13 @@ class Block {
 
   render(): string {
     return new Templator(this._tmpl).compile(this.props);
-   }
+  }
 
   getContent(): HTMLElement {
     return this.element;
   }
 
-  _makePropsProxy(props: ObjectLiteral): ObjectLiteral  {
+  _makePropsProxy(props: ObjectLiteral): ObjectLiteral {
     const self = this;
 
     return new Proxy(props, {
@@ -153,7 +163,7 @@ class Block {
       },
       deleteProperty: () => {
         throw new Error("Нет доступа");
-      }
+      },
     });
   }
 
@@ -164,11 +174,15 @@ class Block {
   }
 
   show(): void {
-    this.getContent().classList.remove("hidden");
+    this._element.classList.remove("hidden");
   }
 
   hide(): void {
-    this.getContent().classList.add("hidden");
+    this._element.classList.add("hidden");
+  }
+
+  remove(): void {
+    this._element.remove();
   }
 }
 

@@ -1,0 +1,66 @@
+@import '../../colors.scss';
+
+.settings {
+  &__wrapper {
+    padding: 15px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 27px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 16px;
+    color: $darkGreen;
+  }
+
+  &__user-name {
+    margin: 0;
+    text-align: center;
+    color: $black;
+    font-size: 24px;
+    margin-bottom: 60px;
+  }
+
+  &__user-data {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 40px;
+  }
+
+  &__property {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+  &__property-title {
+    color: $black;
+  }
+
+  &__property-value {
+    color: $darkGreen;
+  }
+
+  &__link {
+    color: $blue;
+    display: block;
+    margin-bottom: 20px;
+    text-decoration: none;
+  }
+}
+
+.avatar {
+  display: block;
+  margin: 0 auto;
+}

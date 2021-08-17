@@ -8,6 +8,6 @@ export default `
         <div id="loginButton"></div>
       </form>
       <div id="link"></div>
-      </div>
+    </div>
   </div>
 `;

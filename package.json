@@ -7,16 +7,18 @@
     "node": ">=12"
   },
   "scripts": {
-    "dev:parcel": "./node_modules/.bin/parcel serve static/**.html static/profile/**.html",
+    "dev:parcel": "parcel watch build ./static/index.html",
     "dev:ts": "tsc --watch --noEmit",
+    "dev:server": "node ./server.js",
     "dev": "run-p -l dev:**",
     "start": "npm run build && node ./server.js",
-    "clean": "rm -rf dist/",
+    "clean": "rimraf dist/",
     "build": "npm run clean &&  ./node_modules/.bin/parcel build static/*.html static/profile/**.html --target=web",
     "lint": "eslint --debug src/",
     "lint-fix": "eslint --debug --fix src/",
     "stylelint": "stylelint 'src/**/*.scss'",
-    "stylelint-fix": "stylelint 'src/**/*.scss' --fix"
+    "stylelint-fix": "stylelint 'src/**/*.scss' --fix",
+    "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/**/*test.ts' --require ignore-styles"
   },
   "targets": {
     "web": {
@@ -38,21 +40,36 @@
   "browserslist": "> 0.2%",
   "homepage": "https://github.com/yandex-praktikum/middle.messenger.praktikum.yandex#readme",
   "devDependencies": {
+    "@babel/register": "=7.15.3",
     "@parcel/transformer-sass": "=2.0.0-beta.2",
+    "@types/chai": "=4.2.21",
+    "@types/mocha": "=9.0.0",
     "@typescript-eslint/eslint-plugin": "=4.28.4",
     "@typescript-eslint/parser": "=4.28.4",
+    "chai": "=4.3.4",
     "eslint": "=7.31.0",
     "eslint-config-airbnb": "=18.2.1",
     "express": "=4.17.1",
-    "npm-run-all": "^4.1.5",
+    "ignore-styles": "=5.0.1",
+    "jsdom": "=16.7.0",
+    "mocha": "=9.0.3",
+    "npm-run-all": "=4.1.5",
     "parcel-bundler": "=1.12.5",
     "prettier": "=2.3.2",
+    "rimraf": "=3.0.2",
     "sass": "=1.35.1",
-    "stylelint": "^13.13.1",
+    "sinon": "=11.1.2",
+    "stylelint": "=13.13.1",
     "stylelint-config-standard": "=22.0.0",
     "stylelint-prettier": "=1.2.0",
     "stylelint-scss": "=3.20.1",
-    "typescript": "=4.3.5"
+    "ts-node": "=10.2.0",
+    "typescript": "=4.3.5",
+    "xmlhttprequest": "=1.8.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "directories": {
+    "src": "./src",
+    "test": "./test"
+  }
 }

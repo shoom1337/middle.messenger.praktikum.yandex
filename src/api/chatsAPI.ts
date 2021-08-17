@@ -24,7 +24,7 @@ class ChatsAPI extends BaseAPI {
 
   public getChatUsers(data: ObjectLiteral) {
     return this.get(`/chats/${data.chatId}/users`, {
-      data: JSON.stringify(data),
+      data,
     });
   }
 

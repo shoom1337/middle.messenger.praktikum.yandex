@@ -4,17 +4,15 @@ import config from "../config";
 import { ObjectLiteral } from "../common/types";
 import { showAlert } from "../utils/showAlert";
 
+type requestData = {
+  data?: ObjectLiteral;
+  headers?: ObjectLiteral | null;
+  withCredentials?: false;
+};
+
 const defaultHeaders = {
   "Content-type": "application/json",
 };
-
-function stringifyData(options) {
-  let data = options?.data;
-  if (data && typeof data === "object") {
-    data = JSON.stringify(data);
-  }
-  return data;
-}
 
 class BaseAPI {
   private _fetch: Fetch;
@@ -25,43 +23,39 @@ class BaseAPI {
     this._baseURL = config.BASE_URL;
   }
 
-  public post(path: string, options: ObjectLiteral): ObjectLiteral {
-    const data = stringifyData(options);
+  public post(path: string, options: requestData = {}): ObjectLiteral {
     return this._fetch
       .post(`${this._baseURL}${path}`, {
-        data,
+        ...options,
         headers: defaultHeaders,
       })
       .then(this._parseResponse);
   }
 
-  public get(path: string, options?: ObjectLiteral): ObjectLiteral {
-    const data = stringifyData(options);
+  public get(path: string, options: requestData = {}): ObjectLiteral {
     return this._fetch
       .get(`${this._baseURL}${path}`, {
-        data,
+        ...options,
         headers: defaultHeaders,
       })
       .then(this._parseResponse);
   }
 
-  public put(path: string, options: ObjectLiteral, stringifyFlag = true): ObjectLiteral {
+  public put(path: string, options: requestData = { headers: null }): ObjectLiteral {
     const { headers, ...rest } = options;
-    const data = stringifyFlag ? stringifyData(rest) : options.data;
 
     return this._fetch
       .put(`${this._baseURL}${path}`, {
-        data,
+        ...rest,
         headers: headers || defaultHeaders,
       })
       .then(this._parseResponse);
   }
 
-  public delete(path: string, options: ObjectLiteral): ObjectLiteral {
-    const data = stringifyData(options);
+  public delete(path: string, options: requestData = {}): ObjectLiteral {
     return this._fetch
       .delete(`${this._baseURL}${path}`, {
-        data,
+        ...options,
         headers: defaultHeaders,
       })
       .then(this._parseResponse);

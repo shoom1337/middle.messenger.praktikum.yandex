@@ -17,11 +17,11 @@ class AuthAPI extends BaseAPI {
   }
 
   public getUser() {
-    return this.get("/auth/user", {});
+    return this.get("/auth/user");
   }
 
   public logout() {
-    return this.post("/auth/logout", {});
+    return this.post("/auth/logout");
   }
 }
 

@@ -7,7 +7,7 @@ import messagesController from "../../controllers/messagesController";
 import parseMessageList from "../../utils/parseMessageList";
 
 class ChatMessages extends Block {
-  private chatId: number;
+  private chatId: number | null;
   constructor() {
     super("div", { messages: [] }, tmpl);
     this.chatId = null;

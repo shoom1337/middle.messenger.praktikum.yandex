@@ -3,7 +3,7 @@ import config from "../config";
 import { store } from "../store";
 
 class MessagesController {
-  private _ws: WebSocket;
+  private _ws: WebSocket | null;
   private _ping: any;
 
   constructor() {

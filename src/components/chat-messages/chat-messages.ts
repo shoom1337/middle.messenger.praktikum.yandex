@@ -7,7 +7,7 @@ import messagesController from "../../controllers/messagesController";
 import parseMessageList from "../../utils/parseMessageList";
 
 class ChatMessages extends Block {
-  private chatId: number;
+  private chatId: number | null;
   constructor() {
     super("div", { messages: [] }, tmpl);
     this.chatId = null;
@@ -21,10 +21,9 @@ class ChatMessages extends Block {
         messagesController.close();
         messagesController.connect();
       }
-      const list = document.getElementById("chat-messages");
-
+      const list = document.getElementById("chat-messages") as HTMLElement;
       if (list?.scrollHeight) {
-        document.getElementById("chatMessages").scrollTo(0, list.scrollHeight);
+        (document.getElementById("chatMessages") as HTMLElement).scrollTo(0, list.scrollHeight);
       }
     });
   }

@@ -4,7 +4,7 @@ import { ObjectLiteral } from "../common/types";
 
 class Store {
   public state: ObjectLiteral;
-  private subscribers: ((ObjectLiteral) => void)[];
+  private subscribers: ((arg0: ObjectLiteral) => void)[];
   private _meta: {
     state: ObjectLiteral;
   };

@@ -9,13 +9,12 @@ module.exports = {
   entry: "./src/index.ts",
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "bundle-[hash].js",
   },
   resolve: {
     extensions: [".ts", ".js", ".json"],
   },
   devServer: {
-    contentBase: path.join(__dirname, "dist"),
     compress: true,
     port: 3000,
   },
@@ -46,8 +45,16 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./static/index.html",
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+      },
     }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({
+      filename: "style-[hash].css",
+    }),
     new CopyWebpackPlugin({
       patterns: [
         {

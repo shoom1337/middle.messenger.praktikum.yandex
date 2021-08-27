@@ -73,7 +73,7 @@ class ChangeAvatar extends Page {
             if (!avatarInput === null) {
               return;
             }
-            const file = avatarInput?.element?.querySelector("input")?.files[0];
+            const file = avatarInput.element.querySelector("input")?.files![0];
             formData.append("avatar", file as File);
 
             userController.updateAvatar(formData);

@@ -37,12 +37,12 @@ class AuthController {
   public checkAuth() {
     return authAPI
       .getUser()
-      .then((user) => {
+      .then((user: ObjectLiteral) => {
         store.setState({
           user,
         });
       })
-      .catch((error) => {
+      .catch((error: XMLHttpRequest) => {
         errorHandler(error);
         router.go("/login");
       });

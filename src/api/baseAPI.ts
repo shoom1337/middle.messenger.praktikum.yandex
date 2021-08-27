@@ -14,7 +14,7 @@ const defaultHeaders = {
   "Content-type": "application/json",
 };
 
-function stringifyData(options) {
+function stringifyData(options: ObjectLiteral) {
   let data = options?.data;
   if (data && typeof data === "object") {
     data = JSON.stringify(data);

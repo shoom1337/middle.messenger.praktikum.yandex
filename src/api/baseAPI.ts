@@ -86,8 +86,9 @@ class BaseAPI {
     try {
       const response = JSON.parse(res.response);
       return response;
-    } catch (e) {
-      showAlert({ message: `JSON parse error: ${e.message}`, variant: "error" });
+    } catch (e: any) {
+      const message = e.message || "Unknown error";
+      showAlert({ message: `JSON parse error: ${message}`, variant: "error" });
     }
   }
 }

@@ -1,6 +1,7 @@
 import { ObjectLiteral } from "../common/types";
+import Block from "../components/block";
 
-export default function (data: ObjectLiteral, fields: ObjectLiteral): void {
+export default function (data: ObjectLiteral, fields: Block[]): void {
   if (!fields || Object.keys(data).length === 0) {
     return;
   }

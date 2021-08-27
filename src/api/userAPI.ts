@@ -15,14 +15,10 @@ class UserAPI extends BaseAPI {
   }
 
   public updateAvatar(data: ObjectLiteral) {
-    return this.put(
-      "/user/profile/avatar",
-      {
-        data,
-        headers: {},
-      },
-      false,
-    );
+    return this.put("/user/profile/avatar", {
+      data,
+      headers: {},
+    });
   }
 
   public searchUsers(data: ObjectLiteral) {

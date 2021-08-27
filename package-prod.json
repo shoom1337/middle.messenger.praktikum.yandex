@@ -5,7 +5,8 @@
     "node": ">=12"
   },
   "license": "ISC",
-  "devDependencies": {
-    "express": "^4.17.1"
+  "dependencies": {
+    "express": "^4.17.1",
+    "dotenv": "^9.0.2"
   }
 }

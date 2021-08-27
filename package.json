@@ -14,7 +14,7 @@
     "clean": "rimraf dist/",
     "build": "npm run clean &&  webpack",
     "docker:build": "npm run build && docker build -t messenger .",
-    "docker:start": "docker run -p 4000:3000 -d messenger",
+    "docker:start": "docker run -p 4000:3025 -e PORT=3025 -d messenger",
     "lint": "eslint --debug src/",
     "lint-fix": "eslint --debug --fix src/",
     "stylelint": "stylelint 'src/**/*.scss'",

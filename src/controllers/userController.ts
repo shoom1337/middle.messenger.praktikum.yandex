@@ -40,7 +40,7 @@ class UserController {
   public searchUsers(data: ObjectLiteral): void {
     return userAPI
       .searchUsers(data)
-      .then((users: ObjectLiteral[]) => {
+      .then((users) => {
         store.setState({
           findedUsers: users,
         });

@@ -70,11 +70,7 @@ class ChangeAvatar extends Page {
           }
           if (isFormValid) {
             const formData = new FormData();
-            if (!avatarInput === null) {
-              return;
-            }
-            const file = avatarInput.element.querySelector("input")?.files![0];
-            formData.append("avatar", file as File);
+            formData.append("avatar", avatarInput.element.querySelector("input").files[0]);
 
             userController.updateAvatar(formData);
           }

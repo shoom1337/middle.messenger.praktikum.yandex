@@ -11,7 +11,7 @@ class ChatsController {
   public getChats(data?: ObjectLiteral) {
     return chatsAPI
       .getChats(data)
-      .then((chatList: ObjectLiteral[]) => {
+      .then((chatList) => {
         store.setState({
           chatList: parseChatList(chatList),
         });
@@ -22,7 +22,7 @@ class ChatsController {
   public addChat(data: CreateChatProps) {
     return chatsAPI
       .addChat(data)
-      .then((chatId: number) => {
+      .then((chatId) => {
         showAlert({
           variant: "success",
           message: "Created chat",
@@ -53,7 +53,7 @@ class ChatsController {
   public getChatUsers(data: ObjectLiteral) {
     return chatsAPI
       .getChatUsers(data)
-      .then((users: ObjectLiteral[]) => {
+      .then((users) => {
         store.setState({
           chatUsers: users,
         });
@@ -76,7 +76,7 @@ class ChatsController {
   }
 
   public getChatToken(data: ObjectLiteral) {
-    return chatsAPI.getChatToken(data).then(({ token }: { token: string }) => {
+    return chatsAPI.getChatToken(data).then(({ token }) => {
       store.setState({
         token,
       });

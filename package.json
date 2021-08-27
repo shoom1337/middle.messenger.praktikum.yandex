@@ -82,10 +82,5 @@
   "directories": {
     "src": "./src",
     "test": "./test"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all test lint:*"
-    }
   }
 }

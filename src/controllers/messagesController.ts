@@ -53,9 +53,9 @@ class MessagesController {
   }
 
   private _handleError(event: ObjectLiteral) {
+    // eslint-disable-next-line
     console.log("socker error: ", event);
   }
-  // eslint-disable-next-line
 
   private _handleClose() {}
 

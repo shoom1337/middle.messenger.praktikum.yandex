@@ -15,9 +15,9 @@
     "build": "npm run clean &&  webpack",
     "docker:build": "npm run build && docker build -t messenger .",
     "docker:start": "docker run -p 4000:3025 -e PORT=3025 -d messenger",
-    "lint": "eslint --debug src/",
-    "lint-fix": "eslint --debug --fix src/",
-    "stylelint": "stylelint 'src/**/*.scss'",
+    "lint:code": "eslint --debug src/",
+    "lint:style": "stylelint 'src/**/*.scss'",
+    "eslint-fix": "eslint --debug --fix src/",
     "stylelint-fix": "stylelint 'src/**/*.scss' --fix",
     "test": "env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/**/*test.ts' --require ignore-styles"
   },
@@ -54,6 +54,7 @@
     "eslint-config-airbnb": "^18.2.1",
     "express": "^4.17.1",
     "html-webpack-plugin": "^5.3.2",
+    "husky": "^7.0.2",
     "ignore-styles": "^5.0.1",
     "jsdom": "^16.7.0",
     "mini-css-extract-plugin": "^2.2.0",
@@ -80,5 +81,10 @@
   "directories": {
     "src": "./src",
     "test": "./test"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm-run-all test lint:*"
+    }
   }
 }

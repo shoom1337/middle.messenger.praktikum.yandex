@@ -7,7 +7,6 @@ function parseMessage(
       first_name: "",
     },
     content: "",
-    time: "",
   },
 ) {
   if (!message || Object.keys(message).length === 0) {

@@ -1,25 +1,21 @@
+[Ссылка на PR](https://github.com/shoom1337/middle.messenger.praktikum.yandex/pull/1)
+
 ## Описание
 
 Самостоятельный проект курса "Миддл-фронтенд разработчик".
 
-## Новое в четвертом спринте
+## Новое во третьем спринте
 
-Функционал чата не затрагивался, велась работа по развёртыванию приложения.
+### Роутер
+- Внедрен и настроен роутер
 
-### Сборщик
-- Parcel заменён на webpack
-- Собран конфиг вебпака с пониманием для чего нужна каждая опция
+### Чат
+- Реализован функционал работы с данными пользователя
+- Функционал создания чата, добавления и удаления в него пользователя
+- Настроен обмен сообщениями через websocket
 
-### Docker
-- Написан Dockerfile
-- Конфиг проверен на валидность в [сервисе](https://www.fromlatest.io/#/)
-
-### Precommit
-- Добавлен пакет husky
-- В pre-commit вызываются тесты и проверка линтерами. При ошибке коммит не вызывается
-
-### Аудит
-- Обновлены устаревшие пакеты
+### Тесты
+- Написаны первые тесты для роутера, шаблонизатора, блока и транспорта
 
 ## Установка
 
@@ -27,26 +23,19 @@
 ```
 git clone https://github.com/shoom1337/middle.messenger.praktikum.yandex.git
 cd middle.messenger.praktikum.yandex
-git checkout sprint_4
+git checkout sprint_3
 npm install
-```
-
-### Локально
-```
 npm run start
 ```
 - [http://localhost:3000](http://localhost:3000) — сервер запустится на порту 3000.
 
-### Docker
-```
-npm run docker:build
-npm run docker:start
-```
-- [http://localhost:4000](http://localhost:4000) — сервер запустится в контейнере на порту 4000:3025.
+Для сборки production:
 
-## Production в Heroku
+- `npm run build`
 
-Собранное приложение доступно по [ссылке](https://fast-sea-37983.herokuapp.com/).
+## Production в Netlify
+
+Собранное приложение доступно по [ссылке](https://relaxed-williams-5a7518.netlify.app/).
 
 
 ## TODO

@@ -8,7 +8,6 @@ import "./remove-chat-user.scss";
 import chatsController from "../../controllers/chatsController";
 
 import showHide from "../../utils/showHide";
-import { ObjectLiteral } from "../../common/types";
 
 type RemoveChatUserProps = {
   title: string;
@@ -20,7 +19,7 @@ type RemoveChatUserProps = {
 class RemoveChatUser extends Block {
   private rootID: string;
 
-  constructor(props: RemoveChatUserProps) {
+  constructor(props?: RemoveChatUserProps) {
     const closeRemoveChatUserButtonProps: CloseButtonProps = {
       events: {
         click() {
@@ -73,7 +72,7 @@ class RemoveChatUser extends Block {
     store.subscribe(({ showRemoveChatUserDialog, chatUsers, user }) => {
       showHide(this.rootID, showRemoveChatUserDialog);
       this.setProps({
-        users: chatUsers.filter((i: ObjectLiteral) => i.id !== user.id),
+        users: chatUsers.filter((i) => i.id !== user.id),
       });
     });
   }

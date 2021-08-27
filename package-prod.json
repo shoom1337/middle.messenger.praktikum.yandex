@@ -1,0 +1,11 @@
+{
+  "name": "middle.messenger.praktikum.yandex",
+  "main": "server.js",
+  "engines": {
+    "node": ">=12"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "express": "^4.17.1"
+  }
+}

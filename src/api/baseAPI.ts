@@ -14,14 +14,6 @@ const defaultHeaders = {
   "Content-type": "application/json",
 };
 
-function stringifyData(options: ObjectLiteral) {
-  let data = options?.data;
-  if (data && typeof data === "object") {
-    data = JSON.stringify(data);
-  }
-  return data;
-}
-
 class BaseAPI {
   private _fetch: Fetch;
   private _baseURL: string;
@@ -32,46 +24,38 @@ class BaseAPI {
   }
 
   public post(path: string, options: requestData = {}): ObjectLiteral {
-    const data = stringifyData(options);
     return this._fetch
       .post(`${this._baseURL}${path}`, {
-        data,
+        ...options,
         headers: defaultHeaders,
       })
       .then(this._parseResponse);
   }
 
   public get(path: string, options: requestData = {}): ObjectLiteral {
-    const data = stringifyData(options);
     return this._fetch
       .get(`${this._baseURL}${path}`, {
-        data,
+        ...options,
         headers: defaultHeaders,
       })
       .then(this._parseResponse);
   }
 
-  public put(
-    path: string,
-    options: requestData = { headers: null },
-    stringifyFlag = true,
-  ): ObjectLiteral {
+  public put(path: string, options: requestData = { headers: null }): ObjectLiteral {
     const { headers, ...rest } = options;
-    const data = stringifyFlag ? stringifyData(rest) : options.data;
 
     return this._fetch
       .put(`${this._baseURL}${path}`, {
-        data,
+        ...rest,
         headers: headers || defaultHeaders,
       })
       .then(this._parseResponse);
   }
 
   public delete(path: string, options: requestData = {}): ObjectLiteral {
-    const data = stringifyData(options);
     return this._fetch
       .delete(`${this._baseURL}${path}`, {
-        data,
+        ...options,
         headers: defaultHeaders,
       })
       .then(this._parseResponse);

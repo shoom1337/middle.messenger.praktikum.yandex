@@ -192,6 +192,9 @@ class EditProfile extends Page {
     store.subscribe((state) => {
       fillFields(keysToCamelCase(state.user), this.fields);
       fillUserAvatar(state.user.avatar, this.avatar);
+      // this.props.ChooseAvatar.props.src = state.currentUser?.avatar
+      //   ? env.HOST_RESOURCES + state.currentUser?.avatar
+      //   : defaultAvatar;
     });
   }
 }

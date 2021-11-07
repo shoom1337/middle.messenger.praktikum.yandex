@@ -19,7 +19,7 @@ type AddChatProps = {
 class AddChat extends Block {
   private rootID: string;
 
-  constructor(props: AddChatProps) {
+  constructor(props?: AddChatProps) {
     const addChatInputProps: InputProps = {
       label: "Название",
       variant: "default",

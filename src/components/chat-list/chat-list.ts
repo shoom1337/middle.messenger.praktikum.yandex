@@ -9,7 +9,7 @@ import "./chat-list.scss";
 function chatSelected() {
   const list = document.querySelectorAll(".chat-list__item");
   for (const item of list) {
-    const chatId = item.dataset.chatId;
+    const chatId = (item as HTMLElement).dataset.chatId;
     item.classList.remove("chat-list__item_active");
 
     item.addEventListener("click", () => {

@@ -1,9 +1,10 @@
 import chatsAPI from "../api/chatsAPI";
+import { ObjectLiteral } from "../common/types";
 import config from "../config";
 import { store } from "../store";
 
 class MessagesController {
-  private _ws: WebSocket;
+  private _ws!: WebSocket;
   private _ping: any;
 
   constructor() {
@@ -34,7 +35,7 @@ class MessagesController {
     }, 10000);
   }
 
-  private _handleMessage(event) {
+  private _handleMessage(event: ObjectLiteral) {
     const data = JSON.parse(event.data);
     if (Array.isArray(data)) {
       if (!data.length) {
@@ -51,7 +52,8 @@ class MessagesController {
     }
   }
 
-  private _handleError(event) {
+  private _handleError(event: ObjectLiteral) {
+    // eslint-disable-next-line
     console.log("socker error: ", event);
   }
 
@@ -67,7 +69,7 @@ class MessagesController {
       .getChatToken({
         chatId,
       })
-      .then(({ token }) => {
+      .then(({ token }: { token: string }) => {
         const url = `${config.WS_URL}/${userId}/${chatId}/${token}`;
         this._ws = new WebSocket(url);
         this._addEvents();

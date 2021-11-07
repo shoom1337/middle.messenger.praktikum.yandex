@@ -4,7 +4,7 @@ export default (data: ObjectLiteral): ObjectLiteral => {
   return Object.entries(data).reduce((acc, [key, value]) => {
     acc[convertKey(key)] = value;
     return acc;
-  }, {});
+  }, {} as ObjectLiteral);
 };
 
 function convertKey(str: string): string {

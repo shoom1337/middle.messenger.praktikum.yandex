@@ -1,4 +1,5 @@
 # Мессенджер 1337
+[![tests](https://github.com/shoom1337/middle.messenger.praktikum.yandex/actions/workflows/tests.yml/badge.svg)](https://github.com/shoom1337/middle.messenger.praktikum.yandex/actions/workflows/tests.yml)
 [![Heroku](https://heroku-badge.herokuapp.com/?app=sheltered-springs-20342)](https://sheltered-springs-20342.herokuapp.com/)
 
 ## Описание
@@ -18,10 +19,10 @@
 
 ## Функциональность
 
--- Авторизация
--- Создание чатов
--- Управление пользователями в чате
--- Обмен сообщениями через Websockets
+- Авторизация
+- Создание чатов
+- Управление пользователями в чате
+- Обмен сообщениями через Websockets
 
 ## Установка
 
